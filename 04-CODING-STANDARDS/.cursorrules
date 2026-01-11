@@ -1,0 +1,760 @@
+# 🤖 CAB CONNECT PHASE 1 - CURSOR/COPILOT RULES
+## Auto-Development Configuration for AI Coding Assistants
+
+**Project:** Cab Connect - Fiji's Cab-Hailing Platform  
+**Phase:** Phase 1 (Android MVP)  
+**Status:** Ready for Development  
+**Last Updated:** January 11, 2026  
+
+---
+
+## 🎯 CORE DIRECTIVES
+
+### **YOU ARE BUILDING**
+- ✅ FastAPI Backend (Python)
+- ✅ React Native Passenger App (TypeScript)
+- ✅ React Native Driver App (TypeScript)
+- ✅ React Admin Dashboard (TypeScript)
+- ✅ PostgreSQL Database
+- ✅ Real-time WebSocket System
+- ✅ Payment Integration (Razorpay)
+
+### **YOU ARE NOT BUILDING**
+- ❌ iOS apps (Phase 2)
+- ❌ Web booking platform (Not needed)
+- ❌ In-app wallet (Phase 4)
+- ❌ Advanced features (Phase 5+)
+
+### **QUALITY STANDARDS**
+- ✅ 80%+ test coverage (backend)
+- ✅ TypeScript strict mode (frontend)
+- ✅ All APIs documented (Swagger)
+- ✅ No hardcoded values
+- ✅ Security best practices
+- ✅ Error handling everywhere
+
+---
+
+## 📋 PROJECT STRUCTURE
+
+### **Backend (FastAPI)**
+```
+cab-connect-backend/
+├── app/
+│   ├── main.py
+│   ├── config.py
+│   ├── api/v1/
+│   ├── models/
+│   ├── services/
+│   ├── schemas/
+│   ├── utils/
+│   ├── database/
+│   └── websocket/
+├── tests/
+├── requirements.txt
+└── .env
+```
+
+### **Frontend (React Native)**
+```
+CabConnect/
+├── src/
+│   ├── screens/
+│   ├── components/
+│   ├── navigation/
+│   ├── redux/
+│   ├── services/
+│   ├── utils/
+│   ├── types/
+│   └── App.tsx
+├── app.json
+├── tsconfig.json
+└── package.json
+```
+
+### **Admin Dashboard (React)**
+```
+cab-connect-admin/
+├── src/
+│   ├── pages/
+│   ├── components/
+│   ├── services/
+│   ├── store/
+│   └── App.tsx
+├── public/
+├── tsconfig.json
+└── package.json
+```
+
+---
+
+## 🔑 KEY TECHNOLOGIES
+
+### **Backend**
+```yaml
+Runtime: Python 3.10+
+Framework: FastAPI
+ORM: SQLAlchemy
+Database: PostgreSQL
+Cache: Redis
+Auth: JWT + SMS OTP
+WebSocket: Starlette
+Testing: Pytest
+Deployment: Docker + AWS EC2
+```
+
+### **Frontend**
+```yaml
+Runtime: Node.js 18+
+Framework: React Native (Expo)
+Language: TypeScript (strict)
+State: Redux Toolkit
+Navigation: React Navigation
+Maps: Google Maps
+HTTP: Axios
+Real-time: Socket.io
+Testing: Jest
+Build: Expo EAS Build
+```
+
+### **Admin Dashboard**
+```yaml
+Framework: React 18
+Language: TypeScript
+Styling: Tailwind CSS
+State: Redux Toolkit
+Charts: Recharts
+Build: Vite
+Testing: Vitest
+```
+
+---
+
+## 🏗️ ARCHITECTURE PATTERNS
+
+### **Backend - REST API Pattern**
+```python
+# ✅ GOOD: Clean, documented, typed
+@router.post("/api/v1/rides/request", response_model=RideResponse)
+async def request_ride(
+    ride_request: RideRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+) -> RideResponse:
+    """
+    Request a new ride.
+    
+    - **ride_request**: Pickup and destination details
+    - **current_user**: Authenticated passenger
+    - **returns**: Ride details with estimated fare
+    """
+    service = RideService(db)
+    ride = service.create_ride(current_user.id, ride_request)
+    return RideResponse.from_orm(ride)
+
+# ❌ BAD: Untyped, no docs, no error handling
+@router.post("/rides")
+async def request_ride(data):
+    ride = create_ride(data)
+    return ride
+```
+
+### **Frontend - Redux Pattern**
+```typescript
+// ✅ GOOD: Structured, typed actions
+interface RideState {
+  ride: Ride | null;
+  status: 'idle' | 'loading' | 'error';
+  error: string | null;
+}
+
+const rideSlice = createSlice({
+  name: 'ride',
+  initialState,
+  reducers: {
+    setRide: (state, action) => {
+      state.ride = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(requestRide.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(requestRide.fulfilled, (state, action) => {
+        state.ride = action.payload;
+        state.status = 'idle';
+      });
+  },
+});
+
+// ❌ BAD: Any types, no state structure
+const rideReducer = (state: any = {}, action: any) => {
+  if (action.type === 'SET_RIDE') {
+    return { ...state, ride: action.payload };
+  }
+  return state;
+};
+```
+
+---
+
+## 🔒 SECURITY RULES
+
+### **Never Include**
+```
+❌ API keys in code (use environment variables)
+❌ Database credentials (use env vars)
+❌ User passwords in logs
+❌ Phone numbers in error messages
+❌ Unvalidated user input in queries
+❌ CORS: allow_origins=["*"] in production
+❌ Console.log with sensitive data
+❌ Hardcoded tokens or secrets
+```
+
+### **Always Do**
+```
+✅ Use environment variables for all secrets
+✅ Validate input on backend
+✅ Hash passwords with bcrypt
+✅ Use HTTPS only
+✅ JWT tokens for API auth
+✅ Rate limiting on endpoints
+✅ CORS with specific origins
+✅ SQL injection prevention (use ORM)
+✅ Error handling without exposing internals
+✅ Logging without PII
+```
+
+---
+
+## 📝 CODING STANDARDS
+
+### **Python (Backend)**
+
+**File Naming:**
+```
+✅ auth_service.py, user_model.py, ride_routes.py
+❌ AuthService.py, User.py, ridesAPI.py
+```
+
+**Code Structure:**
+```python
+# ✅ GOOD: Organized, typed, documented
+from typing import Optional, List
+from pydantic import BaseModel, Field
+from sqlalchemy import Column, String
+from datetime import datetime
+
+class RideRequest(BaseModel):
+    """Schema for creating a ride request"""
+    pickup_address: str = Field(..., min_length=5)
+    destination_address: str = Field(..., min_length=5)
+    passenger_count: int = Field(default=1, ge=1, le=6)
+
+class Ride(Base):
+    """ORM model for rides"""
+    __tablename__ = "rides"
+    
+    id = Column(UUID, primary_key=True, default=uuid4)
+    passenger_id = Column(UUID, ForeignKey("users.id"), nullable=False)
+    status = Column(String(20), default="pending")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    def __repr__(self) -> str:
+        return f"<Ride {self.id}>"
+
+async def create_ride(
+    passenger_id: str,
+    ride_request: RideRequest,
+    db: Session
+) -> Ride:
+    """Create a new ride request"""
+    ride = Ride(
+        passenger_id=passenger_id,
+        pickup_address=ride_request.pickup_address,
+        destination_address=ride_request.destination_address
+    )
+    db.add(ride)
+    db.commit()
+    db.refresh(ride)
+    return ride
+
+# ❌ BAD: No types, no docs
+def create_ride(pid, data, db):
+    r = Ride(passenger_id=pid, pickup=data['pickup'])
+    db.add(r)
+    db.commit()
+    return r
+```
+
+**Testing:**
+```python
+# ✅ GOOD: Clear test cases, assertions
+def test_create_ride_success(db_session):
+    """Test successful ride creation"""
+    ride = create_ride("user123", RideRequest(...), db_session)
+    assert ride.id is not None
+    assert ride.status == "pending"
+
+def test_create_ride_invalid_passenger(db_session):
+    """Test ride creation with invalid passenger"""
+    with pytest.raises(ValueError):
+        create_ride("invalid_id", RideRequest(...), db_session)
+
+# ❌ BAD: Unclear tests
+def test_ride(db):
+    r = create_ride("u1", {"p": "a"}, db)
+    assert r
+```
+
+---
+
+### **TypeScript (Frontend)**
+
+**File Naming:**
+```
+✅ HomeScreen.tsx, rideSlice.ts, useGeolocation.ts
+❌ homescreen.tsx, Ride_Slice.ts, GetGeolocation.ts
+```
+
+**Code Structure:**
+```typescript
+// ✅ GOOD: Typed, organized, documented
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
+import * as rideService from '@/services/rideService';
+
+interface HomeScreenProps {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
+}
+
+export default function HomeScreen({ navigation }: HomeScreenProps) {
+  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
+  const [nearbyDrivers, setNearbyDrivers] = useState<Driver[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const ride = useSelector((state: RootState) => state.ride.ride);
+
+  useEffect(() => {
+    const startLocationTracking = async () => {
+      try {
+        const location = await getLocation();
+        setCurrentLocation(location);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
+
+    startLocationTracking();
+  }, []);
+
+  const handleBookRide = async () => {
+    try {
+      const response = await rideService.requestRide(currentLocation);
+      dispatch(setRide(response));
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  if (error) return <ErrorScreen message={error} />;
+  if (!currentLocation) return <LoadingScreen />;
+
+  return (
+    <View style={styles.container}>
+      {/* UI */}
+    </View>
+  );
+}
+
+// ❌ BAD: No types, no error handling
+export default function HomeScreen({ navigation }) {
+  const [location, setLocation] = useState();
+  const ride = useSelector(state => state.ride);
+
+  useEffect(() => {
+    getLocation().then(loc => setLocation(loc));
+  }, []);
+
+  return <View>{/* UI */}</View>;
+}
+```
+
+---
+
+## 🧪 TESTING REQUIREMENTS
+
+### **Backend Testing** (pytest)
+```python
+# Minimum coverage: 80%
+
+# Unit Tests
+test_auth_service.py        # Auth logic
+test_ride_service.py        # Ride logic
+test_payment_service.py     # Payment logic
+
+# Integration Tests
+test_auth_routes.py         # API endpoints
+test_ride_routes.py
+test_payment_routes.py
+
+# Run: pytest -v --cov=app --cov-report=html
+```
+
+### **Frontend Testing** (Jest)
+```typescript
+// Minimum coverage: 60%
+
+// Component Tests
+HomeScreen.test.tsx
+BookingScreen.test.tsx
+RideScreen.test.tsx
+
+// Hook Tests
+useGeolocation.test.ts
+useRideTracking.test.ts
+
+// Run: npm test -- --coverage
+```
+
+---
+
+## 📚 DOCUMENTATION REQUIREMENTS
+
+### **Each Module Must Have**
+```
+1. README.md
+   - Overview
+   - Setup instructions
+   - API endpoints (if backend)
+   - Usage examples
+
+2. Code Comments
+   - Complex logic explained
+   - Business rules documented
+   - Assumptions stated
+
+3. Type Definitions
+   - All function parameters typed
+   - Return types specified
+   - Interfaces documented
+
+4. Error Handling
+   - Error cases documented
+   - Recovery strategies described
+```
+
+---
+
+## 🔄 DEVELOPMENT WORKFLOW
+
+### **Before Writing Code**
+```
+1. Check project structure matches rules
+2. Verify types/interfaces are defined
+3. Review similar existing code
+4. Plan error scenarios
+5. Write tests first (TDD preferred)
+```
+
+### **While Writing Code**
+```
+1. Follow naming conventions
+2. Add type annotations
+3. Write docstrings/comments
+4. Handle errors explicitly
+5. No console logs in production code
+6. No magic numbers (use constants)
+```
+
+### **Before Committing**
+```
+1. Tests passing (100%)
+2. Linting passing
+3. Type checking passing
+4. No console errors
+5. Commit message clear (feat:, fix:, etc.)
+```
+
+---
+
+## 🚀 GIT WORKFLOW
+
+### **Branch Naming**
+```
+feature/user-authentication
+fix/ride-calculation-bug
+refactor/database-queries
+docs/api-documentation
+```
+
+### **Commit Messages**
+```
+feat: add OTP verification endpoint
+fix: resolve null pointer in location tracking
+refactor: optimize database queries
+test: add auth service unit tests
+docs: update API documentation
+chore: update dependencies
+```
+
+### **Pull Request Template**
+```markdown
+## Description
+Brief description of changes
+
+## Type
+- [ ] Feature
+- [ ] Bug fix
+- [ ] Documentation
+- [ ] Refactor
+
+## Testing
+- [ ] Unit tests added
+- [ ] Integration tests added
+- [ ] Manual testing done
+
+## Checklist
+- [ ] Code follows style guidelines
+- [ ] No console errors
+- [ ] Tests passing
+- [ ] Documentation updated
+```
+
+---
+
+## 📍 SPECIFIC MODULE RULES
+
+### **Authentication Module**
+
+**Backend:**
+```
+POST /api/v1/auth/send-otp
+POST /api/v1/auth/verify-otp
+POST /api/v1/auth/login
+POST /api/v1/auth/refresh
+POST /api/v1/auth/logout
+```
+
+**Requirements:**
+```
+✅ SMS OTP generation (6 digits, 10 min expiry)
+✅ JWT tokens (access: 24h, refresh: 7d)
+✅ Password hashing (bcrypt)
+✅ Rate limiting (5 attempts/minute)
+✅ Refresh token rotation
+✅ OTP retry logic (max 3 attempts)
+```
+
+### **Ride Management Module**
+
+**Backend Endpoints:**
+```
+POST /api/v1/rides/request
+GET /api/v1/rides/estimate
+GET /api/v1/rides/active
+PUT /api/v1/rides/:id/status
+GET /api/v1/rides/history
+```
+
+**Requirements:**
+```
+✅ Fare calculation (base + distance + time)
+✅ Driver matching algorithm
+✅ Real-time status updates
+✅ Ride cancellation logic
+✅ Payment integration
+✅ Rating system
+```
+
+### **Location Service Module**
+
+**Backend Endpoints:**
+```
+GET /api/v1/location/nearby-drivers
+POST /api/v1/location/update
+GET /api/v1/location/directions
+```
+
+**Requirements:**
+```
+✅ Geospatial queries (PostGIS)
+✅ Real-time location tracking
+✅ Distance calculation
+✅ Route optimization
+✅ Location accuracy validation
+```
+
+---
+
+## 🎨 UI/BRANDING GUIDELINES
+
+### **Brand Colors**
+```
+Primary Green: #10b981
+Secondary Blue: #0891b2
+Accent Gold: #f59e0b
+Neutral Dark: #1f2937
+Neutral Light: #f9fafb
+```
+
+### **Typography**
+```
+Headings: Plus Jakarta Sans Bold (or system font)
+Body: Plus Jakarta Sans Regular
+Size: Responsive (12-18px mobile, 14-20px tablet)
+```
+
+### **Component Styles**
+```
+Buttons: 44px height (touch-friendly)
+Input Fields: 48px height
+Card Radius: 12px
+Icons: 24-32px
+Padding: 16-20px sections
+```
+
+---
+
+## ⚠️ COMMON MISTAKES TO AVOID
+
+```
+❌ Writing frontend code without types
+❌ API endpoints without error handling
+❌ Database queries without indexes
+❌ Real-time updates without WebSocket
+❌ No validation on user input
+❌ Passwords in logs or errors
+❌ Console.log in production
+❌ Magic numbers (no constants)
+❌ Functions > 50 lines
+❌ No unit tests
+❌ Hardcoded API URLs
+❌ No database migrations
+```
+
+---
+
+## 🛠️ USEFUL SETUP COMMANDS
+
+### **Backend**
+```bash
+# Setup
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python -m alembic init migrations
+
+# Run
+uvicorn app.main:app --reload
+
+# Test
+pytest -v --cov=app
+black app/
+flake8 app/
+mypy app/
+```
+
+### **Frontend**
+```bash
+# Setup
+npx create-expo-app CabConnect
+cd CabConnect
+npm install
+
+# Run
+npm start
+npm run android
+npm run ios
+
+# Test
+npm test -- --coverage
+npm run lint
+```
+
+### **Docker**
+```bash
+# Build
+docker build -t cabconnect-backend .
+docker-compose up
+
+# Test
+docker-compose exec web pytest
+```
+
+---
+
+## 📞 WHEN TO ESCALATE
+
+```
+🔴 Critical: System down, data loss, security breach
+🟡 High: Feature broken, API endpoint failing
+🟢 Medium: UI issue, performance degradation
+🔵 Low: Minor bug, documentation update
+```
+
+**Escalation:**
+1. Document the issue
+2. Create GitHub issue
+3. Notify team lead
+4. Add to sprint planning
+
+---
+
+## 🎓 LEARNING RESOURCES
+
+```
+FastAPI: https://fastapi.tiangolo.com/
+React Native: https://reactnative.dev/
+PostgreSQL: https://www.postgresql.org/docs/
+TypeScript: https://www.typescriptlang.org/
+Redux: https://redux.js.org/
+WebSockets: https://developer.mozilla.org/en-US/docs/Web/API/WebSocket
+```
+
+---
+
+## 📋 CHECKLIST BEFORE DEPLOYMENT
+
+```
+Backend:
+☐ All tests passing (80%+ coverage)
+☐ API documentation complete
+☐ Error handling comprehensive
+☐ Security audit done
+☐ Database migrations tested
+☐ Environment variables set
+☐ Logging configured
+☐ Rate limiting working
+
+Frontend:
+☐ All screens working
+☐ No TypeScript errors
+☐ No console errors
+☐ Device testing done (5+ devices)
+☐ Performance optimized
+☐ Offline functionality tested
+☐ Notifications working
+
+Admin:
+☐ All pages functional
+☐ Charts rendering correctly
+☐ Real-time updates working
+☐ CRUD operations tested
+
+General:
+☐ Git history clean
+☐ Documentation complete
+☐ Monitoring configured
+☐ Backup strategy in place
+```
+
+---
+
+**Version:** 1.0  
+**Last Updated:** January 11, 2026  
+**Status:** Ready for Development  
+
+---

@@ -1,0 +1,196 @@
+# FlyOverseas - Git Rules and Conventions
+# Team standards for commit messages, branch naming, and repository management
+
+## COMMIT MESSAGE FORMAT
+Use conventional commits format: type(scope): description
+
+### Types
+- **feat:** New feature
+- **fix:** Bug fix
+- **docs:** Documentation changes
+- **style:** Code style changes (formatting, missing semicolons, etc.)
+- **refactor:** Code refactoring
+- **test:** Adding or updating tests
+- **chore:** Maintenance tasks, dependency updates
+- **perf:** Performance improvements
+- **ci:** CI/CD pipeline changes
+- **build:** Build system changes
+- **revert:** Reverting previous commits
+
+### Scopes (Optional)
+- **frontend:** Next.js, React, UI components
+- **backend:** Django, API, database
+- **docker:** Container configuration
+- **docs:** Documentation
+- **auth:** Authentication and authorization
+- **cv:** CV builder functionality
+- **jobs:** Job board and applications
+- **tokens:** Token economy system
+- **payments:** Payment processing
+- **mobile:** React Native mobile app
+- **admin:** Admin panel features
+
+### Examples
+```
+feat(frontend): add responsive CV builder with mobile-first design
+fix(backend): resolve PostgreSQL connection timeout issue
+docs(api): update OpenAI GPT-4 integration documentation
+style(frontend): format dashboard components with Prettier
+refactor(auth): simplify OAuth provider configuration
+test(backend): add unit tests for token transaction model
+chore(deps): update Next.js to version 15.0.2
+perf(frontend): optimize image loading with lazy loading
+ci: add GitHub Actions workflow for automated testing
+```
+
+## BRANCH NAMING CONVENTIONS
+
+### Main Branches
+- **main:** Production-ready code
+- **develop:** Integration branch for features
+- **staging:** Pre-production testing
+
+### Feature Branches
+- **feature/[phase]-[description]**
+  - `feature/phase-0-docker-setup`
+  - `feature/phase-1-cv-builder`
+  - `feature/phase-2-gamification`
+
+### Bug Fix Branches
+- **fix/[issue-number]-[description]**
+  - `fix/123-postgresql-connection`
+  - `fix/456-mobile-responsive-header`
+
+### Hotfix Branches
+- **hotfix/[version]-[description]**
+  - `hotfix/1.0.1-security-patch`
+  - `hotfix/1.0.2-payment-gateway-fix`
+
+### Release Branches
+- **release/[version]**
+  - `release/1.0.0`
+  - `release/1.1.0`
+
+## PULL REQUEST GUIDELINES
+
+### Title Format
+Use same format as commit messages:
+`type(scope): description`
+
+### Description Template
+```markdown
+## What
+Brief description of changes
+
+## Why
+Explanation of why this change is needed
+
+## How
+Technical details of implementation
+
+## Testing
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing completed
+- [ ] Responsive design tested on mobile/tablet/desktop
+- [ ] Cross-browser compatibility verified
+
+## Screenshots (if applicable)
+- Desktop:
+- Tablet:
+- Mobile:
+
+## Checklist
+- [ ] Code follows project coding standards
+- [ ] No lint errors or TypeScript errors
+- [ ] Documentation updated
+- [ ] Security implications considered
+- [ ] Performance impact assessed
+- [ ] Accessibility requirements met
+
+## Related Issues
+Closes #123
+Related to #456
+```
+
+## COMMIT BEST PRACTICES
+
+### Do
+- Write clear, concise commit messages
+- Keep commits atomic (one logical change per commit)
+- Use present tense ("add feature" not "added feature")
+- Reference issue numbers when applicable
+- Include breaking change notices in commit body
+- Sign commits with GPG when possible
+
+### Don't
+- Commit directly to main branch
+- Use vague messages like "fix bug" or "update code"
+- Include unrelated changes in single commit
+- Commit commented-out code
+- Commit sensitive information (API keys, passwords)
+- Force push to shared branches
+
+## REPOSITORY WORKFLOW
+
+### Development Flow
+1. Create feature branch from `develop`
+2. Implement changes with proper testing
+3. Ensure all checks pass (lint, tests, security)
+4. Create pull request to `develop`
+5. Code review and approval required
+6. Merge to `develop` with squash or rebase
+7. Deploy to staging for testing
+8. Merge `develop` to `main` for production
+
+### Code Review Requirements
+- Minimum 1 approval required
+- All CI checks must pass
+- No merge conflicts
+- Security review for sensitive changes
+- Performance review for optimization changes
+
+## ISSUE MANAGEMENT
+
+### Labels
+- **Priority:** P0 (Critical), P1 (High), P2 (Medium), P3 (Low)
+- **Type:** bug, enhancement, feature, documentation
+- **Phase:** phase-0, phase-1, phase-2, phase-3, phase-4, phase-5
+- **Component:** frontend, backend, mobile, docker, database
+- **Status:** in-progress, review-needed, blocked, testing
+
+### Issue Title Format
+`[Component] Brief description of issue`
+
+Examples:
+- `[Frontend] Responsive navigation menu not working on mobile`
+- `[Backend] PostgreSQL connection pooling optimization needed`
+- `[Docker] Redis container fails to start on Windows`
+
+## SECURITY CONSIDERATIONS
+
+### Sensitive Data
+- Never commit API keys, passwords, or secrets
+- Use environment variables for all sensitive configuration
+- Review commits for accidental inclusion of sensitive data
+- Rotate any accidentally committed secrets immediately
+
+### Dependencies
+- Regularly update dependencies for security patches
+- Use `npm audit` and `pip-audit` for vulnerability scanning
+- Document any security-related dependency updates
+
+## VERSION MANAGEMENT
+
+### Semantic Versioning
+- **MAJOR.MINOR.PATCH** (e.g., 1.2.3)
+- **MAJOR:** Breaking changes
+- **MINOR:** New features (backward compatible)
+- **PATCH:** Bug fixes (backward compatible)
+
+### Tagging
+- Tag releases: `git tag -a v1.0.0 -m "Release version 1.0.0"`
+- Use annotated tags for releases
+- Include release notes in tag messages
+
+Remember: These rules ensure code quality, team collaboration, and professional development practices for FlyOverseas platform targeting $2M revenue and millions of users globally.

@@ -1,0 +1,580 @@
+# =========================================================
+# CURSOR RULES — FIJI CAB CONNECT PROJECT
+# =========================================================
+# Project: FIJI CAB CONNECT Marketing Website
+# Client: Fiji Cab Connect (fijicabconnect.com)
+# Updated: January 2, 2026
+# Status: Phase 1 Complete - Compliance Enforced
+# =========================================================
+
+# ---------------------------------------------------------
+# PROJECT-SPECIFIC CONTEXT
+# ---------------------------------------------------------
+
+## FIJI CAB CONNECT BRAND IDENTITY
+- Domain: fijicabconnect.com
+- Brand: FIJICAB (FIJI in black, CAB in green #10b981)
+- Primary Color: Blue (#0A84FF)
+- Secondary Color: Emerald Green (#10b981)
+- Font: Plus Jakarta Sans (Google Fonts)
+- Style: Luxury Minimalism (Inspired by Uber, Bolt, Tesla, Apple)
+- Target: Tourists and locals in Fiji Islands
+- Service: Ride-hailing platform (like Uber for Fiji)
+
+## PROJECT STRUCTURE
+- Tech Stack: Next.js 15 (App Router), TypeScript, Tailwind CSS 4
+- Deployment: Cloudflare Pages (Static Export)
+- Email: Brevo Integration
+- Icons: Heroicons 24/outline (strokeWidth={1.5})
+- Design Tokens: lib/design-tokens.ts
+
+## CLIENT INFORMATION (APPROVED)
+- Client: Mohammed Ifraad Hussain
+- Title: Director, Cab Connect
+- Location: Viti Levu, Fiji Islands
+- Email: mihussain1984@gmail.com
+- Phone: +679 9680798
+- Business: Fiji's first cab-hailing platform
+
+## PHASE 1 SCOPE (CURRENT) - MARKETING WEBSITE + PHONE BOOKING
+**WHAT'S AVAILABLE NOW:**
+- ✅ Phone booking service: +679 9680798 (LIVE AND ACTIVE)
+- ✅ Taxi service operational (call to book)
+- ✅ Professional verified drivers
+- ✅ Cash payment accepted
+- ✅ Service across Viti Levu
+
+**WHAT'S INCLUDED IN PHASE 1:**
+- ✅ Marketing/landing website
+- ✅ Hero section with phone CTAs
+- ✅ Features showcase
+- ✅ How It Works section
+- ✅ Pricing information (generic, no amounts)
+- ✅ Safety features
+- ✅ For Drivers section
+- ✅ For Tourists section
+- ✅ FAQ section
+- ✅ Contact form (Brevo integration)
+- ✅ Google Maps integration
+- ✅ Privacy Policy & Terms pages
+- ✅ SEO optimization
+- ✅ Mobile-first responsive design
+
+**WHAT'S COMING SOON (PHASE 2):**
+- ⏳ App booking platform (in development)
+- ⏳ Web-based booking system
+- ⏳ Driver portal
+- ⏳ Admin dashboard
+- ⏳ Real-time tracking
+- ⏳ Online payment processing
+- ⏳ User registration/login
+- ⏳ OTP verification
+- ⏳ Document verification
+
+**WHAT'S FUTURE (PHASE 3):**
+- 🔮 Native mobile apps (iOS/Android)
+- 🔮 Push notifications
+- 🔮 Advanced features
+
+**PAYMENT METHOD (CRITICAL CONSTRAINT):**
+- ✅ CASH ONLY (for now)
+- ❌ DO NOT mention: "card", "credit card", "digital wallet", "PayPal", "online payment"
+- ✅ USE: "Cash payment", "Pay your driver in cash"
+- ✅ FUTURE: Card/digital payments in Phase 2 (don't promise yet)
+
+**APPROVED LANGUAGE (CURRENT SERVICE):**
+- ✅ "Call +679 9680798" (phone booking available NOW)
+- ✅ "Book by phone" (current method)
+- ✅ "Call to book your ride" (active service)
+- ✅ "Service available now" (accurate)
+- ✅ "Book your ride by calling" (correct)
+
+**FORBIDDEN FEATURE MENTIONS (NOT BUILT YET):**
+- DO NOT say: "Book online" or "Book on our website" (app coming soon)
+- DO NOT say: "Download our app" (in development)
+- DO NOT say: "Pay with card" or "Pay online" (only cash for now)
+- DO NOT say: "Track your ride in real-time" (app feature, coming soon)
+- DO NOT say: "Login" or "Sign up" (user accounts in Phase 2)
+- DO NOT say: "Click to book" (no web booking yet)
+
+**APPROVED CTA LANGUAGE:**
+- ✅ "Call: +679 9680798" (clickable phone link)
+- ✅ "Book by phone" (accurate)
+- ✅ "Contact us" (leads to contact form or phone)
+- ✅ "Become a driver" (leads to contact form)
+- ✅ "App coming soon" (sets expectation)
+
+
+# ---------------------------------------------------------
+# CONTENT GOVERNANCE (MANDATORY - NEVER BREAK)
+# ---------------------------------------------------------
+
+## ❌ STRICTLY FORBIDDEN
+
+### 1. Real Client/Company Names
+- NO real client names without written permission
+- NO identifiable project names in case studies
+- Use: "a manufacturing company", "e-commerce platform"
+- ✅ FIJI CAB CONNECT is approved (it's OUR client)
+
+### 2. Numbers & Metrics (ALL NUMBERS FORBIDDEN)
+**EXAMPLES FROM THIS PROJECT (FIXED):**
+- ❌ "50+ drivers" → ✅ "Many professional drivers" or "Growing community"
+- ❌ "24/7" → ✅ "Always available" or "Always"
+- ❌ "100% safe" → ✅ "Fully safe and secure"
+- ❌ "5 minute wait" → ✅ "Fast connections" or "Quick response"
+- ❌ "$0 fees" → ✅ "Free to join" or "No joining fees"
+
+**FORBIDDEN:**
+- NO client counts ("500+ clients")
+- NO years of experience ("Since 2000")
+- NO team size ("100+ employees")
+- NO metrics/percentages ("40% improvement", "100%")
+- NO pricing/currency ("$50", "₹10,000", "FJD 3.00")
+- NO time metrics ("24/7", "5 minutes")
+
+**APPROVED ALTERNATIVES:**
+- Use: "many", "experienced", "extensive", "always", "quickly", "fully"
+
+### 3. Emojis (ZERO TOLERANCE)
+**EXAMPLES FROM THIS PROJECT (FIXED):**
+- ❌ 🛡️ → ✅ `<ShieldCheckIcon className="w-16 h-16 text-primary" strokeWidth={1.5} />`
+- ❌ 💰 → ✅ `<CurrencyDollarIcon className="w-16 h-16 text-primary" strokeWidth={1.5} />`
+- ❌ ⏰ → ✅ `<ClockIcon className="w-16 h-16 text-primary" strokeWidth={1.5} />`
+- ❌ 📍 → ✅ `<MapPinIcon className="w-16 h-16 text-primary" strokeWidth={1.5} />`
+
+**FORBIDDEN:**
+- NO emojis in ANY visible content
+- NO: 🚀 ✨ 💡 ⭐ 🎯 ❤️ 🔥 👍 ✓ ✅ ❌
+
+**REQUIRED:**
+- Use: Professional SVG icons from Heroicons only
+- Import from: `@heroicons/react/24/outline`
+- Style: `className="w-16 h-16 text-primary" strokeWidth={1.5}`
+
+### 4. Pricing/Currency (FIJI-SPECIFIC)
+**EXAMPLES FROM THIS PROJECT (FIXED):**
+- ❌ "Base Fare: FJD 3.00" → ✅ "Base Fare: Starting rate for every trip"
+- ❌ "Per Kilometer: FJD 2.50" → ✅ "Per Kilometer: Standard distance-based rate"
+- ❌ "Estimated Fare: FJD 38.50" → ✅ "Get Your Fare Estimate" (CTA button)
+
+**FORBIDDEN:**
+- NO specific prices (FJD, USD, $, ₹)
+- NO fare calculations or examples
+
+**APPROVED:**
+- Generic descriptions: "Competitive rates", "Fair pricing"
+- CTAs: "Request Fare Quote", "Contact for rates"
+
+### 5. Certification & Compliance Claims
+- NO: ISO, SOC, HIPAA, PCI, GDPR certifications
+- NO: "Certified", "Compliant", "Standards"
+- NO: Regulatory claims or badges
+- Use: "Industry best practices", "Professional standards"
+
+### 6. Outcome-Based Case Studies
+- NO client names in case studies
+- NO specific outcomes/results
+- NO before/after comparisons
+- NO ROI or performance metrics
+- Use: Process-focused descriptions, technology approach
+
+### 7. Superlatives & Marketing Hype
+- NO: "Best", "#1", "Leading", "World-class", "First" (unless factually true)
+- NO: "Award-winning" without actual awards
+- NO: Empty marketing fluff
+- Use: "Experienced", "Professional", "Trusted"
+- ✅ "Fiji's first cab-hailing platform" is approved (factually true)
+
+### 8. Numbered Visual Elements
+- NO numbered badges (01, 02, 03...)
+- NO letters as design elements (A, B, C...)
+- Use: Meaningful SVG icons only
+
+
+# ---------------------------------------------------------
+# REQUIRED FEATURES (MUST IMPLEMENT)
+# ---------------------------------------------------------
+
+## ✅ Technical Requirements
+
+### 1. Mobile-First Responsive
+- Test on: 375px (mobile), 768px (tablet), 1280px (desktop)
+- Use Tailwind: `text-base md:text-lg lg:text-xl` pattern
+- Touch targets minimum 44x44px
+- FIJI-SPECIFIC: Hero images must work on mobile (test hero-1.png through hero-4.png)
+
+### 2. Accessibility (WCAG AA)
+- Skip to main content link (required)
+- ARIA labels on interactive elements
+- Semantic HTML (header, main, nav, footer)
+- Keyboard navigation functional
+- Color contrast ratio > 4.5:1
+- Focus indicators visible
+- ✅ IMPLEMENTED: Header has skip link, all buttons have proper ARIA
+
+### 3. SEO Metadata (Every Page)
+- Title tag (50-60 characters)
+- Meta description (150-160 characters)
+- Canonical URL: https://fijicabconnect.com
+- Open Graph tags
+- Proper heading hierarchy (H1 → H2 → H3)
+- ✅ IMPLEMENTED: app/layout.tsx has complete metadata
+
+### 4. Schema Markup (Approved Types Only)
+✅ ALLOWED:
+- Organization (generic info only)
+- WebPage (basic page info)
+- Service (NO ratings/awards)
+- BreadcrumbList (navigation)
+
+❌ FORBIDDEN:
+- AggregateRating
+- Review
+- Award
+- Certification
+- Any metrics (employee count, years, etc.)
+
+### 5. Design System (FIJI CAB CONNECT)
+- Design Tokens: lib/design-tokens.ts (MANDATORY reference)
+- Primary Color: #0A84FF (blue)
+- Secondary Color: #10b981 (emerald green)
+- Accent: Use sparingly
+- Typography: Plus Jakarta Sans (weights: 400, 500, 600, 700, 800)
+- Icons: Heroicons (SVG, strokeWidth={1.5}) only
+- Spacing: Tailwind scale (4, 6, 8, 10, 12, 16, 20, 24...)
+
+
+# ---------------------------------------------------------
+# FIJI CAB CONNECT COMPONENT PATTERNS
+# ---------------------------------------------------------
+
+## Icon Component Pattern (USE THIS):
+```tsx
+import { ShieldCheckIcon } from '@heroicons/react/24/outline'
+
+// In component:
+const features = [
+  {
+    icon: ShieldCheckIcon,  // Store as component reference
+    title: 'Verified Drivers',
+    description: '...'
+  }
+]
+
+// In render:
+{features.map((feature, index) => {
+  const Icon = feature.icon
+  return (
+    <div key={index}>
+      <Icon className="w-16 h-16 text-primary" strokeWidth={1.5} />
+      <h3>{feature.title}</h3>
+      <p>{feature.description}</p>
+    </div>
+  )
+})}
+```
+
+## Color Usage Pattern:
+- `text-primary` - Blue accent text (#0A84FF)
+- `bg-primary` - Blue backgrounds
+- `text-black` - Main headings (use sparingly)
+- `text-white` - Dark backgrounds
+- `text-gray-600` - Body text
+- Emerald green (#10b981) - "CAB" in logo, accents
+
+## Typography Pattern:
+- Hero: `text-7xl md:text-8xl lg:text-9xl font-black`
+- Section Heading: `text-6xl md:text-7xl lg:text-8xl font-black`
+- Subsection: `text-4xl md:text-5xl font-black`
+- Body Large: `text-2xl md:text-3xl font-light`
+- Body: `text-lg leading-relaxed`
+
+
+# ---------------------------------------------------------
+# AI ASSISTANT BEHAVIOR
+# ---------------------------------------------------------
+
+## When User Requests Forbidden Content:
+
+**STOP and respond with:**
+```
+⚠️ CONTENT VIOLATION DETECTED
+
+Requested: [what user asked for]
+Issue: [why it's forbidden per FIJI CAB CONNECT rules]
+
+Approved Alternatives (FIJI-SPECIFIC):
+A) [option 1 with example]
+B) [option 2 with example]
+C) [option 3 with example]
+
+Reference: These rules ensure enterprise-grade compliance for corporate clients.
+Please select an option or provide guidance.
+```
+
+## Content Creation for FIJI CAB CONNECT:
+
+**Before generating ANY content:**
+1. Verify: No client names (except FIJI CAB CONNECT), numbers, emojis, certifications
+2. Check: Does it use Heroicons instead of emojis?
+3. Verify: No specific pricing (FJD amounts)?
+4. Check: No "24/7" → use "Always available"
+5. Check: No percentages or metrics → use qualitative language
+6. Use: Neutral, professional, non-promissory language
+7. Focus: Capabilities and process, not outcomes
+
+## Code Generation for FIJI CAB CONNECT:
+
+**Always include:**
+- Heroicons imports: `import { IconName } from '@heroicons/react/24/outline'`
+- Design tokens reference: Use colors from lib/design-tokens.ts
+- Metadata: title, description, canonical (fijicabconnect.com)
+- Accessibility: ARIA labels, semantic HTML
+- Mobile-first: `text-base md:text-lg lg:text-xl` pattern
+- Proper Icon rendering with `const Icon = feature.icon` pattern
+
+
+# ---------------------------------------------------------
+# EXECUTION MODES
+# ---------------------------------------------------------
+
+## MODE: NEW_PAGE (FIJI CAB CONNECT)
+When creating new pages:
+1. Show content outline FIRST (no emojis, no numbers)
+2. Get approval before full implementation
+3. Include metadata with fijicabconnect.com canonical
+4. Use Heroicons (not emojis)
+5. Reference lib/design-tokens.ts for colors
+6. Test mobile responsiveness (375px, 768px, 1280px)
+7. Verify no violations (run mental checklist)
+
+## MODE: CONTENT_AUDIT
+When auditing existing content:
+1. Scan for: emojis, numbers (50+, 24/7, 100%), pricing (FJD, $), certifications
+2. Generate report with file locations and line numbers
+3. Recommend 3 alternatives per issue (use FIJI examples above)
+4. DO NOT auto-fix without approval
+5. Wait for user selection
+
+## MODE: COMPONENT_UPDATE
+When updating components:
+1. Verify: Using Heroicons (not emojis)
+2. Check: No hardcoded numbers/metrics
+3. Ensure: Mobile-first responsive classes
+4. Verify: Consistent with design tokens
+5. Test: Color contrast (text-gray-600 on white, text-white on black)
+
+
+# ---------------------------------------------------------
+# QUALITY GATES (FIJI CAB CONNECT CHECKLIST)
+# ---------------------------------------------------------
+
+## Content Safety (FIJI-SPECIFIC):
+[ ] NO emojis (🛡️, 💰, ⏰, etc.) - only Heroicons
+[ ] NO specific numbers (50+, 24/7, 100%, 5 minutes)
+[ ] NO pricing amounts (FJD 3.00, $10, etc.)
+[ ] NO certification claims (unless we have them)
+[ ] NO fake metrics or outcomes
+[ ] "FIJI CAB CONNECT" used consistently
+[ ] Qualitative language ("many", "always", "fully")
+
+## Technical (FIJI-SPECIFIC):
+[ ] All pages have fijicabconnect.com canonical URL
+[ ] Metadata includes "Fiji", "cab", "ride-hailing"
+[ ] Design tokens from lib/design-tokens.ts
+[ ] Heroicons properly imported and rendered
+[ ] Mobile responsive (test hero images on mobile)
+[ ] Logo: FIJICAB (FIJI black, CAB green)
+[ ] Contact form integrated with Brevo
+[ ] Accessibility: WCAG AA compliant
+
+## Design (FIJI-SPECIFIC):
+[ ] Primary color: #0A84FF (blue)
+[ ] Secondary color: #10b981 (emerald)
+[ ] Plus Jakarta Sans font loaded
+[ ] Icons: Heroicons 24/outline with strokeWidth={1.5}
+[ ] Hero images optimized (hero-1.png through hero-4.png)
+[ ] Consistent spacing (Tailwind scale)
+[ ] Logo displays correctly (SVG, not broken)
+
+
+# ---------------------------------------------------------
+# EMERGENCY STOP SITUATIONS
+# ---------------------------------------------------------
+
+**STOP immediately and ask if:**
+- User requests emojis in visible content
+- User insists on "24/7" or specific numbers
+- User wants pricing amounts (FJD, USD, $)
+- User requests features that break compliance
+- User asks to mention "Book now" or booking features (Phase 2)
+- User wants "Pay with card" or digital payment mentions (cash only)
+- User requests "Login" or "Sign up" functionality (Phase 2)
+- User wants "Download app" CTAs (apps not built yet)
+- User asks to mention "Real-time tracking" (Phase 2)
+- User wants native app features mentioned (Phase 3)
+- Multiple conflicting instructions
+- Unclear about which hero image to use
+- Logo changes requested without approval
+
+**RESPONSE TEMPLATE FOR PHASE VIOLATIONS:**
+```
+⚠️ PHASE 1 SCOPE VIOLATION
+
+Requested: [feature/content user asked for]
+Issue: This is a Phase 2/3 feature, not built yet
+
+Current Phase: Phase 1 (Marketing Website Only)
+Feature Available In: Phase 2 (Booking Platform) or Phase 3 (Mobile Apps)
+
+Approved Alternatives:
+A) Use "Get started" CTA → leads to contact form
+B) Use "Coming soon" language
+C) Add to "Future features" section (if approved by client)
+
+Would you like to proceed with an alternative?
+```
+
+
+# ---------------------------------------------------------
+# FIJI CAB CONNECT QUICK REFERENCE
+# ---------------------------------------------------------
+
+## DON'T SAY → SAY THIS INSTEAD
+
+### Content Compliance:
+| ❌ Don't Use | ✅ Use Instead |
+|--------------|----------------|
+| "50+ drivers" | "Many professional drivers" |
+| "24/7 service" | "Always available" |
+| "100% safe" | "Fully safe and secure" |
+| "5 minute wait" | "Fast response times" |
+| "$0 to join" | "Free to join" |
+| "Base Fare: FJD 3.00" | "Base Fare: Contact for rates" |
+| 🛡️ emoji | `<ShieldCheckIcon />` |
+| 💰 emoji | `<CurrencyDollarIcon />` |
+| ⏰ emoji | `<ClockIcon />` |
+
+### Phase 1 Constraints (CRITICAL):
+| ❌ Don't Use (Not Built Yet) | ✅ Use Instead |
+|------------------------------|----------------|
+| "Book your ride now" | "Get started" → Contact form |
+| "Book instantly" | "Request information" |
+| "Track your ride" | "Real-time updates coming soon" |
+| "Login" or "Sign up" | "Contact us to join" |
+| "Download our app" | "Website launching soon" |
+| "Pay with card" | "Cash payment accepted" |
+| "Pay online" | "Pay your driver in cash" |
+| "Digital wallet" | "Cash only" |
+| "Credit card accepted" | "Simple cash payment" |
+| "Create account" | "Get in touch" → Contact form |
+| "Start booking" | "Coming soon - Contact us" |
+
+## HEROICONS QUICK REFERENCE (COMMON)
+```tsx
+import {
+  ShieldCheckIcon,      // Safety/Security
+  CurrencyDollarIcon,   // Pricing/Money
+  ClockIcon,            // Time/Hours
+  MapPinIcon,           // Location/GPS
+  GlobeAltIcon,         // Global/Local
+  BoltIcon,             // Speed/Fast
+  PhoneIcon,            // Support/Contact
+  StarIcon,             // Rating/Quality
+  TruckIcon,            // Vehicle
+  LockClosedIcon,       // Security
+  DevicePhoneMobileIcon,// Mobile/App
+  CreditCardIcon,       // Payment
+  CheckCircleIcon       // Verified/Confirmed
+} from '@heroicons/react/24/outline'
+```
+
+
+# ---------------------------------------------------------
+# CONTENT SAFETY OVERRIDES CREATIVITY
+# ---------------------------------------------------------
+
+# When in doubt:
+# 1. Content safety comes first (no emojis, no numbers)
+# 2. Professional over creative
+# 3. Generic over specific (no FJD amounts)
+# 4. Neutral over promotional
+# 5. Process over outcomes
+# 6. Heroicons over emojis (ALWAYS)
+
+# If user insists on forbidden content:
+# 1. Explain risks (legal, regulatory, reputational)
+# 2. Show approved alternatives (use examples above)
+# 3. Document if they override (get written approval)
+
+
+# ---------------------------------------------------------
+# SUCCESS CRITERIA (FIJI CAB CONNECT)
+# ---------------------------------------------------------
+
+# Phase 1 is successful when:
+# ✅ ZERO content violations (no emojis, no numbers, no pricing)
+# ✅ ALL components use Heroicons (not emojis)
+# ✅ ALL accessibility requirements met (WCAG AA)
+# ✅ ALL technical requirements met (SEO, metadata, schema)
+# ✅ Mobile-first responsive design (375px → 1280px)
+# ✅ Professional, neutral tone (no hype)
+# ✅ Design tokens consistently applied
+# ✅ Client approved and ready for deployment
+# ✅ Cloudflare Pages deployment ready
+
+
+# ---------------------------------------------------------
+# PROJECT STATUS & NEXT STEPS
+# ---------------------------------------------------------
+
+# COMPLETED:
+# ✅ Phase 1: Marketing Website (100% complete)
+# ✅ Compliance fixes (emojis → Heroicons, numbers removed)
+# ✅ Logo finalized (FIJICAB - FIJI black, CAB green)
+# ✅ Hero images integrated (hero-1.png selected)
+# ✅ All sections complete (Hero, Features, Pricing, Safety, etc.)
+# ✅ Contact form with Brevo integration setup
+# ✅ Google Maps integration
+
+# PENDING (PHASE 1):
+# ⏳ Cloudflare Pages deployment
+# ⏳ Domain configuration (fijicabconnect.com)
+
+# FUTURE PHASES (DO NOT MENTION IN PHASE 1):
+# Phase 2: Booking Platform (3-3.5 months)
+#   - Passenger booking website
+#   - Driver web portal
+#   - Admin control panel
+#   - Document verification
+#   - Real-time GPS tracking
+#   - OTP verification
+#   - User registration/login
+#   - Cash payment system
+#   - Rating & reviews
+#
+# Phase 3: Native Mobile Apps (Additional 3-4 months)
+#   - Android app (passenger & driver)
+#   - iOS app (passenger & driver)
+#   - Push notifications
+#   - App Store submissions
+#
+# PAYMENT EVOLUTION:
+#   - Phase 1 (Now): Cash only
+#   - Phase 2 (Future): Cash + Card/Digital wallet options
+
+# REFERENCE DOCUMENTS:
+# - 00-REFERENCE-TEMPLATES/QUICK-REFERENCE.md
+# - 00-REFERENCE-TEMPLATES/DEVELOPMENT-GUIDE.md
+# - DEPLOYMENT-CLOUDFLARE.md
+# - BREVO-SETUP-GUIDE.md
+# - CB/Backup/Cab-Connect-Proposal-Website-First.md (Full proposal)
+
+
+# ---------------------------------------------------------
+# END OF CURSOR RULES — FIJI CAB CONNECT
+# ---------------------------------------------------------
+# Last Updated: January 2, 2026
+# Compliance Status: ✅ ENFORCED
+# ---------------------------------------------------------

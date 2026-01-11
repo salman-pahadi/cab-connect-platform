@@ -1,0 +1,13 @@
+# Brevo (Sendinblue) API Keys
+# DO NOT COMMIT REAL KEYS TO VERSION CONTROL
+
+# Marketing Website SMTP Key
+marketing-website: YOUR_MARKETING_SMTP_KEY_HERE
+
+# Backend SMTP Key  
+backend: YOUR_BACKEND_SMTP_KEY_HERE
+
+# Instructions:
+# 1. Get your API keys from: https://app.brevo.com/settings/keys/api
+# 2. Store them securely in environment variables
+# 3. Never commit real keys to git

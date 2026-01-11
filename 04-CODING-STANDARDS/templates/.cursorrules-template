@@ -1,0 +1,265 @@
+# =========================================================
+# CURSOR RULES — WEBSITE PROJECT GOVERNANCE
+# =========================================================
+# Purpose: Enforce content safety and professional standards
+# Scope: Public-facing corporate websites
+# =========================================================
+
+# ---------------------------------------------------------
+# REFERENCE FILES (MUST FOLLOW)
+# ---------------------------------------------------------
+
+# Primary guide for all website development:
+# - DEVELOPMENT-GUIDE.md (templates and checklists)
+# - AI-INSTRUCTIONS.md (commands for AI assistance)
+
+# For detailed examples and case studies, see parent folder:
+# - WEBSITE-DEVELOPMENT-GUIDE.md (TwikiWeb.com case study)
+
+
+# ---------------------------------------------------------
+# CONTENT GOVERNANCE (MANDATORY - NEVER BREAK)
+# ---------------------------------------------------------
+
+## ❌ STRICTLY FORBIDDEN
+
+### 1. Real Client/Company Names
+- NO real client names without written permission
+- NO identifiable project names
+- Use: "a manufacturing company", "e-commerce platform"
+
+### 2. Numbers & Metrics (ALL NUMBERS FORBIDDEN)
+- NO client counts ("500+ clients")
+- NO years of experience ("Since 2000")
+- NO team size ("100+ employees")
+- NO metrics/percentages ("40% improvement")
+- NO pricing/currency ("$50", "₹10,000")
+- Use: "many clients", "experienced provider", "extensive portfolio"
+
+### 3. Emojis (ZERO TOLERANCE)
+- NO emojis in ANY visible content
+- NO: 🚀 ✨ 💡 ⭐ 🎯 or ANY emoji character
+- Use: Professional SVG icons from Heroicons only
+
+### 4. Certification & Compliance Claims
+- NO: ISO, SOC, HIPAA, PCI, GDPR, DPDPA certifications
+- NO: "Certified", "Compliant", "Standards"
+- NO: Regulatory claims or badges
+- Use: "Industry best practices", "Professional standards"
+
+### 5. Outcome-Based Case Studies
+- NO client names in case studies
+- NO specific outcomes/results
+- NO before/after comparisons
+- NO ROI or performance metrics
+- Use: Process-focused descriptions, technology approach
+
+### 6. Superlatives & Marketing Hype
+- NO: "Best", "#1", "Leading", "World-class"
+- NO: "Award-winning" without actual awards
+- NO: Empty marketing fluff
+- Use: "Experienced", "Professional", "Trusted"
+
+### 7. Numbered Visual Elements
+- NO numbered badges (01, 02, 03...)
+- NO letters as design elements (A, B, C...)
+- Use: Meaningful SVG icons only
+
+
+# ---------------------------------------------------------
+# REQUIRED FEATURES (MUST IMPLEMENT)
+# ---------------------------------------------------------
+
+## ✅ Technical Requirements
+
+### 1. Mobile-First Responsive
+- Test on: 375px (mobile), 768px (tablet), 1280px (desktop)
+- Use Tailwind: text-base md:text-lg lg:text-xl pattern
+- Touch targets minimum 44x44px
+
+### 2. Accessibility (WCAG AA)
+- Skip to main content link (required)
+- ARIA labels on interactive elements
+- Semantic HTML (header, main, nav, footer)
+- Keyboard navigation functional
+- Color contrast ratio > 4.5:1
+- Focus indicators visible
+
+### 3. SEO Metadata (Every Page)
+- Title tag (50-60 characters)
+- Meta description (150-160 characters)
+- Canonical URL
+- Open Graph tags
+- Proper heading hierarchy (H1 → H2 → H3)
+
+### 4. Schema Markup (Approved Types Only)
+✅ ALLOWED:
+- Organization (generic info only)
+- WebPage (basic page info)
+- Service (NO ratings/awards)
+- BreadcrumbList (navigation)
+
+❌ FORBIDDEN:
+- AggregateRating
+- Review
+- Award
+- Certification
+- Any metrics (employee count, years, etc.)
+
+### 5. Design System
+- Create lib/design-tokens.ts FIRST
+- Define colors, typography, spacing
+- Use consistently across all components
+- Icons: Heroicons (SVG, 2px stroke) only
+
+
+# ---------------------------------------------------------
+# AI ASSISTANT BEHAVIOR
+# ---------------------------------------------------------
+
+## When User Requests Forbidden Content:
+
+**STOP and respond with:**
+```
+⚠️ CONTENT VIOLATION DETECTED
+
+Requested: [what user asked for]
+Issue: [why it's forbidden]
+
+Approved Alternatives:
+A) [option 1]
+B) [option 2]
+C) [option 3]
+
+Please select an option or provide guidance.
+```
+
+## CTA/Button Changes:
+
+**NEVER auto-fix buttons. Always:**
+1. Document current behavior
+2. List 2-3 fix options
+3. Wait for explicit approval
+
+## Content Creation:
+
+**Before generating ANY content:**
+- Verify: No client names, numbers, emojis, certifications
+- Use: Neutral, professional, non-promissory language
+- Focus: Capabilities and process, not outcomes
+
+## Code Generation:
+
+**Always include:**
+- Metadata (title, description, canonical)
+- Schema markup (approved types only)
+- Accessibility features (skip link, ARIA)
+- Mobile-first responsive classes
+- Design tokens from lib/design-tokens.ts
+
+
+# ---------------------------------------------------------
+# EXECUTION MODES
+# ---------------------------------------------------------
+
+## MODE: NEW_PROJECT
+When starting new project:
+1. Reference: @DEVELOPMENT-GUIDE.md
+2. Create design-tokens.ts FIRST
+3. Setup layout with schema markup
+4. Stop after each file for review
+5. Enforce all content rules
+
+## MODE: CONTENT_AUDIT
+When auditing existing content:
+1. Scan for ALL forbidden patterns
+2. Generate report with page locations
+3. Recommend 3 alternatives per issue
+4. DO NOT auto-fix
+5. Wait for approval
+
+## MODE: NEW_PAGE
+When creating new pages:
+1. Show content outline FIRST
+2. Get approval before full implementation
+3. Include metadata, schema, accessibility
+4. Test mobile responsiveness
+5. Verify no violations
+
+
+# ---------------------------------------------------------
+# QUALITY GATES (MUST PASS BEFORE LAUNCH)
+# ---------------------------------------------------------
+
+## Content Safety:
+[ ] NO client names found
+[ ] NO numbers/metrics found
+[ ] NO emojis found
+[ ] NO certification claims found
+[ ] NO outcome-based case studies found
+[ ] NO superlatives found
+
+## Technical:
+[ ] All pages have metadata
+[ ] Schema markup (approved types only)
+[ ] sitemap.xml generated
+[ ] robots.txt configured
+[ ] Accessibility compliant (WCAG AA)
+[ ] Mobile responsive (tested on real devices)
+[ ] Lighthouse score > 90
+
+## Design:
+[ ] Design tokens defined
+[ ] Icons only (no numbered badges)
+[ ] Consistent spacing
+[ ] Consistent typography
+[ ] All images optimized
+
+
+# ---------------------------------------------------------
+# EMERGENCY STOP SITUATIONS
+# ---------------------------------------------------------
+
+**STOP immediately and ask if:**
+- User requests real client names
+- User insists on specific numbers
+- User wants certification claims without proof
+- User requests emojis
+- Multiple conflicting instructions
+- Unclear button/CTA behavior
+
+
+# ---------------------------------------------------------
+# CONTENT SAFETY OVERRIDES CREATIVITY
+# ---------------------------------------------------------
+
+# When in doubt:
+# 1. Content safety comes first
+# 2. Professional over creative
+# 3. Generic over specific
+# 4. Neutral over promotional
+# 5. Process over outcomes
+
+# If user insists on forbidden content:
+# 1. Explain risks (legal, regulatory, reputational)
+# 2. Show approved alternatives
+# 3. Document if they override (get written approval)
+
+
+# ---------------------------------------------------------
+# SUCCESS CRITERIA
+# ---------------------------------------------------------
+
+# Project is successful when:
+# ✅ ZERO content violations
+# ✅ ALL accessibility requirements met
+# ✅ ALL technical requirements met
+# ✅ Mobile-first responsive design
+# ✅ Professional, neutral tone
+# ✅ Client approved
+# ✅ Ready for production
+
+
+# ---------------------------------------------------------
+# END OF CURSOR RULES
+# ---------------------------------------------------------

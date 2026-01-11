@@ -1,0 +1,338 @@
+Below is a **comprehensive Brand Name & Usage Documentation** you can use as a **single source of truth** to maintain consistency across **website, apps, legal, marketing, cloud accounts, and presentations**.
+
+This is written as a **professional internal brand guideline**, not marketing fluff.
+You can share this with:
+
+* client
+* designers
+* developers
+* marketers
+* future team members
+
+---
+
+# **Cab Connect – Brand Name & Usage Documentation**
+
+## 1. Purpose of This Document
+
+This document defines **how the brand name must be used everywhere**, to ensure:
+
+* legal compliance in Fiji
+* consistent branding across all platforms
+* zero confusion between company name, domain, and app name
+* future scalability without rebranding
+
+This document is **authoritative**.
+If something is not defined here, it should **not be improvised**.
+
+---
+
+## 2. Legal & Regulatory Context (Fiji)
+
+### Legal constraint
+
+* The word **“Fiji” cannot be used as the first word** in a registered business name in Fiji.
+
+### Legal company name
+
+* **Registered company name:**
+  **Cab Connect**
+
+This name is used for:
+
+* government registration
+* contracts
+* invoices
+* banking
+* compliance
+* app store developer accounts (later)
+
+**“Fiji Cab Connect” is NOT a legal company name.**
+
+---
+
+## 3. Brand Name Hierarchy (Very Important)
+
+To avoid confusion, the brand is split into **three layers**:
+
+### 3.1 Legal Name
+
+Used only where legally required.
+
+* **Cab Connect**
+
+Usage:
+
+* legal documents
+* invoices
+* contracts
+* footer legal text
+* app store developer account name
+
+---
+
+### 3.2 Brand / Product Name (Primary)
+
+This is the **public-facing brand**.
+
+* **Cab Connect**
+
+Usage:
+
+* app name (Android / iOS)
+* website header
+* admin panel
+* splash screen
+* presentations
+* marketing materials
+* support communication
+
+This is the name users remember.
+
+---
+
+### 3.3 Domain & Regional Identifier
+
+Used only for **technical and regional context**.
+
+* **Domain:** `fijicabconnect.com`
+
+Meaning:
+
+* Cab Connect operating in Fiji
+
+The domain **does not define the brand name**.
+It only defines **geographic operation**.
+
+---
+
+## 4. Brand Name Usage Rules (STRICT)
+
+### 4.1 Correct Usage (Allowed)
+
+✅ Cab Connect
+✅ CAB CONNECT (uppercase, limited use)
+✅ Cab Connect App
+✅ Cab Connect – Ride Booking
+
+---
+
+### 4.2 Incorrect Usage (NOT Allowed)
+
+❌ Fiji Cab Connect (as brand name)
+❌ FIJICAB
+❌ FijiCabConnect (as logo text)
+❌ CabConnect (no space)
+❌ Cab-Connect
+
+These create:
+
+* legal confusion
+* branding inconsistency
+* future rework
+
+---
+
+## 5. Logo Guidelines (Phase 1)
+
+### 5.1 Logo Type
+
+* **Text-based logo only**
+
+### 5.2 Logo Text
+
+```
+Cab Connect
+```
+
+### 5.3 Font & Style (Guidance)
+
+* Clean, modern, sans-serif
+* Medium to semi-bold weight
+* No decorative fonts
+* No icons in Phase 1
+
+Reason:
+
+* flexible
+* professional
+* easy to change later
+* perfect for MVP
+
+---
+
+### 5.4 Logo Usage
+
+* App header
+* Website header
+* Admin panel
+* App splash screen (simple)
+
+Do **not** add:
+
+* country flags
+* car icons
+* location pins
+* gradients (Phase 1)
+
+---
+
+## 6. Website Branding Rules
+
+### Header (Top of Website)
+
+```
+Cab Connect
+```
+
+### Domain
+
+```
+https://fijicabconnect.com
+```
+
+### Footer (Legal / Context)
+
+Recommended footer text:
+
+> © Cab Connect. Operating in Fiji.
+
+or
+
+> Cab Connect is a ride-booking platform operating in Fiji.
+
+Do **not** display “Fiji Cab Connect” as a brand/logo.
+
+---
+
+## 7. Mobile App Branding
+
+### App Display Name (Play Store)
+
+```
+Cab Connect
+```
+
+### App Icon Text (if any)
+
+* None (logo only)
+* Or “Cab Connect” (text logo)
+
+### Package Name (Technical)
+
+Example:
+
+```
+com.cabconnect.app
+```
+
+or
+
+```
+com.cabconnect.fiji
+```
+
+User-facing name remains **Cab Connect**.
+
+---
+
+## 8. Admin Panel & Internal Tools
+
+### Admin Panel Title
+
+```
+Cab Connect – Admin
+```
+
+### Internal References
+
+* Cab Connect Admin
+* Cab Connect System
+
+Avoid:
+
+* FijiCabConnect Admin
+* FIJICAB Admin
+
+---
+
+## 9. Cloud, Accounts & Infrastructure Naming
+
+### Gmail
+
+* `fijicabconnect@gmail.com` (technical / admin email)
+
+### AWS Account Name
+
+* Cab Connect
+
+### Google Cloud / Firebase
+
+* Project name: Cab Connect
+
+### Environment Naming
+
+* cabconnect-prod
+* cabconnect-staging
+
+The **domain name may include Fiji**, but **project names should not**.
+
+---
+
+## 10. Marketing & Communication
+
+### Correct phrasing
+
+* Cab Connect – a cab booking platform in Fiji
+* Cab Connect operates across Fiji
+* Book your ride with Cab Connect
+
+### Avoid
+
+* Branding as “Fiji Cab Connect”
+* Overusing “Fiji” in logos or titles
+
+---
+
+## 11. Future Expansion (Why This Matters)
+
+This structure allows:
+
+* expansion outside Fiji
+* same brand across countries
+* same apps and logo
+* no legal renaming
+* no app re-submission due to brand change
+
+Example later:
+
+* Cab Connect (Fiji)
+* Cab Connect (Australia)
+* Cab Connect (NZ)
+
+Same brand. Different regions.
+
+---
+
+## 12. Final Brand Lock (Authoritative)
+
+✔ **Brand Name:** Cab Connect
+✔ **Legal Entity:** Cab Connect
+✔ **Domain:** fijicabconnect.com
+✔ **Logo:** Text-based “Cab Connect”
+✔ **User-facing name everywhere:** Cab Connect
+✔ **“Fiji” used only as regional context, never as brand**
+
+---
+
+## 13. Enforcement Rule
+
+If there is ever a conflict between:
+
+* domain name
+* legal name
+* marketing copy
+
+**Brand name = Cab Connect always wins.**
+
+---

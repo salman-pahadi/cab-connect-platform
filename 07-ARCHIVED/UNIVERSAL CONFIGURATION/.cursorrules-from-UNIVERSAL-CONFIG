@@ -1,0 +1,205 @@
+# FlyOverseas - Cursor AI Assistant Rules
+# Project-specific guidelines for AI-powered development assistance
+
+## 🎯 PROJECT CONTEXT
+You are working on FlyOverseas, an AI-first international job hunting platform targeting entry-level job seekers across Asia seeking opportunities in Australia, Canada, New Zealand, UK, US, and Europe. The platform aims for $2M subscription revenue within 12 months.
+
+## 📋 MANDATORY SESSION PROTOCOL
+
+### **BEFORE ANY DEVELOPMENT WORK:**
+
+1. **ALWAYS read these 5 files in order:**
+   - `prefix.md` - Project guidelines and enterprise standards
+   - `Project_Documents/progress_tracker.md` - Current status and next priorities
+   - `Project_Documents/schema_documentation.md` - Database and API schemas
+   - `Project_Documents/implementation_strategy.md` - Development patterns
+   - `Project_Documents/technical_architecture.md` - File structure and standards
+
+2. **NEVER start coding without understanding:**
+   - Current phase status and completion percentages
+   - Next priority micro-task from progress tracker
+   - Existing database schema and API contracts
+   - Established coding patterns and conventions
+
+## 🔐 ZERO TOLERANCE SECURITY POLICY
+
+### **MANDATORY SECURITY REQUIREMENTS (NO EXCEPTIONS):**
+
+1. **NEVER** commit secrets, API keys, or credentials to version control
+2. **ALWAYS** use environment variables for configuration (`config('SETTING_NAME')`)
+3. **MANDATORY** input validation and sanitization on ALL user inputs
+4. **REQUIRED** SQL injection prevention (use Django ORM properly, no raw SQL)
+5. **ENFORCED** XSS protection (escape outputs, use CSP headers)
+6. **MANDATORY** CSRF protection on all forms and state-changing operations
+7. **REQUIRED** Authentication on ALL protected endpoints
+8. **ENFORCED** Rate limiting on public APIs and user actions
+
+## 💎 TYPESCRIPT & CODE STANDARDS
+
+### **STRICT CODE QUALITY REQUIREMENTS:**
+
+9. **TypeScript Strict Mode MANDATORY** - Zero `any` types, complete type safety
+10. **No relative imports** - Use absolute imports only (`@/components`, not `../../`)
+11. **No missing imports** - All modules and components properly imported and typed
+12. **Zero TypeScript errors** - Must pass `tsc --noEmit` without issues
+13. **Zero ESLint errors** - Must conform to project ESLint configuration
+14. **No temporary fixes** - Only permanent, production-ready solutions
+15. **DO NOT modify config files** (`tsconfig.json`, `next.config.js`, `settings.py`) without explicit permission
+
+## 🏗️ FUNDAMENTAL SOFTWARE ENGINEERING PRINCIPLES
+
+### **CORE DEVELOPMENT PRINCIPLES:**
+
+16. **DRY (Don't Repeat Yourself)** - Extract common logic into reusable functions, components, or services
+17. **KISS (Keep It Simple, Stupid)** - Choose the simplest solution that solves the problem effectively
+18. **SOLID Principles** - Follow Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+19. **YAGNI (You Aren't Gonna Need It)** - Don't build features until they are actually required
+20. **Separation of Concerns** - Each module/component should have a single, well-defined purpose
+21. **Composition over Inheritance** - Prefer composition and interfaces over deep inheritance hierarchies
+22. **Fail Fast** - Validate inputs early, throw errors immediately, don't let bad data propagate
+23. **Law of Demeter** - A method should only call methods of objects it directly knows about
+24. **Single Source of Truth** - Each piece of data should have exactly one authoritative source
+25. **Immutability When Possible** - Prefer immutable data structures and pure functions
+
+## 🛡️ ENTERPRISE-GRADE PRINCIPLES
+
+### **PRODUCTION-READY DEVELOPMENT:**
+
+26. **Defensive Programming** - Assume inputs are invalid, external services will fail, and users will do unexpected things
+27. **Graceful Degradation** - System should continue working with reduced functionality when components fail
+28. **Circuit Breaker Pattern** - Prevent cascading failures by failing fast when external services are down
+29. **Idempotency** - Operations should produce the same result when executed multiple times
+30. **Event Sourcing** - Store events that led to current state, not just current state
+31. **Command Query Separation** - Methods should either change state OR return data, never both
+32. **Interface Segregation** - Clients should not depend on interfaces they don't use
+33. **Dependency Injection** - Depend on abstractions, not concretions
+34. **Configuration over Code** - Make behavior configurable without code changes
+35. **Monitoring and Observability** - Every operation should be measurable and traceable
+
+## 🏛️ ARCHITECTURE PRINCIPLES
+
+### **SYSTEM DESIGN REQUIREMENTS:**
+
+36. **API-First Design** - All endpoints follow `/api/v1/{app_name}/` pattern
+37. **No Mock Data** - Never use static/mock data, always connect to real backend
+38. **Business Logic Separation** - Use service layer for complex operations in class-based implementation
+
+## 🛠️ TECHNOLOGY STACK
+
+- **Frontend:** Next.js 15+, React 18+, TypeScript 5.3+, Tailwind CSS 3.4+, shadcn/ui v0.8+
+- **Backend:** Django 4.x, Django REST Framework, Python 3.13
+- **Database:** Local PostgreSQL (development), Managed PostgreSQL (production)
+- **Cache:** Redis (containerized)
+- **Background Jobs:** Celery + Celery Beat
+- **AI/ML:** OpenAI GPT-4+ APIs
+- **Container:** Docker with ports 3002 (frontend), 8002 (backend)
+
+## 📱 RESPONSIVE DESIGN STANDARDS
+
+- **100% Responsive:** All components must work on mobile (320px+), tablet (768px+), desktop (1024px+)
+- **Mobile-First:** Always design and develop mobile-first, then enhance for larger screens
+- **Layout Hierarchy:**
+  1. Primary: CSS Grid with responsive columns (grid-cols-1 md:grid-cols-2 lg:grid-cols-3)
+  2. Fallback: Card/Box components with Flexbox if Grid has issues
+  3. Always: Mobile-first responsive design
+- **Spacing:** Use Tailwind spacing scale: p-4 md:p-6 lg:p-8, text-sm md:text-base lg:text-lg
+- **Touch Targets:** Minimum 44px for all interactive elements
+- **Error Boundaries:** Required for all custom components
+
+## 🔄 DEVELOPMENT WORKFLOW
+
+- **Ports:** Frontend 3002, Backend 8002, PostgreSQL 5432 (local), Redis 6379
+- **Environment:** Always use local PostgreSQL, containerized Redis, .env files in root
+- **Virtual Environment:** Create venv in backend/ folder for Python dependencies  
+- **Folder Structure:** frontend/ for React/Next.js, backend/ for Django/Python
+- **Testing:** Test on real devices and all breakpoints
+- **Performance:** <2 second load times, Core Web Vitals optimization
+
+## 🚨 CRITICAL SESSION RULES
+
+### **MANDATORY ENFORCEMENT (ZERO EXCEPTIONS):**
+
+- **NEVER skip reading progress tracker** - this prevents duplicate work and hallucination
+- **NEVER modify database schema** without updating schema documentation
+- **NEVER commit code** with lint errors, TypeScript errors, or failing tests
+- **NEVER work on blocked tasks** - resolve dependencies first
+- **NEVER use mock data** - always connect to real backend services
+- **NEVER commit secrets** - use environment variables for all configuration
+- **NEVER use `any` types** - TypeScript strict mode is mandatory
+- **NEVER use relative imports** - absolute imports only (`@/components`)
+- **NEVER skip input validation** - validate and sanitize ALL user inputs
+- **NEVER deploy without authentication** - secure all protected endpoints
+- **ALWAYS maintain mobile-first responsive design** across all components
+- **ALWAYS update requirements.txt** when adding Python packages
+- **ALWAYS implement CSRF protection** on forms and state-changing operations
+- **ALWAYS follow SOLID principles** - DRY, KISS, YAGNI, fail fast patterns
+- **ALWAYS test on all breakpoints** before considering tasks complete
+
+## 📝 RESPONSE GUIDELINES
+
+### **ALWAYS IN YOUR RESPONSES:**
+
+- **Suggest latest stable versions** of dependencies
+- **Prioritize mobile-first responsive design** in all UI recommendations
+- **Include proper TypeScript types** for all code suggestions (no `any` types)
+- **Suggest error boundaries and loading states** for components
+- **Consider performance implications** in all recommendations
+- **Include proper accessibility features** (ARIA labels, keyboard navigation)
+- **Follow the responsive breakpoint strategy** (320px, 768px, 1024px)
+- **Use absolute imports** in all code examples (`@/components/`)
+- **Include input validation** and security measures in code suggestions
+- **Connect to real backend APIs** - never suggest mock or static data
+- **Reference documentation files** when uncertain about patterns or requirements
+
+### **TROUBLESHOOTING GUIDANCE:**
+
+When user encounters issues, guide them to appropriate documentation:
+- **"I don't know what to work on"** → Read progress_tracker.md for next priority
+- **"How should I structure this code?"** → Check technical_architecture.md for patterns
+- **"What's the database schema?"** → Reference schema_documentation.md
+- **"How do I test/deploy this?"** → Follow implementation_strategy.md guidelines
+- **"Previous session work is unclear"** → Check progress_tracker.md session history
+- **"TypeScript errors appearing"** → Use absolute imports, strict types, no `any`
+- **"Security warnings in code"** → Validate inputs, use environment variables, add authentication
+- **"Component not responsive"** → Test 320px, 768px, 1024px breakpoints with real data
+- **"Mock data in use"** → Connect to real backend APIs, never use static placeholders
+- **"Relative imports found"** → Convert to absolute imports using `@/components` pattern
+
+## 🚫 AVOID IN ALL RESPONSES
+
+- **Temporary fixes or TODO comments** without GitHub issues
+- **Hardcoded values** instead of environment variables
+- **Non-responsive components** or layouts
+- **Missing TypeScript types** or any `any` types
+- **Security vulnerabilities** or unvalidated inputs
+- **Performance bottlenecks** or memory leaks
+- **Mock or static data** - always use real backend connections
+- **Relative imports** - use absolute paths only
+- **Code without error boundaries** or proper error handling
+- **Solutions that don't follow SOLID principles**
+
+## 📋 PHASE-SPECIFIC FOCUS
+
+Reference the current development phase (Phase 0-5) from progress_tracker.md and prioritize:
+- **Phase 0:** Docker infrastructure and data model architecture
+- **Phase 1:** Marketing website and MVP functionality
+- **Phase 2:** Engagement and gamification features
+- **Phase 3:** Monetization and subscription systems
+- **Phase 4:** Automation and scaling features
+- **Phase 5:** Global expansion and compliance
+
+## 🎯 SESSION MANAGEMENT
+
+### **UPDATE DOCUMENTATION WHEN:**
+- Progress tracker after every completed subtask
+- Schema documentation when modifying database models
+- Technical architecture when adding new patterns/conventions
+- Implementation strategy when changing development workflows
+
+### **ONE MICRO-TASK FOCUS:**
+- Work on only one micro-task per session
+- Complete all subtasks before moving to next micro-task
+- Update progress tracker with real-time completion status
+- Test all functionality before marking complete
+
+Remember: FlyOverseas serves millions globally with zero downtime requirements, premium user experience, and sophisticated AI-powered automation. Every line of code must meet enterprise-grade standards for security, performance, and maintainability.

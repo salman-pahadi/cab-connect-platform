@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: cabconnect-postgres
+    environment:
+      POSTGRES_USER: cabconnect
+      POSTGRES_PASSWORD: cabconnect123
+      POSTGRES_DB: cabconnect
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cabconnect"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - cabconnect-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: cabconnect-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - cabconnect-network
+
+  # Backend API (optional - can run locally during development)
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cabconnect-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://cabconnect:cabconnect123@postgres:5432/cabconnect
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: dev-secret-key-change-in-production
+      ENVIRONMENT: development
+      DEBUG: "true"
+      LOG_LEVEL: INFO
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - cabconnect-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  cabconnect-network:
+    driver: bridge
