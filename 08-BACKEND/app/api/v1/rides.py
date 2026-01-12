@@ -2,26 +2,24 @@
 Ride API endpoints.
 """
 
-from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from app.api.dependencies import get_current_user, get_db
-from app.models.user import User, UserRole
 from app.models.driver import Driver
+from app.models.user import User, UserRole
 from app.schemas.ride import (
-    RideRequest,
-    RideResponse,
-    RideUpdate,
-    RideAccept,
-    RideStarted,
+    RatingCreate,
+    RatingResponse,
     RideCompleted,
     RideEstimate,
     RideEstimateResponse,
     RideListResponse,
-    RatingCreate,
-    RatingResponse,
+    RideRequest,
+    RideResponse,
+    RideStarted,
+    RideUpdate,
 )
 from app.services.ride_service import RideService
 
@@ -56,7 +54,7 @@ async def request_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.post("/estimate", response_model=RideEstimateResponse)
@@ -83,7 +81,7 @@ async def estimate_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.post("/{ride_id}/accept", response_model=RideResponse)
@@ -116,12 +114,12 @@ async def accept_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.post("/{ride_id}/start", response_model=RideResponse)
@@ -148,7 +146,7 @@ async def start_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.post("/{ride_id}/complete", response_model=RideResponse)
@@ -174,7 +172,7 @@ async def complete_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.post("/{ride_id}/cancel", response_model=RideResponse)
@@ -199,7 +197,7 @@ async def cancel_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e
 
 
 @router.get("/{ride_id}", response_model=RideResponse)
@@ -233,7 +231,7 @@ async def get_ride(
     return ride
 
 
-@router.get("/history/passenger", response_model=List[RideListResponse])
+@router.get("/history/passenger", response_model=list[RideListResponse])
 async def get_passenger_rides(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -253,7 +251,7 @@ async def get_passenger_rides(
     return rides
 
 
-@router.get("/history/driver", response_model=List[RideListResponse])
+@router.get("/history/driver", response_model=list[RideListResponse])
 async def get_driver_rides(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -280,7 +278,7 @@ async def get_driver_rides(
     return rides
 
 
-@router.get("/available/pending", response_model=List[RideListResponse])
+@router.get("/available/pending", response_model=list[RideListResponse])
 async def get_pending_rides(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
@@ -318,4 +316,4 @@ async def rate_ride(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(e),
-        )
+        ) from e

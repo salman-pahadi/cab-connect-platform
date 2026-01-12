@@ -4,18 +4,19 @@ Ride model for ride booking and tracking functionality.
 
 from datetime import datetime
 from enum import Enum
-from typing import Optional
 
 from sqlalchemy import (
+    Boolean,
     Column,
     DateTime,
-    Enum as SQLEnum,
     Float,
     ForeignKey,
     Integer,
     String,
     Text,
-    Boolean,
+)
+from sqlalchemy import (
+    Enum as SQLEnum,
 )
 from sqlalchemy.orm import relationship
 

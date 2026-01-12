@@ -9,21 +9,19 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { clearCurrentRide, setCurrentRide } from '../../redux/slices/rideSlice';
-import { Button } from '../../components/Button';
-import { theme } from '../../theme';
-import rideService from '../../services/rideService';
+import { useAppDispatch, useAppSelector } from '@redux/store';
+import { clearCurrentRide, setCurrentRide } from '@redux/slices/rideSlice';
+import { Button } from '@components/Button';
+import { theme } from '@/styles/theme';
+import rideService from '@services/rideService';
 
 export const RideTrackingScreen = ({ route, navigation }: any) => {
   const { rideId } = route.params;
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.auth);
   const { currentRide } = useAppSelector((state) => state.rides);
 
   const [ride, setRide] = useState(currentRide);
   const [loading, setLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 """Authentication service for OTP-based login and JWT tokens."""
 
 from datetime import datetime
-from typing import Optional, Tuple
 
 from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -24,7 +23,7 @@ from app.utils.otp import (
     send_otp_sms,
     verify_otp,
 )
-from app.utils.password import hash_password, verify_password
+from app.utils.password import verify_password
 
 
 class AuthService:
@@ -33,7 +32,7 @@ class AuthService:
     @staticmethod
     async def send_otp(
         db: AsyncSession, phone_number: str, user_type: str
-    ) -> Tuple[bool, str, int]:
+    ) -> tuple[bool, str, int]:
         """
         Send OTP to user's phone number.
 
@@ -129,7 +128,7 @@ class AuthService:
     @staticmethod
     async def verify_otp_and_login(
         db: AsyncSession, phone_number: str, otp: str, user_type: str
-    ) -> Tuple[bool, str, Optional[str], Optional[str], bool]:
+    ) -> tuple[bool, str, str | None, str | None, bool]:
         """
         Verify OTP and log in user.
 
@@ -239,7 +238,7 @@ class AuthService:
     @staticmethod
     async def register_passenger(
         db: AsyncSession, user_id: str, data: PassengerRegistrationRequest
-    ) -> Tuple[bool, str, str]:
+    ) -> tuple[bool, str, str]:
         """
         Complete passenger registration.
 
@@ -283,7 +282,7 @@ class AuthService:
     @staticmethod
     async def register_driver(
         db: AsyncSession, driver_id: str, data: DriverRegistrationRequest
-    ) -> Tuple[bool, str, str]:
+    ) -> tuple[bool, str, str]:
         """
         Complete driver registration.
 
@@ -347,7 +346,7 @@ class AuthService:
     @staticmethod
     async def admin_login(
         db: AsyncSession, email: str, password: str
-    ) -> Tuple[bool, str, str, dict]:
+    ) -> tuple[bool, str, str, dict]:
         """
         Admin login with email and password.
 

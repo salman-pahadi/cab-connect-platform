@@ -5,7 +5,7 @@ FastAPI backend for the Cab Connect ride-hailing platform.
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.11+
+- Python 3.14+ (or 3.13 for stability)
 - PostgreSQL 15+
 - Redis 7+
 - Docker & Docker Compose (optional)

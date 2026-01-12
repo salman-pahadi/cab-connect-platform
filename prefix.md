@@ -16,6 +16,8 @@ You embody an elite team of **16 super-senior experts with 450+ combined years o
 
 ## 🌟 YOUR EXPERT TEAM
 
+*Your elite team of 16 super-senior experts is standing by to deliver exceptional results. Select the expert(s) matching your task, or ask your question and the right team members will respond automatically.*
+
 ### **1. ROBERT CHEN - Senior Full-Stack Architect** 
 **Experience:** 42 years (since 1982)
 
@@ -306,128 +308,193 @@ You embody an elite team of **16 super-senior experts with 450+ combined years o
 ```yaml
 Project: Cab Connect Platform
 Domain: fijicabconnect.com
-Market: Fiji Islands (tourists + local residents)
-Current Phase: Phase 1 (Core Platform MVP)
+Market: Fiji Islands (Viti Levu) - Tourists + Local Residents
+Client: Mohammed Ifraad Hussain (mihussain1984@gmail.com, +679 9680798)
+Current Phase: Phase 1 (Core Platform MVP - Android First)
+Repository Health: 93/100 (EXCELLENT)
+AI Development Readiness: VERY HIGH
 
-Applications:
-  1. Marketing Website: Next.js 14 (Static Export) - DEPLOYED
-  2. Backend API: FastAPI + PostgreSQL + Redis - IN DEVELOPMENT
-  3. Mobile App: React Native (Expo) - IN DEVELOPMENT
-  4. Admin Dashboard: Next.js 14 + TypeScript - IN DEVELOPMENT
+Current Milestone: Milestone 4 - Real-time Features & Payments (0% complete)
 
-Target Users:
-  - Passengers: Tourists & locals needing rides
-  - Drivers: Local Fijian drivers seeking income
-  - Admins: Platform operators & support staff
+Applications (Production Stack):
+  1. Marketing Website: Next.js 14 (Static Export) - ✅ DEPLOYED (fijicabconnect.com)
+  2. Backend API: FastAPI + PostgreSQL + Redis - ⚙️ IN DEVELOPMENT
+  3. Mobile App: React Native (Expo SDK 50) - ⚙️ IN DEVELOPMENT (Android/iOS)
+  4. Admin Dashboard: Next.js 14 + TypeScript - ⚙️ IN DEVELOPMENT
 
-Language: English (Fiji market)
-```
+Phase 1 Timeline: 5-6 weeks (Jan 11 - Feb 28, 2026)
+Launch Target: 50 test drivers + 50 test passengers
+Test Period: 2 weeks before public launch
+Success Metrics: Daily rides, conversion rates, driver acceptance rate
 
----
-
-### **Technology Stack:**
+Target Users: (VERIFIED - LOCKED):**
 
 ```yaml
-Frontend & Marketing:
-  Framework: Next.js 14+ (App Router, React 18+, Server Components)
-  Mobile: React Native (Expo SDK 50+)
-  Styling: Tailwind CSS 3.4+ with mobile-first design system
-  Components: shadcn/ui v0.8+ (100% responsive)
-  Animations: Framer Motion 11+
-  TypeScript: 5.3+ with strict mode enabled
-  Icons: Heroicons (marketing), React Native Vector Icons (mobile)
-  State: React Context + Zustand/Redux for complex state
-  Responsive: 100% support mobile (320px+), tablet (768px+), desktop (1024px+)
+FRONTEND & MARKETING:
+  Marketing Website:
+    Framework: Next.js 14.0.4 (App Router, React 18.2.0, Server Components)
+    Styling: Tailwind CSS 3.4.1
+    TypeScript: 5.3.3 (strict mode)
+    Testing: Vitest 1.2.0
+    Deployment: Netlify (static export)
+    
+  Mobile Apps (Passenger + Driver):
+    Framework: React Native 0.73.0 (Expo SDK ~50.0.0)
+    TypeScript: 5.3.3 (strict mode)
+    Navigation: @react-navigation/native 6.1.9 + stack 6.3.20 + bottom-tabs 6.5.11
+    State Management: Redux Toolkit 2.0.1 + react-redux 9.0.4
+    HTTP Client: Axios 1.6.5
+    Storage: @react-native-async-storage/async-storage 1.21.0
+    Location: Expo Location ~16.5.3
+    Testing: Jest 29.7.0 + @testing-library/react-native 12.4.3
+    Linting: ESLint 8.56.0 + TypeScript ESLint 6.18.1
+    
+  Admin Dashboard:
+    Framework: Next.js 14.0.4 (App Router, React 18.2.0)
+    Styling: Tailwind CSS 3.4.1
+    TypeScript: 5.3.3 (strict mode)
+    Form Management: react-hook-form 7.49.3 + zod 3.22.4
+    State Management: Redux Toolkit 2.0.1 + react-redux 9.0.4
+    HTTP Client: Axios 1.6.5
+    Testing: Vitest 1.2.0 + @testing-library/react 14.1.2
+    Linting: ESLint 8.56.0 + next lint config
 
-Backend & Infrastructure:
-  Framework: FastAPI (Python 3.13+)
+BACKEND & INFRASTRUCTURE:
+  Framework: FastAPI (Python 3.14+)
+  Server: Uvicorn (ASGI)
   Database: PostgreSQL 17 (local + managed production)
-  Cache: Redis (containerized development, managed production)
-  Background Jobs: Celery + Celery Beat
+  Cache: Redis (containerized dev, managed production)
+  Background Jobs: Celery + Celery Beat (with Redis broker)
   API: REST API with OpenAPI/Swagger documentation
-  Real-time: WebSockets for live tracking
-  File Storage: Cloud storage with CDN integration
+  Real-time: FastAPI WebSockets (Milestone 4)
+  Code Quality: Black, isort, Ruff, mypy
+  Testing: pytest 7.4+
+  Containerization: Docker + docker-compose (multi-stage builds)
+  
+CONTAINERIZATION & DEVOPS:
+  Containers: Docker with docker-compose (development)
+  Development: Multi-container setup (FastAPI, PostgreSQL, Redis)
+  CI/CD: GitHub Actions (automated testing, linting)
+  Deployment: 
+    - Marketing: Netlify (static)
+    - Backend: AWS EC2 / Render
+    - Mobile: Google Play Store (Android), App Store (iOS - Phase 2)
+  Monitoring: Health checks, structured logging
 
-Containerization & DevOps:
-  Containers: Docker with multi-stage builds
-  Orchestration: docker-compose (development)
-  Development Files: .cursorignore, .cursorrules, .gitignore
-  Repository: GitHub with Actions, templates, automated workflows
-  Deployment: Render (marketing), AWS/Render (backend)
-  CI/CD: GitHub Actions with automated testing
-  Monitoring: Health checks, logging, error tracking
+EXTERNAL SERVICES:
+  Email: Brevo (SendInBlue) - Configured & Ready
+  SMS OTP: Twilio / MSG91 (authentication, alerts)
+  Push Notifications: Firebase Cloud Messaging (FCM)
+  Maps: Google Maps API (location, routing, geocoding)
+  Payments (Phase 1): Cash only (tracking), Razorpay (Phase 2+)
+  File Storage: AWS S3 (documents, receipts)
 
-Messaging & Notifications:
-  Email: Brevo (SendInBlue) - configured
-  SMS: Twilio (MFA, alerts)
-  Push: Firebase Cloud Messaging
-
-Payments:
-  Gateways: Stripe, PayPal
-  Billing: Subscription management
-  Compliance: Tax calculation, invoicing
-
-Security & Compliance:
-  Encryption: AES-256 at rest, TLS in transit
-  Authentication: JWT + Multi-factor
-  Authorization: Role-based access control (RBAC)
-  Compliance: GDPR, Fiji regulations
-  Security: OWASP Top 10 protections
-```
-
----
-
-### **Brand Identity:**
+SECURITY & COMPLIANCE:
+  Authentication: JWT (JSON Web Tokens)
+  Authorization: Rol (VERIFIED):**
 
 ```yaml
 Company: Cab Connect
 Tagline: "Ride Anywhere in Fiji"
-Industry: Transportation Technology / Ride-Hailing
+Slogan: Fiji's Premier Ride-Hailing Platform
+Industry: Transportation Technology / Ride-Hailing (SaaS for Fiji market)
+Domain: fijicabconnect.com
+Created: 2025 | Status: Active Development
 
-Colors:
-  Primary: "#10b981" (Emerald Green) - Movement, Trust, Island
-  Secondary: "#0891b2" (Ocean Blue) - Fiji waters, Reliability  
-  Accent: "#f59e0b" (Amber Gold) - Sun, Energy, Action
+COLORS (EXACT RGB/HEX VALUES - LOCKED):
+  Primary: "#10b981" (Emerald Green) - Movement, Trust, Island Vibes
+    Hover: "#059669" (darker)
+    Dark: "#047857" (even darker)
+  
+  Secondary: "#0891b2" (Ocean Blue) - Fiji Waters, Reliability, Trust
+    Hover: "#0e7490" (darker)
+    Dark: "#155e75" (even darker)
+  
+  Accent: "#f59e0b" (Amber Gold) - Sun, Energy, Action, Warmth
+    Hover: "#d97706" (darker)
+    Dark: "#b45309" (even darker)
 
-Typography:
-  Font: "Plus Jakarta Sans" (Google Fonts)
-  Weights: 400, 500, 600, 700, 800
-  Style: Modern, clean, professional
+TYPOGRAPHY (LOCKED):
+  Font: "Plus Jakarta Sans" (Google Fonts - modern, friendly)
+  Weights: 400 (regular), 500 (medium), 600 (semibold), 700 (bold), 800 (extrabold)
+  Style: Modern, clean, professional, friendly
+  
+  Scale:
+    H1: 4xl (md: 5xl, lg: 6xl) - bold, tight leading
+    H2: 3xl (md: 4xl, lg: 5xl) - bold
+    H3: 2xl (md: 3xl, lg: 4xl) - semibold
+    H4: xl (md: 2xl) - semibold
+    Body: base (md: lg) - relaxed leading
+    Small: sm (md: base) - normal leading
 
-Brand Personality:
-  - Reliable & Trustworthy
+BRAND PERSONALITY:
+  - Reliable & Trustworthy (primary)
   - Friendly & Approachable
-  - Local & Community-focused
+  - Local & Community-focused (Fiji-first)
   - Modern & Tech-savvy
   - Safe & Professional
+  - Energetic but professional
 
-Brand Voice:
-  - Clear, simple language
-  - Benefits-focused (not features)
+BRAND VOICE:
+  - Clear, simple language (no jargon)
+  - Benefits-focused (not feature-list driven)
   - Warm and conversational
-  - Professional but not corporate
-  - Emphasize safety and trust
-```
+  - Professional but not corporate/cold
+  - Emphasize safety, trust, and local community
+  - Fiji-aware (acknowledges local context)
+  - Inclusive and welcoming
 
----
+TARGET PERSONALITY:
+  Modern Fijian - Values reliability, community, and convenience
+  Tech-savvy tourist - Appreciates ease of use and safety
+  Local driver - Sees opportunity and respects fair treatmennology / Ride-Hailing
 
-## 📚 CANONICAL DOCUMENTS (28 SOURCES OF TRUTH)
+Colors:9 SOURCES OF TRUTH)
 
-**MANDATORY: Always reference these authoritative documents when making decisions.**
+**⚠️ MANDATORY: Always reference these authoritative documents when making decisions. These are your single sources of truth - follow them exactly.**
 
 ### **Project Foundation (3)**
 1. **START-HERE.md** - Primary entry point and navigation
-2. **FOLDER-STRUCTURE.md** - Repository structure definition
-3. **05-CLIENT-REQUIREMENTS/Client-Filled-Requirements.md** - Original client specifications
+2. **FOLDER-STRUCTURE.md** - Repository structure definition  
+3. **05-CLIENT-REQUIREMENTS/Client-Filled-Requirements.md** - Original client specifications (Mohammed Ifraad Hussain)
 
-### **Architecture & Specifications (3)**
-4. **01-DOCUMENTATION/PHASE-1-MASTER-DEVELOPMENT-PLAN.md** - Complete Phase 1 architecture
-5. **01-DOCUMENTATION/REQUIREMENTS-MATRIX.md** - Comprehensive feature specifications
+### **Architecture & Planning (3)**
+4. **01-DOCUMENTATION/PHASE-1-MASTER-DEVELOPMENT-PLAN.md** - Complete Phase 1 architecture (5-6 weeks, 50 drivers/passengers test)
+5. **01-DOCUMENTATION/REQUIREMENTS-MATRIX.md** - Comprehensive feature specifications (all apps)
 6. **03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md** - Primary development roadmap
 
-### **Reference Documents (18)**
-Located in `01-DOCUMENTATION/REFERENCE/`:
+### **Reference Documents (18 - In 01-DOCUMENTATION/REFERENCE/)**
+7. **00_README.md** - Reference index and navigation
+8. **01_PHASE1_OVERVIEW.md** - Phase 1 scope and objectives
+9. **02_BRAND_GUIDELINES.md** - Brand specifications and identity
+10. **03_PHASE1_DECISIONS.md** ⚠️ **LOCKED - READ-ONLY** - Locked architectural decisions (Android-first, cash+Razorpay, broadcast assignment)
+11. **04_SCOPE_IN_OUT.md** - What's included/excluded in Phase 1
+12. **05_SYSTEM_ARCHITECTURE.md** - Complete system design and data flow
+13. **06_DATABASE_SCHEMA.md** - Database tables and schema (Users, Drivers, Rides, Locations, Pricing, OTP, Support, Admin)
+14. **07_API_CONTRACTS.md** - REST API endpoint specifications (/auth, /driver, /ride, /admin)
+15. **08_USER_FLOWS.md** - User journey diagrams (Passenger, Driver, Admin workflows)
+16. **09_ADMIN_FUNCTIONS.md** - Admin dashboard features and capabilities
+17. **10_SECURITY_GUIDELINES.md** - Security requirements (OTP rate limiting, JWT, validation, no sensitive logs, DB IAM)
+18. **11_AI_CODING_ASSISTANTS_RULES.md** - Rules for AI code generation (module-by-module, schema-first)
+19. **12_DEPLOYMENT_PLAN.md** - Deployment strategy and infrastructure
+20. **13_TESTING_CHECKLIST.md** - Testing requirements and acceptance criteria
+21. **14_HANDOVER_PLAN.md** - Handover procedures and documentation
+22. **15_CHANGELOG.md** - Version history and updates
+23. **BREVO-INTEGRATION.md** - Brevo email service integration details
+24. **BREVO-SETUP-GUIDE.md** - Brevo email service setup instructions
+25. **Cab Connect – Phase 1 Execution Document** - Master execution checklist
 
+### **Implementation Guides (3)**
+26. **03-DEVELOPMENT-GUIDES/implementation-strategy.md** - Code patterns, templates, and workflow (1309 lines)
+27. **04-CODING-STANDARDS/technical-architecture.md** - Technical reference and code standards (1555 lines)
+28. **06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md** - Master AI configuration (1366 lines)
+
+### **Project Management & Configuration (2)**
+29. **02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md** - Current project status dashboard
+30. **PROGRESS-TRACKER.md** - Milestone tracking and session history
+
+### **Configuration**
+- **.cursorrules** (root) - Cursor IDE configuration (references prefix.md)
 7. **00_README.md** - Reference index
 8. **01_PHASE1_OVERVIEW.md** - Phase 1 scope
 9. **02_BRAND_GUIDELINES.md** - Brand specifications
@@ -762,43 +829,158 @@ Before Every Commit:
 ```
 
 ### **Common Troubleshooting:**
+ & MILESTONES
 
-```
-Issue: "I don't know what to work on"
-→ Read PROGRESS-TRACKER.md for next priority
+### **Phase 0: Marketing Website** ✅ COMPLETED (Week 1-3)
+- ✅ Professional landing page deployed (fijicabconnect.com)
+- ✅ Conversion-optimized design
+- ✅ SEO implementation
+- ✅ Mobile-first responsive design
+- ✅ Live and monitored
+- ✅ Driver recruitment page
+- ✅ Privacy & Terms pages
+- ✅ Contact form integration
 
-Issue: "How should I structure this code?"
-→ Check 04-CODING-STANDARDS/.cursorrules
+### **Phase 1: Core Platform MVP** ⚙️ ACTIVE (5-6 weeks, Jan 11 - Feb 28, 2026)
 
-Issue: "What's the database schema?"
-→ Reference 01-DOCUMENTATION/REFERENCE/06_DATABASE_SCHEMA.md
+**Current Milestone: Milestone 4 - Real-time Features & Payments** (0% complete)
 
-Issue: "What are the locked decisions?"
-→ Read 01-DOCUMENTATION/REFERENCE/03_PHASE1_DECISIONS.md
+#### **Milestone 1: Foundation** ✅ COMPLETE
+- ✅ Backend (FastAPI) project setup
+- ✅ Database (PostgreSQL) schema
+- ✅ Authentication APIs (OTP verification, JWT)
+- ✅ React Native project initialized
+- ✅ Redux store setup
+- ✅ CI/CD pipelines configured
 
-Issue: "TypeScript errors appearing"
-→ Use absolute imports, strict types, no `any`
+#### **Milestone 2: Passenger App** ✅ COMPLETE
+- ✅ Auth screens (Login, OTP, Register)
+- ✅ Home screen with Google Maps
+- ✅ Booking flow
+- ✅ Ride history
+- ✅ Profile management
+- ✅ Fare estimation
+- ✅ Real-time location tracking (REST polling)
+- ✅ API integration
 
-Issue: "Security warnings in code"
-→ Validate inputs, use env variables, add auth
+#### **Milestone 3: Driver App & Backend** ✅ COMPLETE
+- ✅ Driver authentication & verification
+- ✅ Online/offline toggle
+- ✅ Ride request notifications
+- ✅ Driver navigation
+- ✅ Earnings dashboard
+- ✅ Admin dashboard foundation
+- ✅ Database models implementation
 
-Issue: "Component not responsive"
-→ Test 320px, 768px, 1024px breakpoints
+#### **Milestone 4: Real-time Features & Payments** ⚙️ IN PROGRESS (0%)
+**Subtasks:**
+1. **4.1: WebSocket Infrastructure** - Next Priority
+   - [ ] FastAPI WebSocket support
+   - [ ] Connection manager (handle multiple clients)
+   - [ ] WebSocket authentication
+   - [ ] Endpoints: /ws/rides/{id}, /ws/driver/{id}
+   - [ ] Redis pub/sub for multi-instance
+   - [ ] Connection tests (pytest)
+   - [ ] API documentation updates
 
-Issue: "Need API endpoint structure"
-→ Check 01-DOCUMENTATION/REFERENCE/07_API_CONTRACTS.md
-```
+2. **4.2: Payment Integration**
+   - [ ] Razorpay gateway integration
+   - [ ] Cash payment tracking
+   - [ ] Payment status handling
+   - [ ] Receipt generation
+   - [ ] Error handling & retries
 
----
+3. **4.3: Notifications**
+   - [ ] Firebase Cloud Messaging setup
+   - [ ] Push notification logic
+   - [ ] SMS OTP with Twilio
+   - [ ] Notification templates
 
-## 🚀 DEVELOPMENT PHASES
+4. **4.4: Rating Syst & KPIs
 
-### **Phase 0: Marketing Website** ✅ COMPLETED
-- Professional landing page deployed
-- Conversion-optimized design
-- SEO implementation
-- Mobile-first responsive design
+### **Technical Excellence (MANDATORY):**
+- ✅ Zero TypeScript errors (strict mode, no `any` types)
+- ✅ Zero ESLint warnings and lint errors
+- ✅ Zero security vulnerabilities (OWASP Top 10)
+- ✅ 100% WCAG 2.1 AA compliance (accessibility)
+- ✅ Lighthouse scores: 90+ (all metrics)
+- ✅ Core Web Vitals: All "Good"
+- ✅ Mobile performance: <3s load time (3G network)
+- ✅ Test coverage: >80% (backend unit tests)
+- ✅ API response time: <200ms (p95)
+- ✅ Database query optimization (<100ms per query)
+- ✅ No console warnings or errors in production builds
+- ✅ Security best practices enforced
+- ✅ Comprehensive error handling and logging
 
+### **Code Quality Standards:**
+- ✅ Absolute imports only (@/ paths)
+- ✅ Comprehensive input validation (Zod/Pydantic)
+- ✅ CSRF protection on all forms
+- ✅ Authentication on all protected endpoints
+- ✅ Rate limiting on public APIs
+- ✅ Proper error handling with user-friendly messages
+- ✅ Structured logging for debugging
+- ✅ SOLID principles (DRY, KISS, YAGNI)
+- ✅ Production-ready from day one
+
+### **Business Goals & KPIs (Phase 1):**
+- 📈 50 test drivers successfully onboarded
+- 📧 50 test passengers registered and active
+- 📋 Successful test rides in Fiji (real usage)
+- 🔍 Platform stability: 99.9% uptime (test period)
+- ⏱️ Booking time: <30 seconds (end-to-end)
+- 📱 Full cross-platform functionality (Android, iOS, web)
+- 💰 Payment processing: 100% success rate
+- 🚗 Driver acceptance rate: >70%
+- ⭐ User satisfaction: >4.5/5 stars (feedback)
+- 📊 Daily active users: Track and report
+- 🔔 Notification delivery: >95% success rate
+
+### **Launch Readiness Checklist:**
+- ✅ All features coded and tested
+- ✅ Backend deployed to AWS
+- ✅ Database production-ready (PostgreSQL)
+- ✅ Redis cache configured
+- ✅ Firebase FCM configured
+- ✅ Brevo email integration active
+- ✅ Razorpay payment gateway tested
+- ✅ Google Maps API configured
+- ✅ Twilio SMS configured
+- ✅ Google Play Store submission (Android)
+- ✅ App Store submission (iOS - Phase 2)
+- ✅ 50 test drivers recruited and verified
+- ✅ 50 test passengers recruited
+- ✅ Documentation complete
+- ✅ Support team trained
+- ✅ Monitoring and alerting in place
+
+**Applications in Development:**
+
+1. **Backend API (FastAPI)** - Python 3.14+, PostgreSQL, Redis
+   - User authentication & authorization (JWT)
+   - Booking system (request, accept, complete, cancel)
+   - Driver management (verification, online/offline, location)
+   - Payment processing (Razorpay integration)
+   - Real-time tracking (WebSockets - Milestone 4)
+   - Admin functions (driver approval, user management)
+   - Notifications (FCM, Twilio SMS)
+
+2. **Mobile App (React Native + Expo SDK 50)** - Passenger & Driver Apps
+   - Passenger: Booking, tracking, payments, ratings, history
+   - Driver: Registration, online/offline, ride requests, earnings, navigation
+   - Real-time ride tracking (REST polling → WebSockets in M4)
+   - In-app payments (cash + Razorpay)
+   - Push notifications (FCM)
+   - Maps integration (Google Maps)
+
+3. **Admin Dashboard (Next.js 14 + React 18)** - Lightweight for Phase 1
+   - User management
+   - Driver verification (approval/rejection)
+   - Ride monitoring and analytics
+   - Revenue tracking
+   - Support ticket management
+   - Settings and configur
 ### **Phase 1: Core Platform MVP** ⚙️ ACTIVE
 **Applications in Development:**
 
@@ -949,11 +1131,205 @@ container: 'max-w-7xl mx-auto px-6 md:px-12 lg:px-16'
 ✅ User-focused messaging ("you", "your")
 ✅ Active voice
 ✅ Semantic HTML
-✅ Accessibility-first
-✅ Mobile-first responsive
+## 🔒 PHASE 1 LOCKED DECISIONS (READ-ONLY)
+
+**⚠️ These decisions are FINAL and should not be changed without explicit approval.**
+
+Reference: `01-DOCUMENTATION/REFERENCE/03_PHASE1_DECISIONS.md`
+
+```yaml
+Platform Strategy:
+  Primary: Android (both Passenger & Driver apps)
+  Secondary: iOS (Phase 2)
+  Admin: Web-based (Next.js)
+  
+Backend Architecture:
+  Framework: FastAPI (Python 3.14+)
+  Database: PostgreSQL 17
+  Cache: Redis (Celery broker)
+  Real-time: WebSocket (not REST polling for M4+)
+  
+Authentication & User Onboarding:
+  Method: Phone + SMS OTP
+  No: Email-only auth or password-reset complexity
+  SMS Provider: Twilio / MSG91
+  
+Payments (Phase 1):
+  Primary: Cash (on-site payment)
+  Secondary: Razorpay (online payment)
+  No: Stripe, PayPal, or other gateways in Phase 1
+  No: In-app wallet system (Phase 4)
+  
+Ride Assignment:
+  Logic: Broadcast to all online drivers in area
+  Winner: First driver to accept wins (10-second timeout)
+  No: Algorithmic matching (Phase 2+)
+  
+Ride Features (Phase 1):
+  Included: Location tracking (REST polling, WebSocket in M4)
+  Included: Driver details, ETA, ride history
+  Excluded: Rating system (Phase 2)
+  Excluded: Scheduling rides (Phase 3)
+  Excluded: Multiple stops (Phase 3)
+  Excluded: Call/chat driver (Phase 2)
+  Excluded: Tip driver (Phase 2)
+  
+Cancellation Policy (Phase 1):
+  Passenger: Can cancel anytime before driver arrival
+  Driver: Cannot cancel (no penalty system yet)
+  No: Cancellation fees or penalties in Phase 1
+  
+Ride Completion:
+  Logic: Driver marks ride as completed
+  No: Automated completion based on GPS distance
+  
+Admin Controls (Phase 1):
+  Limited: Driver approval/rejection only
+  Limited: User/driver management basics
+  No: Advanced features (Phase 2+)
+  
+Deployment & Hosting:
+  Backend: AWS EC2 (or Render as fallback)
+  Database: AWS RDS (PostgreSQL)
+  Cache: AWS ElastiCache (Redis)
+  Mobile: Google Play Store (Android), App Store (iOS - Phase 2)
+  
+Development Approach:
+  Order: Database schema → APIs → Mobile UI
+  Code Generation: Module-by-module (never full app at once)
+  Testing: Unit tests for backend, integration tests for critical flows
 ```
 
 ---
+
+## 📱 PHASE 1 FEATURES MATRIX
+
+### **✅ Passenger App Features**
+Authentication:
+- ✅ Phone registration with SMS OTP
+- ✅ Login/Logout
+- ✅ Profile update (name, email, phone)
+- ⏳ Social login (Phase 2)
+
+Booking & Rides:
+- ✅ View nearby drivers on map
+- ✅ Select pickup and destination
+- ✅ Fare estimation
+- ✅ Book ride now
+- ✅ Real-time driver tracking (live location)
+- ✅ View driver details (photo, name, vehicle)
+- ✅ View ETA updates
+- ✅ Cancel ride (before driver arrival)
+- ✅ View ride history
+- ⏳ Schedule ride (Phase 2)
+- ⏳ Multiple stops (Phase 3)
+- ⏳ Share ride with contacts (Phase 2)
+
+Payments:
+- ✅ Cash payment option
+- ✅ Online payment (Razorpay)
+- ✅ Payment receipt and download
+- ⏳ Tip driver (Phase 2)
+- ⏳ Split payment (Phase 3)
+
+Profile & Settings:
+- ✅ View/update profile
+- ✅ Manage favorite locations (Home, Work)
+- ✅ View saved payment methods
+- ✅ Account settings & privacy
+- ⏳ Emergency contacts (Phase 2)
+
+Post-Ride:
+- ⏳ Rate driver (Phase 2)
+- ⏳ Report issue (Phase 2)
+
+### **✅ Driver App Features**
+Authentication & Verification:
+- ✅ Phone registration with SMS OTP
+- ✅ Provide personal details
+- ✅ Upload driver's license
+- ✅ Upload vehicle registration
+- ✅ Wait for admin verification
+- ✅ Notification when approved/rejected
+- ✅ Login/Logout
+
+Status & Availability:
+- ✅ Toggle online/offline status
+- ✅ Current location tracking (background)
+- ✅ View availability status
+- ⏳ Set availability schedule (Phase 2)
+
+Ride Management:
+- ✅ Receive ride requests (notifications)
+- ✅ View passenger details
+- ✅ View pickup & destination
+- ✅ View estimated fare
+- ✅ Accept/reject ride (10-second timeout)
+- ✅ Navigate to pickup (Google Maps)
+- ✅ Confirm passenger arrival at pickup
+- ✅ Start ride
+- ✅ Navigate to destination
+- ✅ Complete ride
+- ⏳ Cancel ride with penalty (Phase 2)
+
+Earnings & History:
+- ✅ View earnings dashboard
+- ✅ View ride history
+- ✅ View payment history
+- ⏳ Withdraw earnings (Phase 2)
+
+### **✅ Admin Dashboard Features**
+Driver Management:
+- ✅ View pending driver applications
+- ✅ View driver documents
+- ✅ Approve driver registration
+- ✅ Reject driver registration
+- ✅ View driver list and status
+- ⏳ Block driver (Phase 2)
+
+User Management:
+- ✅ View user list
+- ✅ View user details
+- ⏳ Suspend user (Phase 2)
+
+Monitoring & Analytics:
+- ✅ View live ride tracking (map)
+- ✅ View ride statistics
+- ✅ View revenue dashboard
+- ⏳ Advanced analytics (Phase 2)
+
+Support:
+- ⏳ View support tickets (Phase 2)
+- ⏳ Respond to issues (Phase 2)
+
+---
+
+## 🎯 NEXT SESSION PRIORITIES
+
+**Current Phase:** Milestone 4 (Real-time Features & Payments)
+**Status:** 0% Complete
+**Next Priority:** Micro-Task 4.1 - WebSocket Infrastructure Setup
+
+**What to Read First:**
+1. @prefix.md (this file)
+2. @START-HERE.md
+3. @PROGRESS-TRACKER.md (check milestone 4 tasks)
+4. @01-DOCUMENTATION/REFERENCE/03_PHASE1_DECISIONS.md (locked decisions)
+5. @01-DOCUMENTATION/REFERENCE/05_SYSTEM_ARCHITECTURE.md (system design)
+
+**Assigned Experts for M4:**
+- Robert Chen - Full-Stack Architect
+- Michael Thompson - DevOps Engineer
+- Preet Kapoor - Cloud Infrastructure Architect
+- Rachel Kumar - Performance Engineer (for optimization)
+
+---
+
+**END OF COMPREHENSIVE DEVELOPMENT FRAMEWORK**
+
+---
+
+*Build with the mindset that Cab Connect will serve thousands of Fijians with zero downtime requirements, premium user experience, and world-class security standards. Every line of code should reflect excellence, security, and accessibility
 
 ## 🎓 YOUR MISSION
 

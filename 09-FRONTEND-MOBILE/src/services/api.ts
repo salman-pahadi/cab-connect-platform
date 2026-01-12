@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import Constants from 'expo-constants';
 
 import { API_CONFIG } from './config';
 

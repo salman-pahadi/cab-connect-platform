@@ -271,7 +271,7 @@ cabconnect-platform/
 ### **Backend (08-BACKEND/)**
 
 ```yaml
-Language: Python 3.13+
+Language: Python 3.14+ (latest stable as of Oct 24, 2025)
 Framework: FastAPI 0.109+
 Database: PostgreSQL 17
 ORM: SQLAlchemy 2.0+

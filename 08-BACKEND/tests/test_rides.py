@@ -2,15 +2,16 @@
 Tests for ride endpoints and services.
 """
 
-import pytest
 from datetime import datetime
+
+import pytest
 from fastapi import status
 from sqlalchemy.orm import Session
 
-from app.models.user import User, UserRole, UserStatus
 from app.models.driver import Driver, DriverStatus, VehicleType
-from app.models.ride import Ride, RideStatus, RideType, PaymentMethod
-from app.schemas.ride import RideRequest, RideEstimate, RideCompleted
+from app.models.ride import PaymentMethod, RideStatus, RideType
+from app.models.user import User, UserRole, UserStatus
+from app.schemas.ride import RideCompleted, RideEstimate, RideRequest
 from app.services.ride_service import RideService
 from app.utils.password import hash_password
 

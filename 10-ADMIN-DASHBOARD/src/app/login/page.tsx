@@ -16,7 +16,6 @@ export default function LoginPage() {
 
     // TODO: Implement authentication in Milestone 2
     setTimeout(() => {
-      console.log('Login attempt:', { email, password });
       setLoading(false);
       router.push('/dashboard');
     }, 1000);

@@ -28,7 +28,7 @@ describe('Button Component', () => {
   });
 
   it('shows loading indicator when loading prop is true', () => {
-    const { queryByText, UNSAFE_getByType } = render(
+    const { queryByText } = render(
       <Button title="Test Button" onPress={() => {}} loading={true} />
     );
 

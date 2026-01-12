@@ -15,8 +15,8 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { setLoading, setError, loginSuccess } from '../../redux/slices/authSlice';
-import authService from '../../services/authService';
+import { setLoading, setError, loginSuccess } from '@redux/slices/authSlice';
+import authService from '@services/authService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OTPVerificationScreen: React.FC = () => {
@@ -220,7 +220,7 @@ const OTPVerificationScreen: React.FC = () => {
 
       {/* Resend */}
       <View style={styles.resendContainer}>
-        <Text style={styles.resendText}>Didn't receive the code? </Text>
+        <Text style={styles.resendText}>Didn&apos;t receive the code? </Text>
         <TouchableOpacity
           onPress={handleResendOTP}
           disabled={!canResend || isLoading}

@@ -118,7 +118,7 @@ You're working with **16 world-class experts** with **450+ combined years** of e
 - shadcn/ui components
 
 ### **Backend & Infrastructure:**
-- FastAPI (Python 3.13+)
+- FastAPI (Python 3.14+)
 - PostgreSQL 17
 - Redis
 - Celery + Celery Beat

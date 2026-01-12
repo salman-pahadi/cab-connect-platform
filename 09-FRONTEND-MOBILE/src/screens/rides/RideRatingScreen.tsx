@@ -9,11 +9,11 @@ import {
   TextInput,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useAppDispatch } from '../../redux/store';
-import { clearCurrentRide } from '../../redux/slices/rideSlice';
-import { Button } from '../../components/Button';
-import { theme } from '../../theme';
-import rideService from '../../services/rideService';
+import { useAppDispatch } from '@redux/store';
+import { clearCurrentRide } from '@redux/slices/rideSlice';
+import { Button } from '@components/Button';
+import { theme } from '@/styles/theme';
+import rideService from '@services/rideService';
 
 export const RideRatingScreen = ({ route, navigation }: any) => {
   const { rideId } = route.params;

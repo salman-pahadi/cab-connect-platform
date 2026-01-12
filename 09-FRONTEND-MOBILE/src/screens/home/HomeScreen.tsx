@@ -2,10 +2,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import Button from '@components/common/Button';
-import { HomeScreenNavigationProp } from '@navigation/types';
 
 export default function HomeScreen() {
-  const navigation = useNavigation<HomeScreenNavigationProp>();
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -13,7 +12,7 @@ export default function HomeScreen() {
       <Text style={styles.subtitle}>Your reliable ride partner in Fiji</Text>
 
       <View style={styles.buttonContainer}>
-        <Button title="Get Started" onPress={() => console.log('Get Started')} />
+        <Button title="Get Started" onPress={() => (navigation as any).navigate('Login')} />
       </View>
 
       <Text style={styles.version}>Version 1.0.0</Text>

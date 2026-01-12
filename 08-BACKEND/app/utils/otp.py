@@ -3,7 +3,6 @@
 import random
 import secrets
 from datetime import datetime, timedelta
-from typing import Optional, Tuple
 
 from app.core.config import settings
 
@@ -48,7 +47,7 @@ def get_otp_expiry(minutes: int = 5) -> datetime:
     return datetime.utcnow() + timedelta(minutes=minutes)
 
 
-def is_otp_expired(expiry: Optional[datetime]) -> bool:
+def is_otp_expired(expiry: datetime | None) -> bool:
     """
     Check if OTP has expired.
 
@@ -63,7 +62,7 @@ def is_otp_expired(expiry: Optional[datetime]) -> bool:
     return datetime.utcnow() > expiry
 
 
-def verify_otp(stored_otp: str, provided_otp: str, expiry: Optional[datetime]) -> Tuple[bool, str]:
+def verify_otp(stored_otp: str, provided_otp: str, expiry: datetime | None) -> tuple[bool, str]:
     """
     Verify OTP code.
 
@@ -131,7 +130,7 @@ def mask_phone_number(phone: str) -> str:
     return f"{country_code}{masked_middle}{last_digits}"
 
 
-async def send_otp_sms(phone_number: str, otp: str) -> Tuple[bool, str]:
+async def send_otp_sms(phone_number: str, otp: str) -> tuple[bool, str]:
     """
     Send OTP via SMS.
 
@@ -155,7 +154,7 @@ async def send_otp_sms(phone_number: str, otp: str) -> Tuple[bool, str]:
         print(f"\n{'='*50}")
         print(f"📱 SMS to {phone_number}")
         print(f"🔐 Your Cab Connect OTP code is: {otp}")
-        print(f"⏰ Valid for 5 minutes")
+        print("⏰ Valid for 5 minutes")
         print(f"{'='*50}\n")
         return True, "OTP sent successfully (development mode)"
 

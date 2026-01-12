@@ -1,7 +1,6 @@
 """JWT (JSON Web Token) utility functions."""
 
 from datetime import datetime, timedelta
-from typing import Optional
 
 import jwt
 from fastapi import HTTPException, status
@@ -9,7 +8,7 @@ from fastapi import HTTPException, status
 from app.core.config import settings
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+def create_access_token(data: dict, expires_delta: timedelta | None = None) -> str:
     """
     Create a new JWT access token.
 
@@ -87,19 +86,19 @@ def decode_token(token: str) -> dict:
         )
         return payload
 
-    except jwt.ExpiredSignatureError:
+    except jwt.ExpiredSignatureError as err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token has expired",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) from err
 
-    except jwt.InvalidTokenError:
+    except jwt.InvalidTokenError as err:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
             headers={"WWW-Authenticate": "Bearer"},
-        )
+        ) from err
 
 
 def verify_token(token: str, token_type: str = "access") -> dict:

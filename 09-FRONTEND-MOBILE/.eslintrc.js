@@ -33,6 +33,8 @@ module.exports = {
     },
   },
   env: {
-    'react-native/react-native': true,
+    browser: true,
+    node: true,
+    es2021: true,
   },
 };

@@ -2,7 +2,9 @@
 
 from datetime import datetime
 from enum import Enum
-from sqlalchemy import Boolean, Column, DateTime, Enum as SQLEnum, String
+
+from sqlalchemy import Boolean, Column, DateTime, String
+from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
 from app.database.base import Base

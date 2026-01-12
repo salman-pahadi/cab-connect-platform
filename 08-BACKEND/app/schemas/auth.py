@@ -1,10 +1,8 @@
 """Authentication Pydantic schemas."""
 
 from datetime import datetime
-from typing import Optional
 
 from pydantic import BaseModel, EmailStr, Field, validator
-
 
 # ============================================================================
 # OTP Schemas
@@ -66,9 +64,9 @@ class VerifyOTPResponse(BaseModel):
 
     success: bool
     message: str
-    access_token: Optional[str] = None
+    access_token: str | None = None
     token_type: str = "bearer"
-    user_id: Optional[str] = None
+    user_id: str | None = None
     is_new_user: bool = False
 
 
@@ -82,8 +80,8 @@ class PassengerRegistrationRequest(BaseModel):
 
     phone_number: str = Field(..., min_length=10, max_length=20)
     full_name: str = Field(..., min_length=2, max_length=255)
-    email: Optional[EmailStr] = None
-    profile_picture_url: Optional[str] = None
+    email: EmailStr | None = None
+    profile_picture_url: str | None = None
 
     class Config:
         """Pydantic config."""
@@ -103,9 +101,9 @@ class DriverRegistrationRequest(BaseModel):
     # Personal information
     phone_number: str = Field(..., min_length=10, max_length=20)
     full_name: str = Field(..., min_length=2, max_length=255)
-    email: Optional[EmailStr] = None
-    date_of_birth: Optional[datetime] = None
-    profile_picture_url: Optional[str] = None
+    email: EmailStr | None = None
+    date_of_birth: datetime | None = None
+    profile_picture_url: str | None = None
 
     # Driver license
     license_number: str = Field(..., min_length=5, max_length=100)
@@ -120,10 +118,10 @@ class DriverRegistrationRequest(BaseModel):
     vehicle_type: str = Field(..., description="sedan, suv, mini_van, or luxury")
 
     # Bank details
-    bank_account_name: Optional[str] = Field(None, max_length=255)
-    bank_account_number: Optional[str] = Field(None, max_length=100)
-    bank_name: Optional[str] = Field(None, max_length=255)
-    bank_branch: Optional[str] = Field(None, max_length=255)
+    bank_account_name: str | None = Field(None, max_length=255)
+    bank_account_number: str | None = Field(None, max_length=100)
+    bank_name: str | None = Field(None, max_length=255)
+    bank_branch: str | None = Field(None, max_length=255)
 
     @validator("vehicle_type")
     def validate_vehicle_type(cls, v: str) -> str:
@@ -226,14 +224,14 @@ class UserResponse(BaseModel):
 
     id: str
     phone_number: str
-    email: Optional[str]
+    email: str | None
     full_name: str
-    profile_picture_url: Optional[str]
+    profile_picture_url: str | None
     role: str
     status: str
     is_phone_verified: bool
     is_email_verified: bool
-    last_login: Optional[datetime]
+    last_login: datetime | None
     created_at: datetime
     updated_at: datetime
 
@@ -248,21 +246,21 @@ class DriverResponse(BaseModel):
 
     id: str
     phone_number: str
-    email: Optional[str]
+    email: str | None
     full_name: str
-    profile_picture_url: Optional[str]
+    profile_picture_url: str | None
     status: str
     availability: str
     is_phone_verified: bool
-    vehicle_make: Optional[str]
-    vehicle_model: Optional[str]
-    vehicle_plate_number: Optional[str]
-    vehicle_type: Optional[str]
+    vehicle_make: str | None
+    vehicle_model: str | None
+    vehicle_plate_number: str | None
+    vehicle_type: str | None
     rating: float
     total_rides: str
     completed_rides: str
     created_at: datetime
-    verified_at: Optional[datetime]
+    verified_at: datetime | None
 
     class Config:
         """Pydantic config."""

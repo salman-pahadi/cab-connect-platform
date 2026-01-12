@@ -4,13 +4,13 @@
 import sys
 from pathlib import Path
 
-# Add parent directory to path
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
 from app.config import settings
 from app.database.session import engine
 from app.models.base import Base
 from app.utils.logger import logger
+
+# Add parent directory to path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 def init_db():

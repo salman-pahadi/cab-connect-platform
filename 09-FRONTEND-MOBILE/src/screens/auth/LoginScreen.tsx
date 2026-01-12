@@ -17,8 +17,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { setLoading, setError, otpSent } from '../../redux/slices/authSlice';
-import authService from '../../services/authService';
+import { setLoading, setError, otpSent } from '@redux/slices/authSlice';
+import authService from '@services/authService';
 
 type UserType = 'passenger' | 'driver';
 
@@ -159,7 +159,7 @@ const LoginScreen: React.FC = () => {
             />
           </View>
           <Text style={styles.hint}>
-            We'll send you a verification code
+            We&apos;ll send you a verification code
           </Text>
         </View>
 

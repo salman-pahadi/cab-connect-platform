@@ -1,7 +1,6 @@
 """Base Pydantic schemas."""
 
 from datetime import datetime
-from typing import Optional
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict
@@ -30,8 +29,8 @@ class ResponseSchema(BaseSchema):
     """Standard API response schema."""
 
     success: bool = True
-    message: Optional[str] = None
-    data: Optional[dict] = None
+    message: str | None = None
+    data: dict | None = None
 
 
 class ErrorSchema(BaseSchema):
@@ -39,4 +38,4 @@ class ErrorSchema(BaseSchema):
 
     success: bool = False
     error: str
-    detail: Optional[str] = None
+    detail: str | None = None

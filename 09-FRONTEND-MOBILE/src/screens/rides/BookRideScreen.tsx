@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { setCurrentRide } from '../../redux/slices/rideSlice';
-import { Button } from '../../components/Button';
-import { theme } from '../../theme';
-import rideService from '../../services/rideService';
+import { useAppDispatch } from '@redux/store';
+import { setCurrentRide } from '@redux/slices/rideSlice';
+import { Button } from '@components/Button';
+import { theme } from '@/styles/theme';
+import rideService from '@services/rideService';
 
 interface Location {
   latitude: number;
@@ -15,8 +15,6 @@ interface Location {
 
 export const BookRideScreen = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.auth);
-  const { currentRide } = useAppSelector((state) => state.rides);
 
   const [pickupLocation, setPickupLocation] = useState<Location | null>(null);
   const [dropoffLocation, setDropoffLocation] = useState<Location | null>(null);

@@ -17,8 +17,8 @@ import {
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { registrationComplete, setLoading, setError } from '../../redux/slices/authSlice';
-import authService from '../../services/authService';
+import { registrationComplete, setLoading, setError } from '@redux/slices/authSlice';
+import authService from '@services/authService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RegistrationScreen: React.FC = () => {

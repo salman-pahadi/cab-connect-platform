@@ -1,7 +1,7 @@
 """Health check endpoints."""
 
 from datetime import datetime
-from typing import Dict, Any
+from typing import Any
 
 from fastapi import APIRouter, status
 
@@ -11,7 +11,7 @@ router = APIRouter()
 
 
 @router.get("/health", status_code=status.HTTP_200_OK)
-async def health_check() -> Dict[str, Any]:
+async def health_check() -> dict[str, Any]:
     """
     Comprehensive health check endpoint.
 
@@ -28,7 +28,7 @@ async def health_check() -> Dict[str, Any]:
 
 
 @router.get("/health/ping", status_code=status.HTTP_200_OK)
-async def ping() -> Dict[str, str]:
+async def ping() -> dict[str, str]:
     """
     Simple ping endpoint for quick health checks.
 

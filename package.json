@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@vitest/ui": "^4.0.17",
+    "jsdom": "^27.4.0"
+  }
+}

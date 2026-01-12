@@ -2,28 +2,20 @@
 Ride service for handling ride business logic.
 """
 
-from datetime import datetime, timedelta
 import random
 import string
-from typing import List, Optional
+from datetime import datetime
 
 from sqlalchemy.orm import Session
 
-from app.models.ride import Ride, RideStatus, PaymentMethod, RideType
 from app.models.location import Location, LocationType
 from app.models.payment import Payment, TransactionStatus
 from app.models.rating import Rating
-from app.models.user import User
-from app.models.driver import Driver
+from app.models.ride import PaymentMethod, Ride, RideStatus, RideType
 from app.schemas.ride import (
-    RideRequest,
-    RideResponse,
-    RideUpdate,
-    RideAccept,
-    RideStarted,
     RideCompleted,
     RideEstimate,
-    RideEstimateResponse,
+    RideRequest,
 )
 
 
@@ -57,7 +49,7 @@ class RideService:
     @staticmethod
     def _haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
         """Calculate distance between two points using Haversine formula (in km)."""
-        from math import radians, sin, cos, sqrt, atan2
+        from math import atan2, cos, radians, sin, sqrt
 
         R = 6371  # Earth's radius in kilometers
 
@@ -250,7 +242,7 @@ class RideService:
         return ride
 
     def cancel_ride(
-        self, db: Session, ride_id: int, cancelled_by: str, reason: Optional[str] = None
+        self, db: Session, ride_id: int, cancelled_by: str, reason: str | None = None
     ) -> Ride:
         """Cancel a ride."""
         ride = db.query(Ride).filter(Ride.id == ride_id).first()
@@ -270,13 +262,13 @@ class RideService:
 
         return ride
 
-    def get_ride(self, db: Session, ride_id: int) -> Optional[Ride]:
+    def get_ride(self, db: Session, ride_id: int) -> Ride | None:
         """Get ride by ID."""
         return db.query(Ride).filter(Ride.id == ride_id).first()
 
     def get_rides_by_passenger(
         self, db: Session, passenger_id: int, skip: int = 0, limit: int = 20
-    ) -> List[Ride]:
+    ) -> list[Ride]:
         """Get all rides for a passenger."""
         return (
             db.query(Ride)
@@ -289,7 +281,7 @@ class RideService:
 
     def get_rides_by_driver(
         self, db: Session, driver_id: int, skip: int = 0, limit: int = 20
-    ) -> List[Ride]:
+    ) -> list[Ride]:
         """Get all rides for a driver."""
         return (
             db.query(Ride)
@@ -364,7 +356,7 @@ class RideService:
 
         return rating
 
-    def get_pending_rides(self, db: Session, limit: int = 50) -> List[Ride]:
+    def get_pending_rides(self, db: Session, limit: int = 50) -> list[Ride]:
         """Get pending rides for driver assignment."""
         return (
             db.query(Ride)
