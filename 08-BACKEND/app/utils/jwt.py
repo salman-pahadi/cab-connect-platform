@@ -1,6 +1,7 @@
 """JWT (JSON Web Token) utility functions."""
 
 from datetime import datetime, timedelta
+from typing import Any
 
 import jwt
 from fastapi import HTTPException, status
@@ -30,7 +31,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None) -> s
     to_encode.update({"exp": expire})
 
     # Encode JWT
-    encoded_jwt = jwt.encode(
+    encoded_jwt: str = jwt.encode(
         to_encode,
         settings.SECRET_KEY,
         algorithm=settings.ALGORITHM,
@@ -56,7 +57,7 @@ def create_refresh_token(data: dict) -> str:
     to_encode.update({"exp": expire, "type": "refresh"})
 
     # Encode JWT
-    encoded_jwt = jwt.encode(
+    encoded_jwt: str = jwt.encode(
         to_encode,
         settings.SECRET_KEY,
         algorithm=settings.ALGORITHM,
@@ -79,7 +80,7 @@ def decode_token(token: str) -> dict:
         HTTPException: If token is invalid or expired
     """
     try:
-        payload = jwt.decode(
+        payload: dict[str, Any] = jwt.decode(
             token,
             settings.SECRET_KEY,
             algorithms=[settings.ALGORITHM],
