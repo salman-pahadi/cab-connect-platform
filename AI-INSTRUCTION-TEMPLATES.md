@@ -589,43 +589,280 @@ Example: "Onboarding to project, learning codebase"
 
 ---
 
-## 🎯 TEMPLATE 11: PROGRESS UPDATE
+## 🎯 TEMPLATE 11: END OF SESSION CHECKLIST
+
+**⚠️ RUN THIS AT THE END OF EVERY WORK SESSION**
 
 ```
-=== UPDATE PROGRESS TRACKER ===
+=== END OF SESSION - MANDATORY CHECKLIST ===
+
+📚 Reference Files:
+- PROGRESS-TRACKER.md (Status tracking)
+- CHANGELOG.md (Version history)
+- TODO.md (Task list)
+
+🔍 STEP 1: VERIFY CODE QUALITY
+Run these commands to check for errors:
+
+**Backend (08-BACKEND):**
+```powershell
+cd 08-BACKEND
+
+# Check Python errors and type hints
+python -m ruff check .
+
+# Run type checker
+python -m mypy app/
+
+# Run all tests
+python -m pytest tests/ -v
+
+# Check security vulnerabilities
+pip check
+```
+
+**Mobile (09-FRONTEND-MOBILE):**
+```powershell
+cd 09-FRONTEND-MOBILE
+
+# Check TypeScript errors
+npm run type-check
+# OR
+npx tsc --noEmit
+
+# Check ESLint errors
+npm run lint
+
+# Run tests
+npm test
+
+# Check for security vulnerabilities
+npm audit
+```
+
+**Admin Dashboard (10-ADMIN-DASHBOARD):**
+```powershell
+cd 10-ADMIN-DASHBOARD
+
+# Check TypeScript errors
+npm run type-check
+# OR
+npx tsc --noEmit
+
+# Check ESLint errors
+npm run lint
+
+# Run tests
+npm test
+
+# Check for security vulnerabilities
+npm audit
+```
+
+✅ All checks must pass with ZERO errors before proceeding!
+
+---
+
+📝 STEP 2: UPDATE PROGRESS-TRACKER.md
+
+Add this session entry to PROGRESS-TRACKER.md:
+
+**Session Date:** [DATE]
+**Duration:** [HH:MM]
+**Task:** [TASK NAME FROM MICRO-TASK LIST]
+
+**✅ Completed Subtasks:**
+- [✅] [SUBTASK 1 - SPECIFIC DESCRIPTION]
+- [✅] [SUBTASK 2 - SPECIFIC DESCRIPTION]
+- [✅] [SUBTASK 3 - SPECIFIC DESCRIPTION]
+
+**📂 Files Modified:**
+- [FILE PATH] - [Brief description of changes]
+- [FILE PATH] - [Brief description of changes]
+- [FILE PATH] - [Brief description of changes]
+
+**🧪 Tests Added/Updated:**
+- [TEST FILE PATH] - [What tests cover]
+- [TEST FILE PATH] - [What tests cover]
+
+**✅ Quality Checks:**
+- [ ] All tests passing
+- [ ] Zero TypeScript/Python errors
+- [ ] Zero lint warnings
+- [ ] Zero security vulnerabilities
+- [ ] Code follows project standards
+- [ ] Documentation updated
+
+**🎯 Next Priority:**
+[NEXT MICRO-TASK FROM PROGRESS-TRACKER]
+
+**⚠️ Blockers/Issues:**
+[ANY BLOCKERS OR ISSUES ENCOUNTERED]
+
+**📋 Session Notes:**
+[IMPORTANT CONTEXT, DECISIONS, OR LEARNINGS FOR NEXT SESSION]
+
+---
+
+📝 STEP 3: UPDATE TODO.md (If Applicable)
+
+If you completed any tasks from TODO.md:
+- Mark tasks as [✅] DONE
+- Add completion date
+- Move to "Completed" section if exists
+
+---
+
+📝 STEP 4: UPDATE CHANGELOG.md (If Significant Change)
+
+If you made significant feature additions or bug fixes:
+
+Add entry under appropriate version:
+
+```markdown
+### [Version] - [DATE]
+
+#### Added
+- [NEW FEATURE DESCRIPTION]
+
+#### Changed
+- [MODIFICATION DESCRIPTION]
+
+#### Fixed
+- [BUG FIX DESCRIPTION]
+
+#### Security
+- [SECURITY IMPROVEMENT]
+```
+
+---
+
+💾 STEP 5: GIT COMMIT
+
+**Check what changed:**
+```powershell
+git status
+git diff
+```
+
+**Stage changes:**
+```powershell
+# Stage specific files
+git add [FILE_PATH]
+
+# OR stage all changes (be careful!)
+git add .
+```
+
+**Commit with descriptive message:**
+```powershell
+git commit -m "type(scope): description
+
+- Detailed change 1
+- Detailed change 2
+- Detailed change 3
+
+Closes #[ISSUE_NUMBER] (if applicable)"
+```
+
+**Commit Message Format:**
+- feat(mobile): Add real-time location tracking
+- fix(backend): Resolve authentication token expiry issue
+- docs(readme): Update installation instructions
+- test(booking): Add unit tests for booking validation
+- refactor(api): Improve error handling in ride endpoints
+- style(ui): Update button styling for consistency
+- chore(deps): Update dependencies to latest versions
+
+**Push to repository:**
+```powershell
+git push origin [BRANCH_NAME]
+```
+
+---
+
+📊 STEP 6: VERIFY DEPLOYMENT (If Applicable)
+
+If changes affect deployed environments:
+
+**Development Environment:**
+- [ ] Changes deployed successfully
+- [ ] Smoke tests passed
+- [ ] No errors in logs
+
+**Staging Environment:**
+- [ ] Changes deployed successfully
+- [ ] Integration tests passed
+- [ ] Performance acceptable
+
+---
+
+🔄 STEP 7: PREPARE FOR NEXT SESSION
+
+**Quick Review:**
+- [ ] PROGRESS-TRACKER.md updated
+- [ ] All code committed and pushed
+- [ ] Next priority task identified
+- [ ] Any blockers documented
+- [ ] Session notes recorded
+
+**Set Up Next Session:**
+- Review next micro-task in PROGRESS-TRACKER.md
+- Identify required files/documentation
+- Note any dependencies or prerequisites
+- Estimate time needed
+
+---
+
+✅ SESSION COMPLETE CHECKLIST
+
+Copy this checklist and verify all items:
+
+- [ ] ✅ All tests passing (backend, mobile, admin)
+- [ ] ✅ Zero TypeScript/Python errors
+- [ ] ✅ Zero ESLint/Ruff warnings
+- [ ] ✅ Zero security vulnerabilities
+- [ ] ✅ PROGRESS-TRACKER.md updated with session entry
+- [ ] ✅ TODO.md updated (if applicable)
+- [ ] ✅ CHANGELOG.md updated (if significant changes)
+- [ ] ✅ Code committed with descriptive message
+- [ ] ✅ Changes pushed to repository
+- [ ] ✅ Next session task identified
+- [ ] ✅ Blockers documented
+- [ ] ✅ Session notes recorded
+
+**Only when ALL items checked ✅, session is complete!**
+
+```
+
+---
+
+## 🎯 TEMPLATE 12: PROGRESS UPDATE (QUICK)
+
+**Use this for quick progress updates during a session**
+
+```
+=== QUICK PROGRESS UPDATE ===
 
 📚 Reference File:
 - PROGRESS-TRACKER.md
 
 🎯 Update Type:
-[Session Complete / Micro-Task Complete / Milestone Complete / Blocker Added]
+[Micro-Task Complete / Milestone Reached / Blocker Encountered]
 
-✅ Completed Work:
+✅ What's Done:
+- [BRIEF DESCRIPTION]
 
-**Session Date:** [DATE]
-**Task:** [TASK NAME]
+📂 Files Changed:
+- [FILE PATH]
 
-**Completed Subtasks:**
-- [✅] [SUBTASK 1]
-- [✅] [SUBTASK 2]
-- [✅] [SUBTASK 3]
+🎯 Next:
+- [NEXT TASK]
 
-**Files Modified:**
-- [FILE PATH] - [WHAT CHANGED]
-- [FILE PATH] - [WHAT CHANGED]
+⚠️ Issues:
+- [ANY BLOCKERS]
 
-**Tests Added:**
-- [TEST FILE] - [WHAT TESTS]
-
-**Next Session:**
-- 🎯 [NEXT PRIORITY TASK]
-- ⚠️ Blockers: [ANY ISSUES]
-
-**Session Notes:**
-[IMPORTANT CONTEXT FOR NEXT SESSION]
-
-📝 Update Instructions:
-Update PROGRESS-TRACKER.md with the above information in the appropriate section.
+📝 Update PROGRESS-TRACKER.md with this info.
 ```
 
 ---
@@ -694,13 +931,41 @@ FOLDER-STRUCTURE.md - Repository structure
 | Quick questions | Template 8 | LOW |
 | Learning code | Template 9 | LOW |
 | Refactoring | Template 10 | LOW |
-| Tracking progress | Template 11 | HIGH |
+| **END OF SESSION** | **Template 11** | **CRITICAL** |
+| Quick progress update | Template 12 | MEDIUM |
 
 ---
 
 ## ⚡ POWER USER TIPS
 
-### **Tip 1: Chain Multiple Templates**
+### **Tip 1: End Every Session Properly**
+
+**ALWAYS run Template 11 (End of Session Checklist) before closing your work session!**
+
+This ensures:
+- ✅ No broken code is committed
+- ✅ Progress is tracked
+- ✅ Next session starts smoothly
+- ✅ Team stays informed
+
+**Quick End-of-Session Commands (Copy & Paste):**
+```powershell
+# Backend checks
+cd 08-BACKEND; python -m pytest tests/ -v; python -m ruff check .
+
+# Mobile checks
+cd 09-FRONTEND-MOBILE; npm run type-check; npm run lint; npm test
+
+# Admin checks
+cd 10-ADMIN-DASHBOARD; npm run type-check; npm run lint; npm test
+
+# Git commit
+git status; git add .; git commit -m "type(scope): description"; git push
+```
+
+---
+
+### **Tip 2: Chain Multiple Templates**
 
 ```
 [PASTE TEMPLATE 1 - Session Start]
@@ -712,11 +977,11 @@ Then:
 Result: AI loads framework + implements feature in one go
 ```
 
-### **Tip 2: Save Your Common Variations**
+### **Tip 3: Save Your Common Variations**
 
 Create a personal notes file with your frequently used customized templates.
 
-### **Tip 3: Use Template Shortcuts**
+### **Tip 4: Use Template Shortcuts**
 
 Create shorter versions for repetitive tasks:
 
@@ -730,7 +995,7 @@ Expert: [EXPERT NAME if specific]
 [Details]
 ```
 
-### **Tip 4: Reference Multiple Docs**
+### **Tip 5: Reference Multiple Docs**
 
 ```
 References:
