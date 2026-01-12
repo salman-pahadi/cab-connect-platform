@@ -20,6 +20,24 @@ This folder contains project management documents, timelines, status tracking, a
 
 ---
 
+### **IMPLEMENTATION-TASKS.md** (59KB, 2,011 lines)
+**21-day actionable implementation plan**
+- Detailed task breakdown across 4 applications
+- Backend, Frontend Mobile, Admin Dashboard, Marketing Website
+- Phase 0-6 execution plan with priorities
+- Owner assignments (16 expert team members)
+- Acceptance criteria for each task
+- Estimated time allocations (ETA)
+- Deliverables and verification steps
+
+**When to read:** Daily for current task priorities
+**Use for:** Execution roadmap and task tracking
+
+---
+
+### **PROJECT-OVERVIEW.md**
+**High-level project summary**
+
 ## 📈 Tracking & Milestones
 
 ### Timeline Overview

@@ -1,53 +1,168 @@
-# 🚀 Cab Connect Platform - Start Here
+# 🚀 CAB CONNECT PLATFORM - START HERE
 
-> **Last Updated:** January 11, 2026  
-> **Project Status:** ✅ Phase 1 Development Ready  
-> **Timeline:** 5-6 weeks (Jan 11 - Feb 28, 2026)
+> **Last Updated:** January 12, 2026  
+> **Project Status:** ✅ Phase 1 Active Development  
+> **Repository Health:** 93/100 (EXCELLENT)  
+> **AI Development Readiness:** VERY HIGH  
+> **Current Phase:** Milestone 4 - Real-time Features & Payments
 
 ---
 
-## 📁 Folder Structure Guide
+## 🎯 QUICK START FOR NEW SESSIONS
 
-Navigate the project using this organized folder structure:
+**Every development session MUST start with these steps:**
 
-### 📚 **01-DOCUMENTATION**
-Core reference documentation for understanding the entire system.
-- Architecture specifications
-- Database schema details
-- API documentation
-- System design decisions
+1. **Read Core Documentation** (10 minutes):
+   - `@prefix.md` - Complete development framework & expert team
+   - `@PROGRESS-TRACKER.md` - Current status & next priorities
+   - `@02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md` - Detailed status
+
+2. **Review Relevant References** (5 minutes):
+   - Check `01-DOCUMENTATION/REFERENCE/` for your task area
+   - Backend → `06_DATABASE_SCHEMA.md`, `07_API_CONTRACTS.md`
+   - Architecture → `05_SYSTEM_ARCHITECTURE.md`
+   - Decisions → `03_PHASE1_DECISIONS.md` (LOCKED)
+
+3. **Check Implementation Patterns** (3 minutes):
+   - `@03-DEVELOPMENT-GUIDES/implementation-strategy.md` - Code templates
+   - `@04-CODING-STANDARDS/technical-architecture.md` - Project structure
+
+4. **Identify Next Task** (2 minutes):
+   - Find next priority micro-task in PROGRESS-TRACKER.md
+   - Check for blockers or dependencies
+   - Verify acceptance criteria
+
+5. **Follow Zero Tolerance Rules**:
+   - ❌ No TypeScript errors or `any` types
+   - ❌ No lint errors or security warnings
+   - ❌ No relative imports (use @/ only)
+   - ❌ No mock data (real backend only)
+   - ✅ Input validation mandatory
+   - ✅ CSRF protection on forms
+   - ✅ Mobile-first responsive design
+
+**Session Template:**
+```
+Hi Team! Follow Cab Connect session protocol:
+1. @prefix.md - Framework
+2. @START-HERE.md - Navigation  
+3. @PROGRESS-TRACKER.md - Status
+4. Check canonical docs in 01-DOCUMENTATION/REFERENCE/
+
+[Your question/task here]
+```
+
+---
+
+## 📚 FOLDER STRUCTURE GUIDE
+
+### 📄 **Root Level Files**
+
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| `prefix.md` | Master development framework & 16-expert team | **START EVERY SESSION** |
+| `START-HERE.md` | This file - project navigation | Project overview & navigation |
+| `PROGRESS-TRACKER.md` | Current status & micro-tasks | **CHECK EVERY SESSION** |
+| `FOLDER-STRUCTURE.md` | Repository structure definition | Understanding file organization |
+| `.cursorrules` | AI configuration (auto-loaded by Cursor) | Cursor IDE reference |
+| `.gitignore` | Version control configuration | Git operations |
+
+---
+
+### 📚 **01-DOCUMENTATION** - CANONICAL SPECIFICATIONS
+
+Core reference documentation - **28 canonical documents identified**
+
+**Essential Files:**
+- `PHASE-1-MASTER-DEVELOPMENT-PLAN.md` - Complete architecture
+- `REQUIREMENTS-MATRIX.md` - Feature specifications
+- `REFERENCE/` - 18 canonical reference documents
+  - `00_README.md` - Index to all references
+  - `03_PHASE1_DECISIONS.md` - ⚠️ **LOCKED DECISIONS** (read-only)
+  - `06_DATABASE_SCHEMA.md` - Database specifications
+  - `07_API_CONTRACTS.md` - API endpoint contracts
+  - `10_SECURITY_GUIDELINES.md` - Security requirements
 
 **Start here:** [01-DOCUMENTATION/README.md](01-DOCUMENTATION/)
 
+**When to reference:**
+- Before creating any new feature
+- When implementing database changes
+- When adding API endpoints
+- When making architectural decisions
+
 ---
 
-### 📋 **02-PROJECT-PLANNING**
+### 📋 **02-PROJECT-PLANNING** - PROJECT MANAGEMENT
+
 Project management and tracking documents.
-- Project status dashboard
-- Timeline and milestones
-- Deliverables checklist
-- Risk assessment
+
+**Essential Files:**
+- `PROJECT-STATUS-DASHBOARD.md` - Detailed project status
+- `PROJECT-OVERVIEW.md` - High-level summary
+- `DEPLOYMENT-READY-CHECKLIST.md` - Pre-deployment verification
+- `ARCHIVE/` - Historical planning documents
 
 **Start here:** [02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md](02-PROJECT-PLANNING/)
 
+**When to reference:**
+- Checking project milestones
+- Understanding current phase
+- Reviewing deliverables
+- Planning sprints
+
 ---
 
-### 🛠️ **03-DEVELOPMENT-GUIDES**
-Step-by-step development guides for implementation.
-- Week-by-week breakdown (30 days)
-- Daily tasks and code examples
-- Setup instructions
-- Quick start guide
+### 🛠️ **03-DEVELOPMENT-GUIDES** - IMPLEMENTATION ROADMAPS
+
+Step-by-step development guides and code patterns.
+
+**Essential Files:**
+- `WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md` - Primary roadmap
+- `implementation-strategy.md` - **NEW** Code patterns & templates
+  - Session workflow
+  - Backend/Mobile/Admin templates
+  - Testing strategy
+  - Deployment workflow
+  - Error handling patterns
+- `GETTING-STARTED.md` - Onboarding guide
+- `templates/` - Reusable templates
 
 **Start here:** [03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md](03-DEVELOPMENT-GUIDES/)
 
+**When to reference:**
+- Starting new feature development
+- Looking for code examples
+- Need session workflow guidance
+- Deployment preparation
+
 ---
 
-### 💻 **04-CODING-STANDARDS**
-Coding standards and best practices.
-- `.cursorrules` - AI assistant guidelines
-- TypeScript/Python patterns
-- Security requirements
+### 💻 **04-CODING-STANDARDS** - CODE QUALITY & ARCHITECTURE
+
+Coding standards, best practices, and technical architecture.
+
+**Essential Files:**
+- `.cursorrules` - Detailed Phase 1 coding rules (761 lines)
+- `technical-architecture.md` - **NEW** Complete technical reference
+  - Project structure explained
+  - Component templates (copy-paste ready)
+  - API endpoint patterns
+  - Database patterns
+  - State management
+  - Styling conventions
+  - Environment configuration
+  - Import patterns
+  - Naming conventions
+- `templates/` - Code templates
+
+**Start here:** [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
+
+**When to reference:**
+- Before creating new files
+- Looking for naming conventions
+- Need component structure guidance
+- Setting up new services
 - Testing standards
 
 **Start here:** [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
@@ -122,8 +237,8 @@ Admin dashboard web application.
 ## 🚀 Quick Start (5 Minutes)
 
 ### 1️⃣ **Understand the Project**
-   - Read: [docs/00_README.md](docs/)
-   - Read: [FIJI-CAB-CONNECT/README.md](FIJI-CAB-CONNECT/)
+   - Read: [README.md](README.md)
+   - Read: [prefix.md](prefix.md) - Development framework with 16 expert team
 
 ### 2️⃣ **Review Requirements**
    - Read: [05-CLIENT-REQUIREMENTS/Client-Filled-Requirements.md](05-CLIENT-REQUIREMENTS/)
@@ -132,13 +247,13 @@ Admin dashboard web application.
    - Read: [03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md](03-DEVELOPMENT-GUIDES/)
    - Follow Day-by-day tasks starting today
 
-### 4️⃣ **Setup AI Assistant**
-   - Read: [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
-   - Copy to project root when backend/frontend projects are created
+### 4️⃣ **Check Current Status**
+   - Reference: [PROGRESS-TRACKER.md](PROGRESS-TRACKER.md)
+   - Check: [02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md](02-PROJECT-PLANNING/)
 
-### 5️⃣ **Check Status**
-   - Reference: [02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md](02-PROJECT-PLANNING/)
-   - Update weekly with progress
+### 5️⃣ **Setup AI Assistant**
+   - Read: [prefix.md](prefix.md) - Comprehensive development framework
+   - Reference: [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
 
 ---
 

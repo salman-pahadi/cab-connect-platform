@@ -1,0 +1,294 @@
+﻿━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                         CAB CONNECT – PROJECT PROPOSAL
+                           PHASE 1: MVP DEVELOPMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+To: Mohammed Ifraad Hussain
+From: Creativerse360
+Date: December 12, 2025
+
+Location: Fiji Islands / South Pacific
+Domain: fijicabconnect.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Dear Ifraad,
+
+We are pleased to present our proposal for CAB CONNECT - Fiji's first cab-hailing platform.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. BRANDING & WEB PRESENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1.1 LOGO & BRAND IDENTITY
+────────────────────────────────────────────────────────────────────────────────
+Professional branding package including:
+• Primary logo design with three variations
+• Colour palette: Green, Gold, Black, White (Fiji-inspired)
+• Multiple file formats (PNG, SVG, JPG)
+• Brand guidelines document
+
+Investment: ₹5,000
+
+
+1.2 DOMAIN REGISTRATION
+────────────────────────────────────────────────────────────────────────────────
+Domain: fijicabconnect.com
+• Domain registration for 1 year
+• DNS configuration
+• Annual renewal included
+
+Investment: ₹1,500 per year
+
+
+1.3 LANDING WEBSITE (SINGLE PAGE + 2 LEGAL PAGES)
+────────────────────────────────────────────────────────────────────────────────
+MAIN LANDING PAGE (Single Scroll):
+• Hero Section – Eye-catching header with booking CTA
+• How It Works – Step-by-step booking process
+• Features – Key features showcase (Passenger & Driver)
+• Pricing – Transparent fare structure
+• Safety – Trust & safety features
+• Driver Partner – Driver registration/partnership info
+• Contact – Contact form, location map, social links
+
+SEPARATE PAGES:
+• Privacy Policy – Data protection & privacy terms
+• Terms & Conditions – Service usage terms
+
+TECHNICAL FEATURES:
+• Fully responsive (mobile, tablet, desktop)
+• Modern UI/UX design
+• Fast loading speed 
+• SEO optimised (meta tags, sitemap)
+• Contact form with email integration
+• Google Maps integration
+• Cross-browser compatible
+• Mobile-first approach
+
+Investment: ₹15,000
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. PHASE 1: MOBILE APP DEVELOPMENT (ANDROID)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2.1 PROJECT SCOPE
+────────────────────────────────────────────────────────────────────────────────
+Build a working cab booking system with:
+• Passenger Android app
+• Driver Android app
+• Backend server with Google Maps integration
+• Basic fare calculation and ride management
+
+Estimated Time: 5-6 weeks
+(Timeline may adjust based on feedback or technical challenges)
+
+
+2.2 DELIVERABLES
+────────────────────────────────────────────────────────────────────────────────
+
+A) PASSENGER MOBILE APP
+   • Account creation with phone verification
+   • Login system
+   • Pickup & drop location input
+   • Fare estimate display
+   • Ride request flow
+   • Driver details after acceptance
+
+B) DRIVER MOBILE APP
+   • Account creation & login
+   • Availability toggle (online/offline)
+   • Ride request notifications
+   • Passenger details display
+   • Accept / Reject ride buttons
+   • Ride history
+
+C) BACKEND & MAPS
+   • Google Maps integration
+   • Real-time updates
+   • Secure data storage
+   • Fare calculation logic
+   • Server setup & configuration
+
+
+2.3 USER FLOW
+────────────────────────────────────────────────────────────────────────────────
+1. Passenger opens app and signs up
+2. Enters pickup and drop location
+3. Views fare estimate
+4. Books ride
+5. Driver receives notification
+6. Driver accepts ride
+7. Passenger sees driver's details
+
+This forms the foundation for future features (live tracking, payments, etc.)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. INVESTMENT BREAKDOWN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3.1 BRANDING & WEBSITE
+────────────────────────────────────────────────────────────────────────────────
+Service                                                           Amount
+────────────────────────────────────────────────────────────────────────────────
+Logo Design                                                       ₹5,000
+Domain Registration (Annual)                                      ₹1,500
+Landing Website                                                   ₹15,000
+────────────────────────────────────────────────────────────────────────────────
+Subtotal                                                          ₹21,500
+
+
+3.2 MOBILE APP DEVELOPMENT (PHASE 1 - ANDROID ONLY)
+────────────────────────────────────────────────────────────────────────────────
+Component                                                         Amount
+────────────────────────────────────────────────────────────────────────────────
+Passenger Android App                                             Included
+Driver Android App                                                Included
+Backend Server & APIs                                             Included
+Google Maps Integration                                           Included
+Database Setup                                                    Included
+Real-time Notification System                                     Included
+────────────────────────────────────────────────────────────────────────────────
+Subtotal                                                          ₹95,000
+
+
+
+3.3 TOTAL PROJECT INVESTMENT
+────────────────────────────────────────────────────────────────────────────────
+Branding & Website                                                ₹21,500
+Mobile App Development (Phase 1)                                  ₹95,000
+────────────────────────────────────────────────────────────────────────────────
+GRAND TOTAL                                                       ₹1,16,500
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. PAYMENT SCHEDULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Milestone                                                         Amount      Due
+────────────────────────────────────────────────────────────────────────────────
+Project Start (Advance)                                         ₹61,500     Day 1
+  • Mobile App Development advance (₹40,000)
+  • Logo Design (₹5,000)
+  • Landing Website (₹15,000)
+  • Domain Registration (₹1,500)  
+
+Phase 1 Completion & Review                                       ₹55,000     Week 5
+  • After successful testing and approval
+────────────────────────────────────────────────────────────────────────────────
+TOTAL                                                             ₹1,16,500
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. REQUIREMENTS FROM CLIENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TO BEGIN (Day 1):
+• Project confirmation
+• Advance payment: ₹61,500
+• Confirm domain: fijicabconnect.com
+
+DURING:
+• Logo preferences (green, gold, black, white colour scheme)
+• 2–3 driver phone numbers (testing)
+• 2–3 passenger phone numbers (testing)
+• Website content/text/images (if available)
+• Company address for contact page
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. THIRD-PARTY COSTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The following services are not included in our fees and will be paid directly by you. Charges may vary depending on the service provider.
+
+Service                                    Estimated Cost         Payment
+────────────────────────────────────────────────────────────────────────────────
+Server Hosting (AWS/DigitalOcean)          ₹500-3,000/month      Monthly
+SMS OTP Service (MSG91/Twilio)             ₹0.10-0.20 per SMS    Pay per use
+Google Maps API                            ₹0-5,000/month*       Monthly
+SSL Certificate                            As per provider       As applicable
+Domain Registration & Renewal              ₹1,500/year           Yearly
+Google Play Store Registration             $25 (one-time)        Once
+
+* Google Maps API includes a free tier of up to 40,000 requests per month.
+
+We will assist with setup and integration where required; however, all ongoing costs, renewals, and compliance with third-party terms remain your responsibility.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. COMMUNICATION & UPDATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• Weekly progress reports (WhatsApp/Email)
+• Direct communication via call/WhatsApp
+• Quick response time (within 24 hours)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. 📝 NOTES & TERMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROJECT SCOPE:
+• This proposal covers Phase 1 development only
+• Android apps only and Landing Page
+• Scope must remain unchanged during development
+• Additional features will be quoted separately
+
+TIMELINE:
+• 5-6 week timeline subject to:
+  - Timely feedback from the client
+  - No significant scope changes
+  - Third-party services availability
+• Client response time directly affects the timeline
+
+INTELLECTUAL PROPERTY:
+• All source code and designs will be transferred to you upon final payment
+• We retain portfolio rights (with your permission)
+
+PAYMENT TERMS:
+• Payments are non-refundable once work begins
+• Each milestone must be cleared before proceeding
+• Accepted methods: Bank transfer, UPI
+
+SUPPORT & MAINTENANCE:
+• 30 days free support post-launch
+• Bug fixes included (if reported within 30 days)
+• Maintenance packages available separately
+
+WARRANTY:
+• Guaranteed working functionality per agreed scope
+• All bugs fixed during the testing phase
+
+CANCELLATION:
+• Partial payments are non-refundable
+• Completed work delivered as-is
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. PAYMENT DETAILS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BANK TRANSFER:
+────────────────────────────────────────────────────────────────────────────────
+Bank Name:          STATE BANK OF INDIA
+Account Holder:     Mr. SALMAN BASHIR PAHADI
+Account Number:     20200877676
+IFSC Code:          SBIN0016042
+Branch:             SUN PHARMA ROAD, VADODARA
+
+UPI PAYMENT:
+────────────────────────────────────────────────────────────────────────────────
+UPI Number:       +918128557443
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Warm regards,
+
+Team Creativerse360
+📞 Call/WhatsApp: +91 8128557443
+✉️ Email: creativerse360@gmail.com
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+END OF PROPOSAL

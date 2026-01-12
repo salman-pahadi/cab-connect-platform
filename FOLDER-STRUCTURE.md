@@ -15,7 +15,13 @@ This document provides a comprehensive guide to the project folder structure for
 
 ```
 cab-connect-platform-main/
+├── README.md                              # Project overview & quick start
 ├── START-HERE.md                          # Project entry point
+├── prefix.md                              # Development framework (16 experts)
+├── PROGRESS-TRACKER.md                    # Current phase tracking
+├── FOLDER-STRUCTURE.md                    # This file - structure guide
+├── FINAL-REPOSITORY-AUDIT-REPORT.md       # Latest governance audit
+├── .cursorrules                           # AI assistant configuration
 ├── .gitignore                             # Git ignore file
 ├── .vscode/                               # VS Code workspace settings
 ├── 01-DOCUMENTATION/                      # Phase 1 documentation

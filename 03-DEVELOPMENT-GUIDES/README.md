@@ -70,6 +70,71 @@ Week 6: Deployment (Days 26-30)
 
 ---
 
+### **GETTING-STARTED.md** (2,500+ words)
+**Comprehensive onboarding guide for new developers**
+- Environment setup instructions
+- Tool installation (Docker, Node, Python, etc.)
+- Repository clone and configuration
+- First-time setup checklist
+- Troubleshooting common issues
+- Team communication channels
+
+**When to read:** First day on the project
+**Use for:** Complete environment setup
+
+---
+
+## 📁 Templates Folder
+
+The `templates/` subfolder contains reusable templates and reference materials:
+
+### **DAILY-STANDUP.md** (7.7KB, 374 lines)
+**Daily standup template for team coordination**
+- Session template format
+- Completed tasks checklist
+- In-progress items tracking
+- Blockers documentation
+- Tomorrow's plan
+- Metrics tracking (tests passing, build status, coverage)
+- Critical files quick links
+- Backend, Frontend, Admin, Mobile app references
+
+**When to use:** Daily team coordination and status updates
+**Use for:** Structured daily standup meetings
+
+### **AI-INSTRUCTIONS.md**
+**AI assistant instructions template**
+- Project context template
+- Feature implementation guidelines
+- Code quality checkers
+- Testing requirements
+
+### **BRAND-KIT-FULL.md** & **BRAND-KIT-LITE.md**
+**Complete and lightweight brand guidelines**
+- Colors, typography, logo usage
+- Design system tokens
+- Component examples
+
+### **DEVELOPMENT-GUIDE.md**
+**Development guide template**
+- Project-specific development instructions
+- Setup procedures
+- Best practices
+
+### **project-checklist.md**
+**Project completion checklist**
+- Feature completion tracking
+- Deployment readiness verification
+- Quality gates
+
+### **QUICK-REFERENCE.md**
+**Quick reference guide**
+- Common commands
+- File locations
+- Quick troubleshooting
+
+---
+
 ## 🎯 How to Use These Guides
 
 ### **Daily Workflow**
