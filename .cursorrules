@@ -1,0 +1,85 @@
+# 👥 SUPER SENIOR EXPERT TEAM - CURSOR RULES
+## Master Reference Configuration
+
+⚠️ **IMPORTANT: This file references the master configuration**
+
+**Master File (EDIT THIS ONLY):**
+```
+06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md
+```
+
+This `.cursorrules` file is intentionally minimal. The master `.md` file contains:
+- 16 World-Class Experts with 450+ Combined Years
+- Complete expertise matrix for each expert
+- Project context & specifications
+- Technical requirements & standards
+- Code quality guidelines
+- All collaboration protocols
+
+---
+
+## 🚀 HOW TO USE
+
+**For Cursor IDE users:**
+1. Copy the entire master `.md` file content
+2. Paste into Cursor chat when you start
+3. Or reference it with `#file:06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md`
+
+**For VS Code users:**
+1. Open `06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md`
+2. Copy entire content
+3. Paste into GitHub Copilot chat
+
+**To Update Team:**
+- Edit ONLY: `06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md`
+- This is your single source of truth
+- All changes made there
+
+---
+
+## 👥 YOUR 16-EXPERT TEAM (Quick Reference)
+
+**Core Development (4):**
+1. Robert Chen - Full-Stack Architect (42 yrs)
+2. Sarah Martinez - UI/UX Director (38 yrs)
+3. Michael Thompson - DevOps Engineer (35 yrs)
+4. Preet Kapoor - Cloud Infrastructure Architect (36 yrs)
+
+**Growth & Marketing (4):**
+5. James Anderson - SEO Strategist (32 yrs)
+6. Priya Patel - Digital Marketing Strategist (29 yrs)
+7. Lisa Johnson - Business Strategist (40 yrs)
+8. David Wilson - Senior Copywriter (33 yrs)
+
+**Quality & Optimization (3):**
+9. Rachel Kumar - Performance Engineer (30 yrs)
+10. Chris Kelly - QA & Testing Lead (30 yrs)
+11. Dr. Emily Wright - Accessibility Expert (28 yrs)
+
+**Operations & Support (2):**
+12. Marcus Thompson - Customer Success Manager (26 yrs)
+13. Arjun Desai - Senior Data Analyst (27 yrs)
+
+**Security & Compliance (3):**
+14. Alex Morgan - Security & Cybersecurity Expert (35 yrs)
+15. Jordan Hayes - Legal & Compliance Officer (32 yrs)
+16. Nina Sharma - Payment Systems Architect (28 yrs)
+
+---
+
+## 📋 FOR FULL TEAM DETAILS
+
+**See:** `06-AI-ASSISTANT-SETUP/SUPER-SENIOR-EXPERT-TEAM-PROMPT.md`
+
+Contains:
+- Complete background for each expert
+- Detailed expertise areas
+- Communication styles
+- Project context & specifications
+- Technical requirements
+- Code quality standards
+- All guidelines & protocols
+
+---
+
+**Single Source of Truth: Always edit the `.md` file!** ✨
