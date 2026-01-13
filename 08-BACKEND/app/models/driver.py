@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Column, DateTime, Float, String, Text
 from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
-from app.database.base import Base
+from app.models.base import Base
 
 
 class DriverStatus(str, Enum):
@@ -140,7 +140,8 @@ class Driver(Base):
 
     def is_available(self) -> bool:
         """Check if driver is available for rides."""
-        return self.status == DriverStatus.ACTIVE and self.availability == DriverAvailability.ONLINE
+        result: bool = self.status == DriverStatus.ACTIVE and self.availability == DriverAvailability.ONLINE
+        return result
 
     def go_online(self) -> None:
         """Set driver status to online."""

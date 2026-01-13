@@ -7,13 +7,14 @@ from sqlalchemy import Boolean, Column, DateTime, String
 from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
-from app.database.base import Base
+from app.models.base import Base
 
 
 class UserRole(str, Enum):
     """User role enumeration."""
 
     PASSENGER = "passenger"
+    DRIVER = "driver"
     ADMIN = "admin"
 
 

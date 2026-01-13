@@ -1,6 +1,6 @@
 """Database models module."""
 
-from app.database.base import Base
+from app.models.base import Base
 from app.models.driver import Driver, DriverAvailability, DriverStatus, VehicleType
 from app.models.location import Location, LocationType
 from app.models.payment import Payment, PaymentStatus, TransactionStatus
