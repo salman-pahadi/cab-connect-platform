@@ -36,14 +36,15 @@ services:
         value: 1440
     healthCheckPath: /health
 
+  # Redis Cache
+  - type: redis
+    name: cab-connect-redis
+    plan: free
+    region: oregon
+
   # PostgreSQL Database
 databases:
   - name: cab-connect-db
     databaseName: cab_connect
-    plan: free
-    region: oregon
-
-  # Redis Cache
-  - name: cab-connect-redis
     plan: free
     region: oregon
