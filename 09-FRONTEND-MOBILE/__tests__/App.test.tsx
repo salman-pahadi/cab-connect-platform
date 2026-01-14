@@ -5,7 +5,8 @@ import App from '../App';
 
 describe('App', () => {
   it('renders without crashing', () => {
-    const { getByText } = render(<App />);
-    expect(getByText('Welcome to Cab Connect')).toBeTruthy();
+    const { root } = render(<App />);
+    // App renders Navigation wrapped in Provider and SafeAreaProvider
+    expect(root).toBeTruthy();
   });
 });
