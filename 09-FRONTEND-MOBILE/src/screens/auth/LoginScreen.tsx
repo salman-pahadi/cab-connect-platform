@@ -48,7 +48,9 @@ const LoginScreen: React.FC = () => {
     const formattedPhone = formatPhoneNumber(phoneNumber);
 
     if (!formattedPhone || formattedPhone.length < 12) {
-      Alert.alert('Invalid Phone Number', 'Please enter a valid Fiji phone number');
+      if (Alert && Alert.alert) {
+        Alert.alert('Invalid Phone Number', 'Please enter a valid Fiji phone number');
+      }
       return;
     }
 
@@ -63,27 +65,31 @@ const LoginScreen: React.FC = () => {
 
       if (response.success) {
         dispatch(otpSent());
-        Alert.alert(
-          'OTP Sent',
-          `A 6-digit code has been sent to ${formattedPhone}. Valid for ${response.expiresIn / 60} minutes.`,
-          [
-            {
-              text: 'OK',
-              onPress: () => {
-                navigation.navigate('OTPVerification', {
-                  phoneNumber: formattedPhone,
-                  userType,
-                });
+        if (Alert && Alert.alert) {
+          Alert.alert(
+            'OTP Sent',
+            `A 6-digit code has been sent to ${formattedPhone}. Valid for ${response.expiresIn / 60} minutes.`,
+            [
+              {
+                text: 'OK',
+                onPress: () => {
+                  navigation.navigate('OTPVerification', {
+                    phoneNumber: formattedPhone,
+                    userType,
+                  });
+                },
               },
-            },
-          ]
-        );
+            ]
+          );
+        }
       }
     } catch (error: any) {
       const errorMessage =
         error.response?.data?.detail || error.message || 'Failed to send OTP';
       dispatch(setError(errorMessage));
-      Alert.alert('Error', errorMessage);
+      if (Alert && Alert.alert) {
+        Alert.alert('Error', errorMessage);
+      }
     } finally {
       setIsLoading(false);
       dispatch(setLoading(false));

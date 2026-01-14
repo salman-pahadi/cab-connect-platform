@@ -1,6 +1,11 @@
 // Jest setup file
 import '@testing-library/jest-native/extend-expect';
 
+// Mock Alert module at the path react-native uses internally
+jest.mock('react-native/Libraries/Alert/Alert', () => ({
+  alert: jest.fn(),
+}));
+
 // Mock AsyncStorage
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(() => Promise.resolve()),
