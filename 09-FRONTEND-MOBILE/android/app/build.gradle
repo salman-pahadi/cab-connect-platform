@@ -130,6 +130,8 @@ android {
     androidResources {
         ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
+    
+    // Kotlin compilation options
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -152,14 +154,6 @@ android {
         options.each {
             android.packagingOptions[prop] += it
         }
-    }
-}
-
-// Ensure build config and resources are generated before Kotlin compilation
-tasks.whenTaskAdded { task ->
-    if (task.name.contains('compileReleaseKotlin') || task.name.contains('compileDebugKotlin')) {
-        task.dependsOn 'generateReleaseBuildConfig', 'generateDebugBuildConfig'
-        task.dependsOn 'mergeReleaseResources', 'mergeDebugResources'
     }
 }
 
@@ -189,5 +183,21 @@ dependencies {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
+    }
+}
+
+// Ensure proper task ordering for Kotlin compilation
+tasks.whenTaskAdded { task ->
+    if (task.name.contains("compile") && task.name.contains("Kotlin")) {
+        def variant = task.name.replace("compile", "").replace("Kotlin", "")
+        def generateBuildConfig = tasks.findByName("generate${variant}BuildConfig")
+        def mergeResources = tasks.findByName("merge${variant}Resources")
+        
+        if (generateBuildConfig) {
+            task.dependsOn(generateBuildConfig)
+        }
+        if (mergeResources) {
+            task.dependsOn(mergeResources)
+        }
     }
 }
