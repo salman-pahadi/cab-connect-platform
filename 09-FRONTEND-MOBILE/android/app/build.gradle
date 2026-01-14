@@ -130,6 +130,9 @@ android {
     androidResources {
         ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 
 // Apply static values from `gradle.properties` to the `android.packagingOptions`
@@ -149,6 +152,14 @@ android {
         options.each {
             android.packagingOptions[prop] += it
         }
+    }
+}
+
+// Ensure build config and resources are generated before Kotlin compilation
+tasks.whenTaskAdded { task ->
+    if (task.name.contains('compileReleaseKotlin') || task.name.contains('compileDebugKotlin')) {
+        task.dependsOn 'generateReleaseBuildConfig', 'generateDebugBuildConfig'
+        task.dependsOn 'mergeReleaseResources', 'mergeDebugResources'
     }
 }
 
