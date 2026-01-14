@@ -15,16 +15,16 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useAppDispatch } from '@redux/store';
 import { setLoading, setError, otpSent } from '@redux/slices/authSlice';
 import authService from '@services/authService';
 
 type UserType = 'passenger' | 'driver';
 
 const LoginScreen: React.FC = () => {
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
+  const navigation = useNavigation<NavigationProp<any>>();
+  const dispatch = useAppDispatch();
 
   const [phoneNumber, setPhoneNumber] = useState('');
   const [userType, setUserType] = useState<UserType>('passenger');
@@ -70,10 +70,10 @@ const LoginScreen: React.FC = () => {
             {
               text: 'OK',
               onPress: () => {
-                navigation.navigate('OTPVerification' as never, {
+                navigation.navigate('OTPVerification', {
                   phoneNumber: formattedPhone,
                   userType,
-                } as never);
+                });
               },
             },
           ]

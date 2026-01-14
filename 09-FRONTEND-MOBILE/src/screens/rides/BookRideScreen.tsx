@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Alert, ActivityIn
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useAppDispatch } from '@redux/store';
 import { setCurrentRide } from '@redux/slices/rideSlice';
-import { Button } from '@components/Button';
+import Button from '@components/common/Button';
 import { theme } from '@/styles/theme';
 import rideService from '@services/rideService';
 

@@ -1,4 +1,4 @@
-import { apiClient } from './apiClient';
+import apiClient from './api';
 
 export interface RideRequestPayload {
   ride_type: 'economy' | 'comfort' | 'premium';
@@ -84,68 +84,57 @@ export interface RideEstimate {
 
 class RideService {
   async requestRide(data: RideRequestPayload): Promise<Ride> {
-    const response = await apiClient.post('/rides/request', data);
-    return response.data;
+    return apiClient.post<Ride>('/rides/request', data);
   }
 
   async estimateFare(data: RideEstimatePayload): Promise<RideEstimate> {
-    const response = await apiClient.post('/rides/estimate', data);
-    return response.data;
+    return apiClient.post<RideEstimate>('/rides/estimate', data);
   }
 
   async getRide(rideId: number): Promise<Ride> {
-    const response = await apiClient.get(`/rides/${rideId}`);
-    return response.data;
+    return apiClient.get<Ride>(`/rides/${rideId}`);
   }
 
   async acceptRide(rideId: number): Promise<Ride> {
-    const response = await apiClient.post(`/rides/${rideId}/accept`);
-    return response.data;
+    return apiClient.post<Ride>(`/rides/${rideId}/accept`);
   }
 
   async startRide(rideId: number, otpCode: string): Promise<Ride> {
-    const response = await apiClient.post(`/rides/${rideId}/start`, {
+    return apiClient.post<Ride>(`/rides/${rideId}/start`, {
       otp_code: otpCode,
     });
-    return response.data;
   }
 
   async completeRide(rideId: number, data: RideCompletedPayload): Promise<Ride> {
-    const response = await apiClient.post(`/rides/${rideId}/complete`, data);
-    return response.data;
+    return apiClient.post<Ride>(`/rides/${rideId}/complete`, data);
   }
 
   async cancelRide(rideId: number, reason?: string): Promise<Ride> {
-    const response = await apiClient.post(`/rides/${rideId}/cancel`, {
+    return apiClient.post<Ride>(`/rides/${rideId}/cancel`, {
       cancellation_reason: reason,
     });
-    return response.data;
   }
 
   async getPassengerRides(skip: number = 0, limit: number = 20): Promise<Ride[]> {
-    const response = await apiClient.get('/rides/history/passenger', {
+    return apiClient.get<Ride[]>('/rides/history/passenger', {
       params: { skip, limit },
     });
-    return response.data;
   }
 
   async getDriverRides(skip: number = 0, limit: number = 20): Promise<Ride[]> {
-    const response = await apiClient.get('/rides/history/driver', {
+    return apiClient.get<Ride[]>('/rides/history/driver', {
       params: { skip, limit },
     });
-    return response.data;
   }
 
   async getPendingRides(limit: number = 50): Promise<Ride[]> {
-    const response = await apiClient.get('/rides/available/pending', {
+    return apiClient.get<Ride[]>('/rides/available/pending', {
       params: { limit },
     });
-    return response.data;
   }
 
   async rateRide(rideId: number, data: RideRatingPayload): Promise<any> {
-    const response = await apiClient.post(`/rides/${rideId}/rating`, data);
-    return response.data;
+    return apiClient.post<any>(`/rides/${rideId}/rating`, data);
   }
 }
 

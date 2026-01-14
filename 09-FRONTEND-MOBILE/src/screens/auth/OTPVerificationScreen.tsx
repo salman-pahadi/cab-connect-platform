@@ -13,16 +13,16 @@ import {
   Alert,
   ActivityIndicator,
 } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useNavigation, useRoute, NavigationProp } from '@react-navigation/native';
+import { useAppDispatch } from '@redux/store';
 import { setLoading, setError, loginSuccess } from '@redux/slices/authSlice';
 import authService from '@services/authService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OTPVerificationScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const route = useRoute();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { phoneNumber, userType } = route.params as {
     phoneNumber: string;
@@ -117,7 +117,7 @@ const OTPVerificationScreen: React.FC = () => {
         dispatch(
           loginSuccess({
             accessToken: response.accessToken,
-            user: userData.user,
+            user: userData as any,
             userType,
             isNewUser: response.isNewUser,
           })
@@ -125,10 +125,10 @@ const OTPVerificationScreen: React.FC = () => {
 
         // Navigate based on registration status
         if (response.isNewUser) {
-          navigation.navigate('Registration' as never, { userType } as never);
+          navigation.navigate('Registration', { userType });
         } else {
           // Navigate to home
-          navigation.navigate('Home' as never);
+          navigation.navigate('Home');
         }
       }
     } catch (error: any) {

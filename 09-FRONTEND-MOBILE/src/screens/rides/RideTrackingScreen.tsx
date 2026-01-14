@@ -11,7 +11,7 @@ import {
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { clearCurrentRide, setCurrentRide } from '@redux/slices/rideSlice';
-import { Button } from '@components/Button';
+import Button from '@components/common/Button';
 import { theme } from '@/styles/theme';
 import rideService from '@services/rideService';
 
@@ -33,14 +33,14 @@ export const RideTrackingScreen = ({ route, navigation }: any) => {
 
   const loadRideDetails = async () => {
     try {
-      setRefreshing(true);
+      setLoading(true);
       const rideData = await rideService.getRide(rideId);
       setRide(rideData);
       dispatch(setCurrentRide(rideData));
     } catch (error) {
       console.error('Error loading ride details:', error);
     } finally {
-      setRefreshing(false);
+      setLoading(false);
     }
   };
 

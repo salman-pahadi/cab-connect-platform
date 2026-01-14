@@ -146,7 +146,7 @@ const RegistrationScreen: React.FC = () => {
         dispatch(
           registrationComplete({
             accessToken: response.accessToken,
-            user: userData.user,
+            user: userData as any,
           })
         );
 

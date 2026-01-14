@@ -4,6 +4,7 @@
  */
 
 import apiClient from './api';
+import type { User } from '../types';
 
 export interface SendOTPRequest {
   phoneNumber: string;
@@ -73,7 +74,7 @@ class AuthService {
       phone_number: data.phoneNumber,
       user_type: data.userType,
     });
-    return response.data;
+    return response;
   }
 
   /**
@@ -85,7 +86,7 @@ class AuthService {
       otp: data.otp,
       user_type: data.userType,
     });
-    return response.data;
+    return response;
   }
 
   /**
@@ -109,7 +110,7 @@ class AuthService {
         },
       }
     );
-    return response.data;
+    return response;
   }
 
   /**
@@ -146,19 +147,19 @@ class AuthService {
         },
       }
     );
-    return response.data;
+    return response;
   }
 
   /**
    * Get current user from token
    */
-  async getCurrentUser(token: string): Promise<any> {
-    const response = await apiClient.get('/auth/me', {
+  async getCurrentUser(token: string): Promise<User> {
+    const response = await apiClient.get<User>('/auth/me', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response.data;
+    return response;
   }
 
   /**
@@ -166,9 +167,9 @@ class AuthService {
    */
   setAuthToken(token: string | null) {
     if (token) {
-      apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      (apiClient as any).defaults.headers.common['Authorization'] = `Bearer ${token}`;
     } else {
-      delete apiClient.defaults.headers.common['Authorization'];
+      delete (apiClient as any).defaults.headers.common['Authorization'];
     }
   }
 }

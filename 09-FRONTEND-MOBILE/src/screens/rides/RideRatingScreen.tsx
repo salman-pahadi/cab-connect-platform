@@ -11,7 +11,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useAppDispatch } from '@redux/store';
 import { clearCurrentRide } from '@redux/slices/rideSlice';
-import { Button } from '@components/Button';
+import Button from '@components/common/Button';
 import { theme } from '@/styles/theme';
 import rideService from '@services/rideService';
 
