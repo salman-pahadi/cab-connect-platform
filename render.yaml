@@ -41,6 +41,8 @@ services:
     name: cab-connect-redis
     plan: free
     region: oregon
+    ipAllowList:
+      - source: 0.0.0.0/0
 
   # PostgreSQL Database
 databases:
