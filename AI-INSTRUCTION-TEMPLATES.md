@@ -42,7 +42,7 @@ git commit && git push
 - **[Copy-Paste Examples by Phase](#copy-paste-examples)** - Real examples
 - **[All Templates A-Z](#core-templates)** - Full reference
 
-### 📋 Core Templates (Ranked by Frequency)
+### 📋 Core Templates (Ranked by Frequency) {#core-templates}
 | # | Name | When | Frequency |
 |---|------|------|-----------|
 | 1️⃣ | [SESSION START](#template-1) | Every morning | **CRITICAL** |
@@ -75,7 +75,7 @@ git commit && git push
 2. **Fill in** the `[BRACKETED]` sections with your specific details
 3. **Paste** into your AI assistant's chat and press Enter
 
-### File Reference Syntax:
+### File Reference Syntax: {#file-reference-syntax}
 - **Cursor/Windsurf:** Use `@filename` (e.g., `@prefix.md`)
 - **VS Code Copilot:** Use `/workspace filename` or "Read the file: filename"
 - **Generic:** Write: "Reference: filename" or "Read the file: filename"
@@ -442,10 +442,6 @@ Admin: 10-ADMIN-DASHBOARD/src/app/(dashboard)/page.tsx
 ---
 
 ## 🚀 TEMPLATE 1: SESSION START {#template-1-session-start}
-
----
-
-## 🚀 TEMPLATE 1: SESSION START {#template-1-session-start}
 **Use this EVERY TIME you start a work session**
 
 ### Basic Version (Use This)
@@ -575,7 +571,7 @@ Example:
 
 ---
 
-## 🐛 TEMPLATE 3: FIX BUG OR ERROR
+## 🐛 TEMPLATE 3: FIX BUG OR ERROR {#template-3}
 
 ```
 === FIX BUG OR ERROR ===
@@ -634,7 +630,7 @@ Example: 09-FRONTEND-MOBILE/src/components/booking/BookingCard.tsx
 
 ---
 
-## 👀 TEMPLATE 4: CODE REVIEW
+## 👀 TEMPLATE 4: CODE REVIEW {#template-4}
 
 ```
 === CODE REVIEW REQUEST ===
@@ -706,7 +702,7 @@ Example: "Is this component properly optimized?"
 
 ---
 
-## 📝 TEMPLATE 5: CREATE NEW COMPONENT/FILE
+## 📝 TEMPLATE 5: CREATE NEW COMPONENT/FILE {#template-5}
 
 ```
 === CREATE NEW COMPONENT/FILE ===
@@ -778,7 +774,7 @@ Example: "Use Next.js Server Component Template"
 
 ---
 
-## 🧪 TEMPLATE 6: WRITE TESTS
+## 🧪 TEMPLATE 6: WRITE TESTS {#template-6}
 
 ```
 === WRITE TESTS ===
@@ -842,7 +838,7 @@ Admin: Jest + Vitest
 
 ---
 
-## 🚀 TEMPLATE 7: DEPLOY/RELEASE
+## 🚀 TEMPLATE 7: DEPLOY/RELEASE {#template-7}
 
 ```
 === DEPLOYMENT REQUEST ===
@@ -908,7 +904,7 @@ Admin: Jest + Vitest
 
 ---
 
-## 💡 TEMPLATE 8: QUICK QUESTION
+## 💡 TEMPLATE 8: QUICK QUESTION {#template-8}
 
 ```
 === QUICK QUESTION ===
@@ -938,7 +934,7 @@ Example:
 
 ---
 
-## 📚 TEMPLATE 9: UNDERSTAND EXISTING CODE
+## 📚 TEMPLATE 9: UNDERSTAND EXISTING CODE {#template-9}
 
 ```
 === EXPLAIN EXISTING CODE ===
@@ -978,7 +974,7 @@ Example: "Onboarding to project, learning codebase"
 
 ---
 
-## 🔄 TEMPLATE 10: REFACTOR CODE
+## 🔄 TEMPLATE 10: REFACTOR CODE {#template-10}
 
 ```
 === REFACTOR REQUEST ===
@@ -1025,7 +1021,7 @@ Example: "Onboarding to project, learning codebase"
 
 ---
 
-## 🎯 TEMPLATE 11: END OF SESSION CHECKLIST
+## 🎯 TEMPLATE 11: END OF SESSION CHECKLIST {#template-11}
 
 **⚠️ RUN THIS AT THE END OF EVERY WORK SESSION**
 
@@ -1273,7 +1269,7 @@ Copy this checklist and verify all items:
 
 ---
 
-## 🎯 TEMPLATE 12: PROGRESS UPDATE (QUICK)
+## 🎯 TEMPLATE 12: PROGRESS UPDATE (QUICK) {#template-12}
 
 **Use this for quick progress updates during a session**
 
@@ -1303,7 +1299,7 @@ Copy this checklist and verify all items:
 
 ---
 
-## 🏗️ TEMPLATE 13: PROJECT AUDIT & OPTIMIZATION
+## 🏗️ TEMPLATE 13: PROJECT AUDIT & OPTIMIZATION {#template-13}
 
 **Use this to clean up, reorganize files, optimize documentation, and improve project structure**
 
@@ -1806,7 +1802,7 @@ Verify ALL items before considering complete:
 
 ---
 
-## 🔧 CUSTOMIZATION GUIDE
+## 🔧 CUSTOMIZATION GUIDE {#customization}
 
 ### **How to Customize Templates:**
 
@@ -1829,7 +1825,7 @@ Feature to Implement: Real-Time Driver Location Tracking with WebSocket
 
 ---
 
-## 📖 QUICK REFERENCE
+## 📖 QUICK REFERENCE {#quick-ref}
 
 ### **File Paths (Common References):**
 
@@ -1880,7 +1876,7 @@ FOLDER-STRUCTURE.md - Repository structure
 
 ---
 
-## ⚡ POWER USER TIPS
+## ⚡ POWER USER TIPS {#power-tips}
 
 ### **Tip 1: End Every Session Properly**
 
@@ -1953,7 +1949,7 @@ References:
 
 ---
 
-## 🎯 30-SECOND QUICK START
+## 🎯 30-SECOND QUICK START {#quick-start}
 
 **Copy one of these, customize [BRACKETS], paste into AI chat:**
 
