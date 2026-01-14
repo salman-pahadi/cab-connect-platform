@@ -5,7 +5,7 @@ const ENV = {
     apiUrl: 'http://localhost:8000/api/v1',
   },
   prod: {
-    apiUrl: 'https://api.cabconnect.com/api/v1',
+    apiUrl: 'https://cab-connect-api.onrender.com/api/v1',
   },
 };
 
