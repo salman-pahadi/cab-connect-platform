@@ -87,13 +87,19 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.cabconnect"
+    namespace "com.cabconnect.app"
     defaultConfig {
-        applicationId "com.cabconnect"
+        applicationId "com.cabconnect.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        
+        // Multidex support
+        multiDexEnabled true
+        
+        // Vector drawables support
+        vectorDrawables.useSupportLibrary = true
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
     }
@@ -131,9 +137,20 @@ android {
         ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
     
-    // Kotlin compilation options
+    // Java compatibility - MUST be set before kotlinOptions
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    // Kotlin compilation options - must match Java target (17)
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
+    }
+    
+    // Gradle build features
+    buildFeatures {
+        buildConfig true
     }
 }
 
@@ -160,6 +177,9 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    
+    // Multidex support
+    implementation("androidx.multidex:multidex:2.0.1")
 
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
