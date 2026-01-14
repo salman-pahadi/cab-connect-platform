@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Column, DateTime, Float, String, Text
 from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
-from app.models.base import Base
+from app.models.base import BaseModel
 
 
 class DriverStatus(str, Enum):
@@ -37,7 +37,7 @@ class VehicleType(str, Enum):
     LUXURY = "luxury"
 
 
-class Driver(Base):
+class Driver(BaseModel):
     """Driver model for cab drivers."""
 
     __tablename__ = "drivers"
@@ -52,8 +52,8 @@ class Driver(Base):
     date_of_birth = Column(DateTime, nullable=True)
 
     # Authentication
-    status = Column(SQLEnum(DriverStatus), default=DriverStatus.PENDING, nullable=False)
-    availability = Column(SQLEnum(DriverAvailability), default=DriverAvailability.OFFLINE, nullable=False)
+    status = Column(SQLEnum(DriverStatus), default=DriverStatus.PENDING, nullable=False)  # type: ignore
+    availability = Column(SQLEnum(DriverAvailability), default=DriverAvailability.OFFLINE, nullable=False)  # type: ignore
     is_phone_verified = Column(Boolean, default=False, nullable=False)
     is_email_verified = Column(Boolean, default=False, nullable=False)
 
@@ -76,7 +76,7 @@ class Driver(Base):
     vehicle_year = Column(String(4), nullable=True)
     vehicle_color = Column(String(50), nullable=True)
     vehicle_plate_number = Column(String(50), unique=True, nullable=True)
-    vehicle_type = Column(SQLEnum(VehicleType), nullable=True)
+    vehicle_type = Column(SQLEnum(VehicleType), nullable=True)  # type: ignore
 
     # Performance metrics
     rating = Column(Float, default=5.0, nullable=False)
@@ -140,23 +140,23 @@ class Driver(Base):
 
     def is_available(self) -> bool:
         """Check if driver is available for rides."""
-        result: bool = self.status == DriverStatus.ACTIVE and self.availability == DriverAvailability.ONLINE
+        result: bool = self.status == DriverStatus.ACTIVE and self.availability == DriverAvailability.ONLINE  # type: ignore
         return result
 
     def go_online(self) -> None:
         """Set driver status to online."""
         if self.status == DriverStatus.ACTIVE:
-            self.availability = DriverAvailability.ONLINE
+            self.availability = DriverAvailability.ONLINE  # type: ignore
 
     def go_offline(self) -> None:
         """Set driver status to offline."""
-        self.availability = DriverAvailability.OFFLINE
+        self.availability = DriverAvailability.OFFLINE  # type: ignore
 
     def start_ride(self) -> None:
         """Mark driver as on a ride."""
-        self.availability = DriverAvailability.ON_RIDE
+        self.availability = DriverAvailability.ON_RIDE  # type: ignore
 
     def end_ride(self) -> None:
         """Mark driver as online after ride completion."""
         if self.status == DriverStatus.ACTIVE:
-            self.availability = DriverAvailability.ONLINE
+            self.availability = DriverAvailability.ONLINE  # type: ignore

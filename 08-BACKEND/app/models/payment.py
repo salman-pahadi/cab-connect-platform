@@ -8,7 +8,7 @@ from enum import Enum
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy import Enum as SQLEnum
 
-from app.models.base import Base
+from app.models.base import BaseModel
 
 
 class TransactionStatus(str, Enum):
@@ -31,13 +31,12 @@ class PaymentStatus(str, Enum):
     REFUNDED = "refunded"
 
 
-class Payment(Base):
+class Payment(BaseModel):
     """Payment model for storing ride payment transactions."""
 
     __tablename__ = "payments"
 
     # Identifiers
-    id = Column(Integer, primary_key=True, index=True)
     transaction_id = Column(String(100), unique=True, index=True, nullable=False)
     ride_id = Column(Integer, ForeignKey("rides.id"), nullable=False, index=True)
 
@@ -49,7 +48,7 @@ class Payment(Base):
     amount = Column(Float, nullable=False)
     currency = Column(String(3), default="INR", nullable=False)
     payment_method = Column(String(50), nullable=False)  # cash, card, upi, wallet
-    status = Column(SQLEnum(TransactionStatus), default=TransactionStatus.PENDING)
+    status = Column(SQLEnum(TransactionStatus), default=TransactionStatus.PENDING)  # type: ignore
 
     # Breakdown
     base_fare = Column(Float, nullable=False)

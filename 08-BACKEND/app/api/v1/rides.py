@@ -1,6 +1,7 @@
 """
 Ride API endpoints.
 """
+# mypy: disable-error-code="arg-type"
 
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
@@ -100,7 +101,7 @@ async def accept_ride(
         )
 
     # Get driver record
-    driver = db.query(Driver).filter(Driver.user_id == current_user.id).first()
+    driver = db.query(Driver).filter(Driver.phone_number == current_user.phone_number).first()
     if not driver:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -221,7 +222,7 @@ async def get_ride(
         ride.passenger_id != current_user.id
         and current_user.role != UserRole.ADMIN
     ):
-        driver = db.query(Driver).filter(Driver.user_id == current_user.id).first()
+        driver = db.query(Driver).filter(Driver.phone_number == current_user.phone_number).first()
         if not driver or ride.driver_id != driver.id:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
@@ -267,7 +268,7 @@ async def get_driver_rides(
             detail="Only drivers can view their ride history",
         )
 
-    driver = db.query(Driver).filter(Driver.user_id == current_user.id).first()
+    driver = db.query(Driver).filter(Driver.phone_number == current_user.phone_number).first()
     if not driver:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

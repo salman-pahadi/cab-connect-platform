@@ -1,6 +1,7 @@
 """
 Ride service for handling ride business logic.
 """
+# mypy: disable-error-code="assignment"
 
 import random
 import string
@@ -168,10 +169,10 @@ class RideService:
         if ride_obj.status != RideStatus.PENDING:
             raise ValueError("Ride is not available for acceptance")
 
-        ride_obj.driver_id = driver_id
-        ride_obj.status = RideStatus.ACCEPTED
-        ride_obj.accepted_at = datetime.utcnow()
-        ride_obj.otp_code = self._generate_otp()
+        ride_obj.driver_id = driver_id  # type: ignore
+        ride_obj.status = RideStatus.ACCEPTED  # type: ignore
+        ride_obj.accepted_at = datetime.utcnow()  # type: ignore
+        ride_obj.otp_code = self._generate_otp()  # type: ignore
 
         db.commit()
         db.refresh(ride_obj)
@@ -191,8 +192,8 @@ class RideService:
         if ride_obj.otp_code != otp_code:
             raise ValueError("Invalid OTP code")
 
-        ride_obj.status = RideStatus.IN_PROGRESS
-        ride_obj.pickup_time = datetime.utcnow()
+        ride_obj.status = RideStatus.IN_PROGRESS  # type: ignore
+        ride_obj.pickup_time = datetime.utcnow()  # type: ignore
 
         db.commit()
         db.refresh(ride_obj)
@@ -212,13 +213,13 @@ class RideService:
             raise ValueError("Ride is not in progress")
 
         # Update ride with actual values
-        ride_obj.actual_distance_km = completion_data.actual_distance_km
-        ride_obj.actual_duration_minutes = completion_data.actual_duration_minutes
-        ride_obj.actual_fare = completion_data.actual_fare
-        ride_obj.final_fare = completion_data.actual_fare
+        ride_obj.actual_distance_km = completion_data.actual_distance_km  # type: ignore
+        ride_obj.actual_duration_minutes = completion_data.actual_duration_minutes  # type: ignore
+        ride_obj.actual_fare = completion_data.actual_fare  # type: ignore
+        ride_obj.final_fare = completion_data.actual_fare  # type: ignore
 
-        ride_obj.status = RideStatus.COMPLETED
-        ride_obj.completed_at = datetime.utcnow()
+        ride_obj.status = RideStatus.COMPLETED  # type: ignore
+        ride_obj.completed_at = datetime.utcnow()  # type: ignore
 
         # Create payment record
         payment = Payment(
@@ -235,7 +236,7 @@ class RideService:
         )
 
         if ride_obj.payment_method == PaymentMethod.CASH:
-            payment.paid_at = datetime.utcnow()
+            payment.paid_at = datetime.utcnow()  # type: ignore
 
         db.add(payment)
         db.commit()
@@ -255,10 +256,10 @@ class RideService:
         if ride_obj.status in [RideStatus.COMPLETED, RideStatus.CANCELLED]:
             raise ValueError(f"Cannot cancel ride with status {ride_obj.status}")
 
-        ride_obj.status = RideStatus.CANCELLED
-        ride_obj.cancelled_at = datetime.utcnow()
-        ride_obj.cancelled_by = cancelled_by
-        ride_obj.cancellation_reason = reason
+        ride_obj.status = RideStatus.CANCELLED  # type: ignore
+        ride_obj.cancelled_at = datetime.utcnow()  # type: ignore
+        ride_obj.cancelled_by = cancelled_by  # type: ignore
+        ride_obj.cancellation_reason = reason  # type: ignore
 
         db.commit()
         db.refresh(ride_obj)

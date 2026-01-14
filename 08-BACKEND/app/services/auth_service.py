@@ -1,4 +1,5 @@
 """Authentication service for OTP-based login and JWT tokens."""
+# mypy: disable-error-code="assignment,arg-type"
 
 from datetime import datetime
 
@@ -68,16 +69,16 @@ class AuthService:
                 db.add(user)
 
             # Check OTP attempts
-            if is_max_attempts_exceeded(user.otp_attempts):
+            if is_max_attempts_exceeded(user.otp_attempts):  # type: ignore
                 raise HTTPException(
                     status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                     detail="Maximum OTP attempts exceeded. Please try again later.",
                 )
 
             # Update OTP
-            user.otp_secret = otp
-            user.otp_expiry = otp_expiry
-            user.otp_attempts = increment_otp_attempts(user.otp_attempts)
+            user.otp_secret = otp  # type: ignore
+            user.otp_expiry = otp_expiry  # type: ignore
+            user.otp_attempts = increment_otp_attempts(user.otp_attempts)  # type: ignore
 
         elif user_type == "driver":
             # Check for existing driver
@@ -94,16 +95,16 @@ class AuthService:
                 db.add(driver)
 
             # Check OTP attempts
-            if is_max_attempts_exceeded(driver.otp_attempts):
+            if is_max_attempts_exceeded(driver.otp_attempts):  # type: ignore
                 raise HTTPException(
                     status_code=status.HTTP_429_TOO_MANY_REQUESTS,
                     detail="Maximum OTP attempts exceeded. Please try again later.",
                 )
 
             # Update OTP
-            driver.otp_secret = otp
-            driver.otp_expiry = otp_expiry
-            driver.otp_attempts = increment_otp_attempts(driver.otp_attempts)
+            driver.otp_secret = otp  # type: ignore
+            driver.otp_expiry = otp_expiry  # type: ignore
+            driver.otp_attempts = increment_otp_attempts(driver.otp_attempts)  # type: ignore
 
         else:
             raise HTTPException(

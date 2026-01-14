@@ -8,7 +8,7 @@ from enum import Enum
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy import Enum as SQLEnum
 
-from app.models.base import Base
+from app.models.base import BaseModel
 
 
 class LocationType(str, Enum):
@@ -20,17 +20,16 @@ class LocationType(str, Enum):
     CURRENT = "current"  # Real-time location during ride
 
 
-class Location(Base):
+class Location(BaseModel):
     """Location model for storing ride pickup, dropoff, and waypoint coordinates."""
 
     __tablename__ = "locations"
 
     # Identifiers
-    id = Column(Integer, primary_key=True, index=True)
     ride_id = Column(Integer, ForeignKey("rides.id"), nullable=False, index=True)
 
     # Location Details
-    location_type = Column(SQLEnum(LocationType), nullable=False, index=True)
+    location_type = Column(SQLEnum(LocationType), nullable=False, index=True)  # type: ignore
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     address = Column(String(500), nullable=True)

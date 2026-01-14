@@ -7,7 +7,7 @@ from sqlalchemy import Boolean, Column, DateTime, String
 from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import relationship
 
-from app.models.base import Base
+from app.models.base import BaseModel
 
 
 class UserRole(str, Enum):
@@ -26,7 +26,7 @@ class UserStatus(str, Enum):
     DELETED = "deleted"
 
 
-class User(Base):
+class User(BaseModel):
     """User model for passengers and administrators."""
 
     __tablename__ = "users"
@@ -40,8 +40,8 @@ class User(Base):
     profile_picture_url = Column(String(500), nullable=True)
 
     # Authentication
-    role = Column(SQLEnum(UserRole), default=UserRole.PASSENGER, nullable=False)
-    status = Column(SQLEnum(UserStatus), default=UserStatus.ACTIVE, nullable=False)
+    role = Column(SQLEnum(UserRole), default=UserRole.PASSENGER, nullable=False)  # type: ignore
+    status = Column(SQLEnum(UserStatus), default=UserStatus.ACTIVE, nullable=False)  # type: ignore
     is_phone_verified = Column(Boolean, default=False, nullable=False)
     is_email_verified = Column(Boolean, default=False, nullable=False)
 

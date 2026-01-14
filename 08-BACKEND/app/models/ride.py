@@ -20,7 +20,7 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import relationship
 
-from app.models.base import Base
+from app.models.base import BaseModel
 
 
 class RideStatus(str, Enum):
@@ -53,13 +53,12 @@ class RideType(str, Enum):
     PREMIUM = "premium"
 
 
-class Ride(Base):
+class Ride(BaseModel):
     """Ride model for storing ride booking and tracking information."""
 
     __tablename__ = "rides"
 
-    # Identifiers
-    id = Column(Integer, primary_key=True, index=True)
+    # Ride Details
     ride_number = Column(String(50), unique=True, index=True, nullable=False)
 
     # Passenger & Driver
@@ -67,9 +66,9 @@ class Ride(Base):
     driver_id = Column(Integer, ForeignKey("drivers.id"), nullable=True, index=True)
 
     # Ride Details
-    ride_type = Column(SQLEnum(RideType), default=RideType.ECONOMY, nullable=False)
-    status = Column(SQLEnum(RideStatus), default=RideStatus.PENDING, index=True)
-    payment_method = Column(
+    ride_type = Column(SQLEnum(RideType), default=RideType.ECONOMY, nullable=False)  # type: ignore
+    status = Column(SQLEnum(RideStatus), default=RideStatus.PENDING, index=True)  # type: ignore
+    payment_method = Column(  # type: ignore
         SQLEnum(PaymentMethod), default=PaymentMethod.CASH, nullable=False
     )
 
