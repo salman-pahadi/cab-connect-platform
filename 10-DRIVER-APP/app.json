@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Cab Connect Driver",
+    "slug": "cab-connect-driver",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/logo/logo-icon.png",
+        "backgroundColor": "#10b981"
+      },
+      "package": "com.cabconnect.driver",
+      "minSdkVersion": 21,
+      "targetSdkVersion": 34,
+      "versionCode": 1
+    },
+    "web": {
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermissions": "Allow Cab Connect to access your location while using the app and in the background to track rides."
+        }
+      ]
+    ]
+  }
+}
