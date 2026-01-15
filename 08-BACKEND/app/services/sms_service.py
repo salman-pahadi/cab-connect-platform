@@ -6,8 +6,7 @@ Supports development mode for testing without sending actual SMS
 import logging
 import random
 import string
-from typing import Optional, Dict, Any
-from datetime import datetime, timedelta
+from typing import Any
 
 from app.core.config import settings
 
@@ -39,7 +38,7 @@ class SMSService:
         else:
             self.client = None
 
-    def generate_otp(self, length: int = None) -> str:
+    def generate_otp(self, length: int | None = None) -> str:
         """
         Generate random OTP
 
@@ -54,7 +53,7 @@ class SMSService:
 
     def send_otp(
         self, phone_number: str, otp: str, **kwargs
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Send OTP via SMS
 
@@ -80,7 +79,7 @@ class SMSService:
                 "mode": "development",
                 "phone": phone_number,
                 "otp": otp,
-                "message": f"[DEV] OTP logged to console",
+                "message": "[DEV] OTP logged to console",
             }
 
         # Production mode: Send via Twilio
@@ -112,7 +111,7 @@ class SMSService:
 
     def send_ride_update(
         self, phone_number: str, driver_name: str, eta_minutes: int, **kwargs
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Send ride status update SMS
 
@@ -153,7 +152,7 @@ class SMSService:
             logger.error(f"❌ Failed to send ride update: {e}")
             return {"status": "error", "message": str(e)}
 
-    def send_welcome_message(self, phone_number: str) -> Dict[str, Any]:
+    def send_welcome_message(self, phone_number: str) -> dict[str, Any]:
         """
         Send welcome message to new user
 
