@@ -14,11 +14,18 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  StatusBar,
+  Dimensions,
 } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useAppDispatch } from '@redux/store';
 import { setLoading, setError, otpSent } from '@redux/slices/authSlice';
 import authService from '@services/authService';
+import { theme } from '@/styles/theme';
+import Logo from '@components/common/Logo';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+const { height } = Dimensions.get('window');
 
 type UserType = 'passenger' | 'driver';
 
@@ -47,9 +54,10 @@ const LoginScreen: React.FC = () => {
     // Validate phone number
     const formattedPhone = formatPhoneNumber(phoneNumber);
 
-    if (!formattedPhone || formattedPhone.length < 12) {
+    // Fiji numbers: +679 (4 chars) + 7 digits = 11 chars total
+    if (!formattedPhone || formattedPhone.length !== 11) {
       if (Alert && Alert.alert) {
-        Alert.alert('Invalid Phone Number', 'Please enter a valid Fiji phone number');
+        Alert.alert('Invalid Phone Number', 'Please enter a valid Fiji phone number (7 digits)');
       }
       return;
     }
@@ -68,7 +76,7 @@ const LoginScreen: React.FC = () => {
         if (Alert && Alert.alert) {
           Alert.alert(
             'OTP Sent',
-            `A 6-digit code has been sent to ${formattedPhone}. Valid for ${response.expiresIn / 60} minutes.`,
+            `A 6-digit code has been sent to ${formattedPhone}.`,
             [
               {
                 text: 'OK',
@@ -101,126 +109,135 @@ const LoginScreen: React.FC = () => {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Header */}
+      <StatusBar barStyle="light-content" />
+      
+      {/* Dynamic Background Elements */}
+      <View style={styles.circleBg} />
+
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        {/* Header with Logo */}
         <View style={styles.header}>
-          <Text style={styles.title}>Welcome to Cab Connect</Text>
-          <Text style={styles.subtitle}>Ride Anywhere in Fiji</Text>
+          <Logo size={90} backgroundColor="rgba(255, 255, 255, 0.9)" />
+          <Text style={styles.title}>Welcome</Text>
+          <Text style={styles.subtitle}>Welcome to Cab Connect Fiji</Text>
         </View>
 
-        {/* User Type Selection */}
-        <View style={styles.userTypeContainer}>
-          <Text style={styles.label}>I am a:</Text>
-          <View style={styles.userTypeButtons}>
-            <TouchableOpacity
-              style={[
-                styles.userTypeButton,
-                userType === 'passenger' && styles.userTypeButtonActive,
-              ]}
-              onPress={() => setUserType('passenger')}
-            >
-              <Text
-                style={[
-                  styles.userTypeButtonText,
-                  userType === 'passenger' && styles.userTypeButtonTextActive,
-                ]}
-              >
-                Passenger
+        {/* User Type Selection - Removed: Driver has separate app */}
+        <View style={styles.glassCard}>
+          {/* Phone Number Input */}
+          <View style={styles.inputContainer}>
+            <Text style={styles.label}>FIJI PHONE NUMBER</Text>
+            <View style={styles.phoneInputWrapper}>
+              <View style={styles.countryBadge}>
+                <Text style={styles.countryCode}>+679</Text>
+              </View>
+              <TextInput
+                style={styles.phoneInput}
+                placeholder="777 0000"
+                placeholderTextColor="rgba(255, 255, 255, 0.2)"
+                keyboardType="phone-pad"
+                value={phoneNumber.replace('+679', '')}
+                onChangeText={setPhoneNumber}
+                maxLength={7}
+                autoComplete="tel"
+                textContentType="telephoneNumber"
+              />
+            </View>
+            <View style={styles.hintContainer}>
+              <MaterialCommunityIcons name="information-outline" size={14} color="rgba(16, 185, 129, 0.6)" />
+              <Text style={styles.hintText}>
+                We'll send a 6-digit verification code.
               </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[
-                styles.userTypeButton,
-                userType === 'driver' && styles.userTypeButtonActive,
-              ]}
-              onPress={() => setUserType('driver')}
-            >
-              <Text
-                style={[
-                  styles.userTypeButtonText,
-                  userType === 'driver' && styles.userTypeButtonTextActive,
-                ]}
-              >
-                Driver
-              </Text>
-            </TouchableOpacity>
+            </View>
           </View>
+
+          {/* Send OTP Button */}
+          <TouchableOpacity
+            style={[styles.button, isLoading && styles.buttonDisabled]}
+            onPress={handleSendOTP}
+            disabled={isLoading}
+          >
+            <Text style={styles.buttonText}>
+              {isLoading ? 'Processing...' : 'Send OTP'}
+            </Text>
+            {!isLoading && <MaterialCommunityIcons name="arrow-right" size={20} color="#fff" />}
+          </TouchableOpacity>
         </View>
 
-        {/* Phone Number Input */}
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Phone Number</Text>
-          <View style={styles.phoneInputWrapper}>
-            <Text style={styles.countryCode}>+679</Text>
-            <TextInput
-              style={styles.phoneInput}
-              placeholder="9876543"
-              keyboardType="phone-pad"
-              value={phoneNumber.replace('+679', '')}
-              onChangeText={setPhoneNumber}
-              maxLength={7}
-              autoComplete="tel"
-              textContentType="telephoneNumber"
-            />
-          </View>
-          <Text style={styles.hint}>
-            We&apos;ll send you a verification code
+        {/* Footer info */}
+        <View style={styles.footerInfo}>
+          <Text style={styles.terms}>
+            By continuing, you agree to our 
+            <Text style={styles.link}> Terms of Service </Text> 
+            and 
+            <Text style={styles.link}> Privacy Policy </Text>
           </Text>
         </View>
-
-        {/* Send OTP Button */}
-        <TouchableOpacity
-          style={[styles.button, isLoading && styles.buttonDisabled]}
-          onPress={handleSendOTP}
-          disabled={isLoading}
-        >
-          <Text style={styles.buttonText}>
-            {isLoading ? 'Sending...' : 'Send Verification Code'}
-          </Text>
-        </TouchableOpacity>
-
-        {/* Terms */}
-        <Text style={styles.terms}>
-          By continuing, you agree to our Terms of Service and Privacy Policy
-        </Text>
+        
+        <Text style={styles.copyright}>© 2026 Cab Connect Fiji • Pure Emerald Edition</Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#0a0a0a',
+  },
+  circleBg: {
+    position: 'absolute',
+    top: -100,
+    right: -50,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: 'rgba(16, 185, 129, 0.05)',
+    zIndex: -1,
   },
   scrollContent: {
-    flexGrow: 1,
     padding: 24,
-    justifyContent: 'center',
+    paddingTop: 60,
+    paddingBottom: 40,
   },
   header: {
-    marginBottom: 48,
     alignItems: 'center',
+    marginBottom: 40,
   },
   title: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: '#1a1a1a',
-    marginBottom: 8,
+    fontSize: 32,
+    fontWeight: '900',
+    color: '#fff',
+    marginTop: 20,
+    letterSpacing: -1,
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: 'rgba(255, 255, 255, 0.5)',
+    marginTop: 8,
+  },
+  glassCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    borderRadius: 32,
+    padding: 24,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 5,
   },
   userTypeContainer: {
     marginBottom: 32,
   },
   label: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1a1a1a',
-    marginBottom: 12,
+    fontSize: 12,
+    fontWeight: '800',
+    color: '#10b981',
+    letterSpacing: 2,
+    marginBottom: 16,
   },
   userTypeButtons: {
     flexDirection: 'row',
@@ -228,22 +245,24 @@ const styles = StyleSheet.create({
   },
   userTypeButton: {
     flex: 1,
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: '#e0e0e0',
+    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    borderRadius: 16,
+    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+    gap: 8,
   },
   userTypeButtonActive: {
-    borderColor: '#10b981',
     backgroundColor: '#10b981',
+    borderColor: '#10b981',
   },
   userTypeButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#666',
+    fontSize: 15,
+    fontWeight: '700',
+    color: 'rgba(255, 255, 255, 0.5)',
   },
   userTypeButtonTextActive: {
     color: '#fff',
@@ -254,56 +273,88 @@ const styles = StyleSheet.create({
   phoneInputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: '#e0e0e0',
-    borderRadius: 12,
+    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.05)',
+    overflow: 'hidden',
+  },
+  countryBadge: {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
     paddingHorizontal: 16,
-    backgroundColor: '#f9f9f9',
+    paddingVertical: 16,
+    borderRightWidth: 1,
+    borderRightColor: 'rgba(255, 255, 255, 0.05)',
   },
   countryCode: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#1a1a1a',
-    marginRight: 8,
+    color: '#10b981',
+    fontSize: 16,
+    fontWeight: '800',
   },
   phoneInput: {
     flex: 1,
-    fontSize: 18,
+    paddingHorizontal: 16,
     paddingVertical: 16,
-    color: '#1a1a1a',
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: '600',
   },
-  hint: {
-    fontSize: 14,
-    color: '#666',
-    marginTop: 8,
+  hintContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 12,
+    gap: 6,
+  },
+  hintText: {
+    fontSize: 13,
+    color: 'rgba(255, 255, 255, 0.4)',
+    fontWeight: '500',
   },
   button: {
     backgroundColor: '#10b981',
-    paddingVertical: 16,
-    borderRadius: 12,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 18,
+    borderRadius: 20,
+    gap: 10,
     shadowColor: '#10b981',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 6 },
     shadowOpacity: 0.3,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowRadius: 10,
+    elevation: 8,
   },
   buttonDisabled: {
-    backgroundColor: '#a0a0a0',
-    shadowOpacity: 0,
-    elevation: 0,
+    opacity: 0.6,
   },
   buttonText: {
-    fontSize: 18,
-    fontWeight: '700',
     color: '#fff',
+    fontSize: 18,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  footerInfo: {
+    marginTop: 32,
+    alignItems: 'center',
   },
   terms: {
-    fontSize: 12,
-    color: '#999',
+    fontSize: 13,
+    color: 'rgba(255, 255, 255, 0.4)',
     textAlign: 'center',
-    marginTop: 24,
-    lineHeight: 18,
+    lineHeight: 20,
+  },
+  link: {
+    color: '#10b981',
+    fontWeight: '700',
+  },
+  copyright: {
+    fontSize: 11,
+    color: 'rgba(16, 185, 129, 0.3)',
+    textAlign: 'center',
+    marginTop: 40,
+    fontWeight: '800',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
   },
 });
 

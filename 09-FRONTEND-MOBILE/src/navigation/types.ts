@@ -1,9 +1,17 @@
 import { StackNavigationProp } from '@react-navigation/stack';
 
 export type RootStackParamList = {
-  Home: undefined;
+  Splash: undefined;
+  Onboarding: undefined;
   Login: undefined;
-  Register: undefined;
+  OTPVerification: {
+    phoneNumber: string;
+    userType: 'passenger' | 'driver';
+  };
+  Registration: {
+    userType: 'passenger' | 'driver';
+  };
+  Home: undefined;
 };
 
 export type HomeScreenNavigationProp = StackNavigationProp<

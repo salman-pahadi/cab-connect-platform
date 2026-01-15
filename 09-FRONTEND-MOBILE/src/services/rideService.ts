@@ -42,6 +42,16 @@ export interface Ride {
   ride_number: string;
   passenger_id: number;
   driver_id?: number;
+  driver?: {
+    id: number;
+    name: string;
+    phone: string;
+    vehicle_model: string;
+    vehicle_number: string;
+    vehicle_color?: string;
+    rating?: number;
+    profile_picture?: string;
+  };
   ride_type: string;
   status: string;
   payment_method: string;

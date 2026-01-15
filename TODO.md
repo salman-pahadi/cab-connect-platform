@@ -1,12 +1,316 @@
 # 📋 REPOSITORY OPTIMIZATION TODO
 
 **Created:** January 12, 2026  
-**Status:** Post-Audit Optimization Tasks  
-**Priority:** Maintain repository excellence (93/100 → 95+/100)
+**Updated:** January 14, 2026  
+**Status:** Pre-Deployment Tasks  
+**Priority:** Backend deployment readiness
 
 ---
 
-## 🔴 CRITICAL PRIORITY (Do First)
+## 🚨 PRE-DEPLOYMENT CHECKLIST (January 14, 2026)
+
+### ✅ TASK 0: Backend Import Fix Verification
+**Status:** ✅ COMPLETED (2026-01-14)  
+**Completed By:** AI Assistant  
+**Time Spent:** 10 minutes
+
+**What Was Done:**
+- [✅] Fixed import paths in jwt.py (app.core.config → app.config)
+- [✅] Fixed import paths in otp.py (app.core.config → app.config)
+- [✅] Verified no other app.core references exist
+- [✅] Tested imports work correctly
+- [✅] Committed and pushed to production branch
+- [✅] Fixed AI-INSTRUCTION-TEMPLATES.md anchor links
+
+**Files Modified:**
+- 08-BACKEND/app/utils/jwt.py
+- 08-BACKEND/app/utils/otp.py
+- AI-INSTRUCTION-TEMPLATES.md (anchor fixes)
+
+**Git Commit:** `aa142f8` - fix(backend): Correct import paths app.core.config → app.config
+
+---
+
+### 🔴 TASK 1: Run Backend Test Suite
+**Status:** ⏳ PENDING  
+**Estimated Time:** 5 minutes  
+**Priority:** CRITICAL
+
+**Commands to Run:**
+```powershell
+cd 08-BACKEND
+python -m pytest tests/ -v
+```
+
+**Acceptance Criteria:**
+- [ ] All tests passing
+- [ ] No test failures
+- [ ] No import errors
+- [ ] Coverage report generated
+
+**Why Critical:** Ensure no regressions introduced by import fix
+
+---
+
+### 🔴 TASK 2: Run Code Quality Checks
+**Status:** ⏳ PENDING  
+**Estimated Time:** 3 minutes  
+**Priority:** CRITICAL
+
+**Commands to Run:**
+```powershell
+cd 08-BACKEND
+
+# Python linting
+python -m ruff check .
+
+# Type checking
+python -m mypy app/
+
+# Security check
+pip check
+```
+
+**Acceptance Criteria:**
+- [ ] Zero ruff errors
+- [ ] Zero mypy errors
+- [ ] Zero security vulnerabilities
+- [ ] All quality gates passed
+
+**Why Critical:** Zero tolerance policy for code quality
+
+---
+
+### 🔴 TASK 3: Verify requirements.txt
+**Status:** ⏳ PENDING  
+**Estimated Time:** 2 minutes  
+**Priority:** CRITICAL
+
+**Commands to Run:**
+```powershell
+cd 08-BACKEND
+
+# Check all dependencies installed
+pip list --format=freeze > installed.txt
+
+# Compare with requirements.txt
+Compare-Object (Get-Content requirements.txt) (Get-Content installed.txt)
+```
+
+**Acceptance Criteria:**
+- [ ] All required packages in requirements.txt
+- [ ] Versions match project standards
+- [ ] No missing dependencies
+- [ ] No conflicting versions
+
+**Why Critical:** Render deployment depends on correct requirements.txt
+
+---
+
+### 🔴 TASK 4: Test Local Server Startup
+**Status:** ⏳ PENDING  
+**Estimated Time:** 2 minutes  
+**Priority:** CRITICAL
+
+**Commands to Run:**
+```powershell
+cd 08-BACKEND
+$env:PYTHONPATH="D:\Salman\Projects\fijicabconnect.com\cab-connect-platform-main\08-BACKEND"
+uvicorn app.main:app --reload --port 8000
+```
+
+**Acceptance Criteria:**
+- [ ] Server starts without errors
+- [ ] No ModuleNotFoundError
+- [ ] /health endpoint responds
+- [ ] /docs endpoint loads (FastAPI Swagger)
+- [ ] No import errors in logs
+
+**Why Critical:** Verify app starts correctly before deploying to Render
+
+---
+
+### 🟠 TASK 5: Review render.yaml Configuration
+**Status:** ⏳ PENDING  
+**Estimated Time:** 3 minutes  
+**Priority:** HIGH
+
+**Files to Review:**
+- render.yaml
+
+**Check:**
+- [ ] buildCommand correct: `pip install -r 08-BACKEND/requirements.txt`
+- [ ] startCommand correct: `cd 08-BACKEND && uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+- [ ] Python version: 3.11.7
+- [ ] Environment variables configured in Render dashboard
+- [ ] Database URL configured
+- [ ] Redis URL configured
+- [ ] Secret keys set (JWT_SECRET_KEY, SECRET_KEY)
+
+**Why High:** Configuration errors cause deployment failures
+
+---
+
+### 🟠 TASK 6: Monitor Render Deployment Logs
+**Status:** ⏳ PENDING (After deploy)  
+**Estimated Time:** 10 minutes  
+**Priority:** HIGH
+
+**Steps:**
+1. Push to production branch triggers Render deployment
+2. Watch Render dashboard logs in real-time
+3. Look for successful startup message
+4. Verify no ModuleNotFoundError
+5. Check /health endpoint responds (200 OK)
+6. Monitor error logs for first 5 minutes
+
+**Acceptance Criteria:**
+- [ ] Build completes successfully
+- [ ] Server starts without errors
+- [ ] Health check passing
+- [ ] No errors in first 5 minutes
+- [ ] API responds to requests
+
+**Why High:** Early detection of deployment issues
+
+---
+
+### 🟡 TASK 7: Update PROGRESS-TRACKER.md
+**Status:** ⏳ PENDING  
+**Estimated Time:** 5 minutes  
+**Priority:** MEDIUM
+
+**Session Entry to Add:**
+```markdown
+## Session: 2026-01-14 - Backend Import Fix & Deployment
+
+**Duration:** 30 minutes  
+**Task:** Fix ModuleNotFoundError and prepare for deployment
+
+### ✅ Completed Subtasks:
+- [✅] Fixed jwt.py import path (app.core.config → app.config)
+- [✅] Fixed otp.py import path (app.core.config → app.config)
+- [✅] Verified no other app.core references
+- [✅] Tested imports work correctly
+- [✅] Fixed AI-INSTRUCTION-TEMPLATES.md anchor links
+- [✅] Committed and pushed to production branch
+
+### 📂 Files Modified:
+- 08-BACKEND/app/utils/jwt.py - Fixed import statement
+- 08-BACKEND/app/utils/otp.py - Fixed import statement  
+- AI-INSTRUCTION-TEMPLATES.md - Added missing anchor IDs
+
+### 🎯 Next Priority:
+- Run test suite
+- Verify code quality
+- Deploy to Render
+- Monitor deployment logs
+
+### ⚠️ Blockers:
+None
+
+### 📋 Session Notes:
+Root cause was incorrect import path. Backend uses flat structure with config.py directly in app/, not app/core/config.py.
+```
+
+**Why Medium:** Documentation of work completed
+
+---
+
+### 🟡 TASK 8: Run End of Session Checklist
+**Status:** ⏳ PENDING  
+**Estimated Time:** 5 minutes  
+**Priority:** MEDIUM
+
+**Use Template 11 from AI-INSTRUCTION-TEMPLATES.md**
+
+**Quick Commands:**
+```powershell
+# Verify all quality checks
+cd 08-BACKEND
+python -m pytest tests/ -v
+python -m ruff check .
+python -m mypy app/
+
+# Final git commit (if any changes)
+git status
+git add .
+git commit -m "chore: Pre-deployment verification complete"
+git push origin production
+```
+
+**Acceptance Criteria:**
+- [ ] All tests passing
+- [ ] Zero errors
+- [ ] PROGRESS-TRACKER.md updated
+- [ ] Code committed and pushed
+- [ ] Session documented
+
+**Why Medium:** Ensures clean state for next session
+
+---
+
+## 🔵 POST-DEPLOYMENT TASKS (After Render Deploy)
+
+### TASK 9: Smoke Test Production API
+**Status:** ⏳ PENDING  
+**Estimated Time:** 5 minutes  
+**Priority:** HIGH
+
+**Endpoints to Test:**
+```powershell
+# Get production URL from Render (e.g., https://cab-connect-api.onrender.com)
+$API_URL = "https://cab-connect-api.onrender.com"
+
+# Test health endpoint
+Invoke-WebRequest -Uri "$API_URL/health" -Method GET
+
+# Test API docs
+Invoke-WebRequest -Uri "$API_URL/docs" -Method GET
+
+# Test authentication endpoint (should return 422 validation error)
+Invoke-WebRequest -Uri "$API_URL/api/v1/auth/login" -Method POST
+```
+
+**Acceptance Criteria:**
+- [ ] /health returns 200 OK
+- [ ] /docs loads successfully
+- [ ] API endpoints respond (even if with errors)
+- [ ] No 500 server errors
+- [ ] No ModuleNotFoundError in logs
+
+---
+
+### TASK 10: Update Deployment Documentation
+**Status:** ⏳ PENDING  
+**Estimated Time:** 10 minutes  
+**Priority:** MEDIUM
+
+**Files to Update:**
+- CHANGELOG.md
+- BUILD_STATUS.md
+- 02-PROJECT-PLANNING/DEPLOYMENT-READY-CHECKLIST.md
+
+**Add Entry to CHANGELOG.md:**
+```markdown
+## [0.1.1] - 2026-01-14
+
+### Fixed
+- Backend import paths causing ModuleNotFoundError on Render deployment
+- Changed app.core.config to app.config in jwt.py and otp.py
+- Fixed AI-INSTRUCTION-TEMPLATES.md anchor links for proper navigation
+
+### Deployment
+- Successfully deployed to Render after import fix
+- All health checks passing
+- Production API responding correctly
+```
+
+---
+
+## 🔴 CRITICAL PRIORITY (Original Tasks Below)
+
+### ✅ TASK 11 (Original TASK 1): Update Final Audit Report
 
 ### ✅ TASK 1: Update Final Audit Report
 **Status:** ⏳ Pending  
