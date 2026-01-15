@@ -1,5 +1,6 @@
 """Application configuration."""
 
+import os
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -26,6 +27,11 @@ class Settings(BaseSettings):
     DATABASE_TEST_URL: str = (
         "postgresql://cabconnect:cabconnect123@localhost:5432/cabconnect_test"
     )
+
+    @property
+    def database_url(self) -> str:
+        """Prefer Render-provided URL when present."""
+        return os.getenv("RENDER_DATABASE_URL", self.DATABASE_URL)
 
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
