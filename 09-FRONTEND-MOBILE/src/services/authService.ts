@@ -6,6 +6,15 @@
 import apiClient from './api';
 import type { User } from '../types';
 
+// ============================================================================
+// DEVELOPMENT TESTING CONFIGURATION
+// ============================================================================
+const DEV_MODE = __DEV__; // Set to true for testing with static OTP
+const TEST_OTP = '123456'; // Static OTP code for testing
+const TEST_TOKEN = 'test_access_token_' + Date.now(); // Mock token for testing
+
+// ============================================================================
+
 export interface SendOTPRequest {
   phoneNumber: string;
   userType: 'passenger' | 'driver';
@@ -68,8 +77,31 @@ export interface RegistrationResponse {
 class AuthService {
   /**
    * Send OTP to phone number
+   * In DEV_MODE: Always succeeds and logs the test OTP to console
+   * In PRODUCTION: Calls the real backend API
    */
   async sendOTP(data: SendOTPRequest): Promise<SendOTPResponse> {
+    if (DEV_MODE) {
+      // Development mode: Simulate successful OTP send
+      console.log('==============================================');
+      console.log('📱 TEST MODE: SMS OTP SENDING BYPASSED');
+      console.log('==============================================');
+      console.log(`Phone: ${data.phoneNumber}`);
+      console.log(`User Type: ${data.userType}`);
+      console.log(`Test OTP Code: ${TEST_OTP}`);
+      console.log('==============================================');
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      return {
+        success: true,
+        message: `Test OTP is ${TEST_OTP}`,
+        expiresIn: 300,
+      };
+    }
+
+    // Production mode: Real API call
     const response = await apiClient.post<SendOTPResponse>('/auth/send-otp', {
       phone_number: data.phoneNumber,
       user_type: data.userType,
@@ -79,8 +111,34 @@ class AuthService {
 
   /**
    * Verify OTP and log in
+   * In DEV_MODE: Accepts test OTP (123456) or calls real API
+   * In PRODUCTION: Always calls real API
    */
   async verifyOTP(data: VerifyOTPRequest): Promise<VerifyOTPResponse> {
+    if (DEV_MODE && data.otp === TEST_OTP) {
+      // Development mode: Test OTP accepted
+      console.log('==============================================');
+      console.log('✅ TEST MODE: OTP VERIFIED SUCCESSFULLY');
+      console.log('==============================================');
+      console.log(`Phone: ${data.phoneNumber}`);
+      console.log(`OTP: ${data.otp}`);
+      console.log(`User Type: ${data.userType}`);
+      console.log(`Mock Token: ${TEST_TOKEN}`);
+      console.log('==============================================');
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 300));
+      
+      return {
+        success: true,
+        message: 'OTP verified successfully (test mode)',
+        accessToken: TEST_TOKEN,
+        userId: 'test_user_' + data.phoneNumber,
+        isNewUser: false, // Set to true if you want to test registration flow
+      };
+    }
+
+    // Production mode OR incorrect test OTP: Real API call
     const response = await apiClient.post<VerifyOTPResponse>('/auth/verify-otp', {
       phone_number: data.phoneNumber,
       otp: data.otp,
@@ -152,8 +210,28 @@ class AuthService {
 
   /**
    * Get current user from token
+   * In DEV_MODE with TEST_TOKEN: Returns mock user data
+   * In PRODUCTION: Calls real API
    */
   async getCurrentUser(token: string): Promise<User> {
+    if (DEV_MODE && token.startsWith('test_access_token_')) {
+      // Development mode: Return mock user data
+      console.log('==============================================');
+      console.log('👤 TEST MODE: RETURNING MOCK USER DATA');
+      console.log('==============================================');
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 200));
+      
+      return {
+        id: '1',
+        name: 'Test User',
+        phone: '+6791234567',
+        email: 'test@example.com',
+      };
+    }
+
+    // Production mode: Real API call
     const response = await apiClient.get<User>('/auth/me', {
       headers: {
         Authorization: `Bearer ${token}`,

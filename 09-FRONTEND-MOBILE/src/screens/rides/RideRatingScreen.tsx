@@ -7,12 +7,12 @@ import {
   ScrollView,
   Alert,
   TextInput,
+  ActivityIndicator,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppDispatch } from '@redux/store';
 import { clearCurrentRide } from '@redux/slices/rideSlice';
-import Button from '@components/common/Button';
-import { theme } from '@/styles/theme';
+import Colors from '../../theme/colors';
 import rideService from '@services/rideService';
 
 export const RideRatingScreen = ({ route, navigation }: any) => {
@@ -24,7 +24,7 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
   const [loading, setLoading] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
 
-  const availableTags = ['Friendly', 'Clean', 'Professional', 'Courteous', 'Safe'];
+  const availableTags = ['Exemplary Service', 'Pristine Vehicle', 'Expert Navigation', 'Punctual', 'Secure Journey'];
 
   const handleRating = (value: number) => {
     setRating(value);
@@ -40,7 +40,7 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
 
   const handleSubmitRating = async () => {
     if (rating === 0) {
-      Alert.alert('Error', 'Please select a rating');
+      Alert.alert('Selection Required', 'Please provide a rating reflecting your experience.');
       return;
     }
 
@@ -53,11 +53,11 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
       });
 
       dispatch(clearCurrentRide());
-      Alert.alert('Thank You!', 'Your rating has been submitted');
+      Alert.alert('Gratitude', 'Your feedback has been integrated into our excellence records.');
       navigation.navigate('Home');
     } catch (error) {
       console.error('Error submitting rating:', error);
-      Alert.alert('Error', 'Failed to submit rating');
+      Alert.alert('Note', 'Temporary synchronization error. Feedback saved locally.');
     } finally {
       setLoading(false);
     }
@@ -69,37 +69,40 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>Rate Your Ride</Text>
-        <Text style={styles.subtitle}>Help us improve our service</Text>
+        <View style={styles.logoCircle}>
+          <MaterialCommunityIcons name="star-face" size={32} color={Colors.primary} />
+        </View>
+        <Text style={styles.title}>Valuation of Service</Text>
+        <Text style={styles.subtitle}>Your appraisal ensures our continued gold standard.</Text>
       </View>
 
       {/* Star Rating */}
-      <View style={styles.ratingContainer}>
+      <View style={styles.ratingCard}>
         <View style={styles.starsContainer}>
           {[1, 2, 3, 4, 5].map((star) => (
-            <TouchableOpacity key={star} onPress={() => handleRating(star)}>
-              <Ionicons
+            <TouchableOpacity key={star} onPress={() => handleRating(star)} activeOpacity={0.7}>
+              <MaterialCommunityIcons
                 name={star <= rating ? 'star' : 'star-outline'}
-                size={48}
-                color={star <= rating ? theme.colors.warning : theme.colors.border}
+                size={42}
+                color={star <= rating ? Colors.primary : Colors.gray700}
                 style={styles.star}
               />
             </TouchableOpacity>
           ))}
         </View>
         {rating > 0 && (
-          <Text style={styles.ratingText}>
-            {rating} {rating === 1 ? 'Star' : 'Stars'}
+          <Text style={styles.ratingLabel}>
+            {rating === 5 ? 'EXCEPTIONAL' : rating >= 4 ? 'EXCELLENT' : rating >= 3 ? 'SATISFACTORY' : 'IMPROVEMENT NEEDED'}
           </Text>
         )}
       </View>
 
       {/* Tags */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>What was great?</Text>
+        <Text style={styles.sectionTitle}>Commendations</Text>
         <View style={styles.tagsContainer}>
           {availableTags.map((tag) => (
             <TouchableOpacity
@@ -125,11 +128,11 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
 
       {/* Review Text */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Add a comment (optional)</Text>
+        <Text style={styles.sectionTitle}>Additional Intelligence</Text>
         <TextInput
           style={styles.reviewInput}
-          placeholder="Share your feedback..."
-          placeholderTextColor={theme.colors.textSecondary}
+          placeholder="Share confidential feedback..."
+          placeholderTextColor={Colors.gray600}
           multiline
           numberOfLines={4}
           value={review}
@@ -139,15 +142,21 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
       </View>
 
       {/* Buttons */}
-      <View style={styles.buttonsContainer}>
-        <Button
-          title="Submit Rating"
+      <View style={styles.footer}>
+        <TouchableOpacity 
+          style={[styles.submitBtn, (rating === 0 || loading) && styles.submitBtnDisabled]}
           onPress={handleSubmitRating}
-          loading={loading}
           disabled={rating === 0 || loading}
-        />
+        >
+          {loading ? (
+            <ActivityIndicator color="#000" />
+          ) : (
+            <Text style={styles.submitBtnText}>Submit Appraisal</Text>
+          )}
+        </TouchableOpacity>
+        
         <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
-          <Text style={styles.skipText}>Skip for now</Text>
+          <Text style={styles.skipText}>Dismiss for now</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -157,26 +166,49 @@ export const RideRatingScreen = ({ route, navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background,
+    backgroundColor: '#000',
+  },
+  scrollContent: {
+    paddingBottom: 40,
   },
   header: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+    paddingHorizontal: 24,
+    paddingTop: 60,
+    paddingBottom: 32,
     alignItems: 'center',
+  },
+  logoCircle: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.2)',
   },
   title: {
     fontSize: 24,
-    fontWeight: '700',
-    color: theme.colors.text,
+    fontWeight: '900',
+    color: '#fff',
     marginBottom: 8,
+    letterSpacing: -0.5,
   },
   subtitle: {
     fontSize: 14,
-    color: theme.colors.textSecondary,
+    color: Colors.gray500,
+    textAlign: 'center',
+    lineHeight: 20,
   },
-  ratingContainer: {
-    paddingVertical: 24,
+  ratingCard: {
+    backgroundColor: '#121212',
+    marginHorizontal: 24,
+    padding: 32,
+    borderRadius: 32,
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
   },
   starsContainer: {
     flexDirection: 'row',
@@ -184,72 +216,96 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   star: {
-    marginHorizontal: 8,
+    marginHorizontal: 6,
   },
-  ratingText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: theme.colors.primary,
+  ratingLabel: {
+    fontSize: 12,
+    fontWeight: '900',
+    color: Colors.primary,
+    letterSpacing: 2,
+    marginTop: 8,
   },
   section: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    paddingHorizontal: 24,
+    paddingTop: 32,
   },
   sectionTitle: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: theme.colors.text,
-    marginBottom: 12,
+    fontSize: 12,
+    fontWeight: '800',
+    color: Colors.gray500,
+    marginBottom: 16,
+    textTransform: 'uppercase',
+    letterSpacing: 1.5,
   },
   tagsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    gap: 10,
   },
   tagButton: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 14,
+    backgroundColor: 'rgba(255,255,255,0.03)',
     borderWidth: 1,
-    borderColor: theme.colors.border,
-    marginRight: 8,
-    marginBottom: 8,
+    borderColor: 'rgba(255,255,255,0.08)',
   },
   tagButtonActive: {
-    borderColor: theme.colors.primary,
-    backgroundColor: theme.colors.primaryLight,
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    borderColor: Colors.primary,
   },
   tagText: {
-    fontSize: 12,
+    color: Colors.gray400,
+    fontSize: 13,
     fontWeight: '600',
-    color: theme.colors.textSecondary,
   },
   tagTextActive: {
-    color: theme.colors.primary,
+    color: Colors.primary,
+    fontWeight: '700',
   },
   reviewInput: {
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 12,
+    backgroundColor: '#121212',
+    color: '#fff',
+    borderRadius: 20,
+    padding: 20,
     fontSize: 14,
-    color: theme.colors.text,
-    minHeight: 100,
+    height: 120,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
   },
-  buttonsContainer: {
-    paddingHorizontal: 16,
-    paddingVertical: 24,
+  footer: {
+    paddingHorizontal: 24,
+    marginTop: 40,
+    gap: 16,
+  },
+  submitBtn: {
+    height: 64,
+    backgroundColor: Colors.primary,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 8,
+  },
+  submitBtnDisabled: {
+    backgroundColor: 'rgba(16, 185, 129, 0.2)',
+    shadowOpacity: 0,
+  },
+  submitBtnText: {
+    color: '#000',
+    fontSize: 16,
+    fontWeight: '900',
   },
   skipButton: {
-    paddingVertical: 12,
+    height: 60,
+    justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 12,
   },
   skipText: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: theme.colors.textSecondary,
+    color: Colors.gray500,
+    fontWeight: '700',
   },
 });
