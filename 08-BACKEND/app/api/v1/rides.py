@@ -24,7 +24,7 @@ from app.schemas.ride import (
 )
 from app.services.ride_service import RideService
 
-router = APIRouter(prefix="/v1/rides", tags=["rides"])
+router = APIRouter(prefix="/api/v1/rides", tags=["rides"])
 ride_service = RideService()
 
 

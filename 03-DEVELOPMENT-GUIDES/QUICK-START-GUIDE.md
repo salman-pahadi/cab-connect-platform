@@ -43,9 +43,9 @@
 9. `SECURITY-GUIDELINES.md` (Coming) - Security best practices
 
 ### **SUPPORTING DOCS**
-- Brand guidelines (in `FIJI-CAB-CONNECT/01-BRANDING/`)
+- Brand guidelines (in `05-CLIENT-REQUIREMENTS/branding/`)
 - Marketing website code (in `fiji-cab-connect-marketing-website/`)
-- Previous phase docs (in `docs/`)
+- Historical/legacy docs (in `07-ARCHIVED/`)
 
 ---
 

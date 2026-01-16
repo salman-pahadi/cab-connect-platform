@@ -129,7 +129,7 @@
 
 ```powershell
 # 1. Run EAS build for development testing
-cd 09-FRONTEND-MOBILE
+cd 10-PASSENGER-APP
 eas build --profile development --platform android
 
 # 2. Test the build
@@ -171,7 +171,7 @@ eas submit --platform android
 ### 🚀 Deployment Commands
 
 ```powershell
-cd 10-ADMIN-DASHBOARD
+cd 09-ADMIN-DASHBOARD
 
 # Build for production
 npm run build
@@ -266,7 +266,7 @@ npx vercel --prod
 - **[PHASE-1-MASTER-DEVELOPMENT-PLAN.md](../01-DOCUMENTATION/PHASE-1-MASTER-DEVELOPMENT-PLAN.md)** - Development plan (updated with deployment status)
 - **[PROGRESS-TRACKER.md](../PROGRESS-TRACKER.md)** - Session-by-session progress
 - **[render.yaml](../render.yaml)** - Render blueprint configuration
-- **[eas.json](../09-FRONTEND-MOBILE/eas.json)** - EAS build configuration
+- **[eas.json](../10-PASSENGER-APP/eas.json)** - EAS build configuration
 - **[BUILD_STATUS.md](../BUILD_STATUS.md)** - Build configuration details
 
 ---

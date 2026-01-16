@@ -3,8 +3,12 @@
 **Project:** Cab Connect  
 **Phase:** Phase 1 (Android MVP)  
 **Client:** Mohammed Ifraad Hussain  
-**Status:** Ready to Start  
-**Last Updated:** January 11, 2026  
+**Status:** In Progress  
+**Last Updated:** January 15, 2026  
+
+**Phase 1 Guardrails (Locked):**
+- Polling only (no WebSockets / Socket.IO)
+- Cash payments only (no online payment gateways in Phase 1)
 
 ---
 
@@ -15,7 +19,7 @@
 │  CAB CONNECT PHASE 1 - PROJECT STATUS DASHBOARD           │
 ├────────────────────────────────────────────────────────────┤
 │                                                             │
-│  Overall Progress: ⏳ 0% (Not Started)                     │
+│  Overall Progress: 🟡 In Progress                           │
 │                                                             │
 │  Timeline: 5-6 weeks (Jan 11 - Feb 28, 2026)            │
 │  Budget: ₹95,000 (Mobile App Dev)                         │
@@ -48,12 +52,12 @@ Deliverables:
 
 ---
 
-### **PHASE 1: Android MVP** ⏳ NOT STARTED
+### **PHASE 1: Android MVP** 🟡 IN PROGRESS
 
 #### **Week 1: Foundation** (Days 1-5)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Ready to Start
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
   ☐ Backend (FastAPI) project setup
@@ -70,8 +74,8 @@ Due: January 15, 2026
 
 #### **Week 2: Passenger App** (Days 6-10)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Blocked (Waiting for Week 1)
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
   ☐ Auth screens (Login, OTP, Register)
@@ -88,8 +92,8 @@ Due: January 22, 2026
 
 #### **Week 3: Driver App + Real-time** (Days 11-15)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Blocked (Waiting for Week 2)
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
   ☐ Driver auth & verification
@@ -97,8 +101,8 @@ Deliverables:
   ☐ Ride request notifications
   ☐ Driver navigation
   ☐ Earnings dashboard
-  ☐ WebSocket integration
-  ☐ Real-time tracking
+  ☐ Polling-based status updates (no WebSockets)
+  ☐ Location tracking via polling (Phase 1)
   ☐ Status updates
 
 Due: January 29, 2026
@@ -106,12 +110,12 @@ Due: January 29, 2026
 
 #### **Week 4: Payments & Notifications** (Days 16-20)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Blocked (Waiting for Week 3)
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
-  ☐ Razorpay integration (both apps)
   ☐ Cash payment tracking
+  ☐ Payment gateways (deferred; cash-only in Phase 1)
   ☐ Firebase Cloud Messaging
   ☐ Push notifications
   ☐ SMS OTP integration
@@ -124,8 +128,8 @@ Due: February 5, 2026
 
 #### **Week 5: Admin Dashboard & Testing** (Days 21-27)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Blocked (Waiting for Week 4)
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
   ☐ Admin dashboard setup
@@ -142,8 +146,8 @@ Due: February 12, 2026
 
 #### **Week 6: Deployment & Launch** (Days 28-30+)
 ```
-Progress: ⏳ 0%
-Status: ⏳ Blocked (Waiting for Week 5)
+Progress: 🟡 In Progress
+Status: 🟡 In Progress
 
 Deliverables:
   ☐ AWS EC2 backend deployment

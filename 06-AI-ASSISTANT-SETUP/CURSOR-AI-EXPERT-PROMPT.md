@@ -89,17 +89,10 @@ Voice:
 
 The user has complete documentation in the project folder:
 
-```
-FIJI-CAB-CONNECT/
-├── 01-BRANDING/
-│   └── BRAND-KIT.md              (Brand colors, fonts, voice)
-├── 03-PHASES/
-│   └── PHASE-0-MARKETING-WEBSITE.md  (Detailed specs)
-├── 04-MARKETING-WEBSITE/
-│   ├── README.md                 (Project overview)
-│   ├── QUICK-START.md            (Setup instructions)
-│   └── DEVELOPMENT-ROADMAP.md    (3-week plan)
-```
+- Branding assets and guidelines: `05-CLIENT-REQUIREMENTS/branding/`
+- Marketing site code: `fiji-cab-connect-marketing-website/`
+- Canonical reference docs: `01-DOCUMENTATION/REFERENCE/`
+- Legacy FIJI-CAB-CONNECT materials (reference only): `07-ARCHIVED/LEGACY/`
 
 **When the user references these files, read them carefully and follow their specifications exactly.**
 

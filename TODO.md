@@ -224,7 +224,7 @@ Root cause was incorrect import path. Backend uses flat structure with config.py
 **Estimated Time:** 5 minutes  
 **Priority:** MEDIUM
 
-**Use Template 11 from AI-INSTRUCTION-TEMPLATES.md**
+**Use Template 11 (T11: END SESSION) from 06-AI-ASSISTANT-SETUP/AI-MASTER-TEMPLATES-V3.md**
 
 **Quick Commands:**
 ```powershell

@@ -1,10 +1,10 @@
 # 🚀 CAB CONNECT PLATFORM - START HERE
 
-> **Last Updated:** January 12, 2026  
+> **Last Updated:** January 15, 2026  
 > **Project Status:** ✅ Phase 1 Active Development  
 > **Repository Health:** 93/100 (EXCELLENT)  
 > **AI Development Readiness:** VERY HIGH  
-> **Current Phase:** Milestone 4 - Real-time Features & Payments
+> **Current Phase:** Milestone 5 - Admin Dashboard & Analytics (Polling + Cash)
 
 ---
 
@@ -143,7 +143,7 @@ Step-by-step development guides and code patterns.
 Coding standards, best practices, and technical architecture.
 
 **Essential Files:**
-- `.cursorrules` - Detailed Phase 1 coding rules (761 lines)
+- `.cursorrules` (repo root) - Phase 1 coding rules (canonical)
 - `technical-architecture.md` - **NEW** Complete technical reference
   - Project structure explained
   - Component templates (copy-paste ready)
@@ -156,7 +156,7 @@ Coding standards, best practices, and technical architecture.
   - Naming conventions
 - `templates/` - Code templates
 
-**Start here:** [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
+**Start here:** [04-CODING-STANDARDS/technical-architecture.md](04-CODING-STANDARDS/technical-architecture.md)
 
 **When to reference:**
 - Before creating new files
@@ -165,7 +165,7 @@ Coding standards, best practices, and technical architecture.
 - Setting up new services
 - Testing standards
 
-**Start here:** [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
+**AI rules:** [.cursorrules](.cursorrules)
 
 ---
 
@@ -201,36 +201,44 @@ Deprecated or reference-only documents.
 
 ---
 
-### 🔧 **08-BACKEND** (Not yet initialized)
+### 🔧 **08-BACKEND** (Active)
 FastAPI backend project structure.
 - Python source code
 - Database migrations
 - API endpoints
 - Business logic
 
-**Status:** Awaiting initialization in Week 1, Day 1-2
+**Status:** Active development
 
 ---
 
-### 📱 **09-FRONTEND-MOBILE** (Not yet initialized)
-React Native (Expo) mobile applications.
+### 📱 **10-PASSENGER-APP** (Active)
+React Native (Expo) passenger application.
 - Passenger app (Android/iOS)
-- Driver app (Android/iOS)
 - Shared components
 - Navigation flow
 
-**Status:** Awaiting initialization in Week 1, Day 1-2
+**Status:** Active development
 
 ---
 
-### 👨‍💼 **10-ADMIN-DASHBOARD** (Not yet initialized)
+### 🚗 **11-DRIVER-APP** (Active)
+React Native (Expo) driver application.
+- Driver app (Android/iOS)
+- Driver availability and ride acceptance
+
+**Status:** Active development
+
+---
+
+### 👨‍💼 **09-ADMIN-DASHBOARD** (Active)
 Admin dashboard web application.
 - React + Vite + Tailwind CSS
 - Admin pages and features
 - Analytics and reporting
 - User management
 
-**Status:** Awaiting initialization in Week 1, Day 1-2
+**Status:** Active development
 
 ---
 
@@ -253,7 +261,8 @@ Admin dashboard web application.
 
 ### 5️⃣ **Setup AI Assistant**
    - Read: [prefix.md](prefix.md) - Comprehensive development framework
-   - Reference: [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/)
+   - Reference: [.cursorrules](.cursorrules)
+   - Reference: [04-CODING-STANDARDS/technical-architecture.md](04-CODING-STANDARDS/technical-architecture.md)
 
 ---
 
@@ -277,31 +286,23 @@ Admin dashboard web application.
 ## 🎯 Phase 1 Deliverables
 
 ### Apps & Platforms
-- ✅ Passenger Mobile App (Android/iOS ready)
-- ✅ Driver Mobile App (Android/iOS ready)
+- ✅ Passenger App (React Native)
+- ✅ Driver App (React Native)
 - ✅ Admin Dashboard (Web)
-- ✅ Backend REST API + WebSocket
-- ✅ PostgreSQL Database
+- ✅ Backend REST API (polling; no WebSockets in Phase 1)
+- ✅ PostgreSQL + Redis
 
 ### Features (50+)
 - ✅ User Authentication (Phone + SMS OTP)
-- ✅ WhatsApp login (social authentication)
-- ✅ Real-time driver tracking (WebSocket)
 - ✅ Ride booking and management
-- ✅ Payment integration (Cash + Razorpay)
-- ✅ Ratings and reviews
-- ✅ Ride history and analytics
-- ✅ Push notifications
-- ✅ SMS integration
+- ✅ Ride assignment: broadcast to drivers, first-accept wins
+- ✅ Ride status updates via REST polling
+- ✅ Payments: cash only (Phase 1)
 
 ### Infrastructure
-- ✅ AWS EC2 (t3.small)
-- ✅ PostgreSQL RDS
-- ✅ Redis cache
-- ✅ S3 storage
-- ✅ CloudFront CDN
+- ✅ Render.com deployment (backend)
+- ✅ Local dev via Docker Compose
 - ✅ GitHub Actions CI/CD
-- ✅ Docker containerization
 
 ---
 
@@ -331,13 +332,13 @@ All documentation is organized by category:
 ### **Coding Standards**
 | Document | Location | Purpose |
 |----------|----------|---------|
-| .cursorrules | 04-CODING-STANDARDS | AI assistant guidelines & patterns |
+| .cursorrules | (repo root) | AI assistant guidelines & patterns |
 
 ### **Reference Documents**
 | Folder | Purpose |
 |--------|---------|
-| docs/ | Original phase documentation |
-| FIJI-CAB-CONNECT/ | Project planning and brand assets |
+| 01-DOCUMENTATION/REFERENCE/ | Canonical reference documents (locked specs) |
+| 07-ARCHIVED/ | Historical/legacy documents (reference only) |
 | fiji-cab-connect-marketing-website/ | Phase 0 marketing website project |
 
 ---
@@ -359,7 +360,7 @@ Follow the **WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md** exactly:
 
 ### **Ongoing**
 - Update [02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md](02-PROJECT-PLANNING/) weekly
-- Reference [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/) for all code
+- Reference [.cursorrules](.cursorrules) for all AI-assisted coding
 - Check [03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md](03-DEVELOPMENT-GUIDES/) daily for tasks
 
 ---
@@ -368,13 +369,13 @@ Follow the **WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md** exactly:
 
 **Essential Reading (in order):**
 1. [START-HERE.md](START-HERE.md) ← You are here
-2. [docs/00_README.md](docs/00_README.md)
+2. [01-DOCUMENTATION/REFERENCE/00_README.md](01-DOCUMENTATION/REFERENCE/00_README.md)
 3. [05-CLIENT-REQUIREMENTS/Client-Filled-Requirements.md](05-CLIENT-REQUIREMENTS/Client-Filled-Requirements.md)
 4. [03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md](03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md)
 5. [01-DOCUMENTATION/PHASE-1-MASTER-DEVELOPMENT-PLAN.md](01-DOCUMENTATION/PHASE-1-MASTER-DEVELOPMENT-PLAN.md)
 
 **Daily Reference:**
-- [04-CODING-STANDARDS/.cursorrules](04-CODING-STANDARDS/.cursorrules)
+- [.cursorrules](.cursorrules)
 - [02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md](02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md)
 
 ---

@@ -353,7 +353,7 @@ Each guide section includes troubleshooting for common problems:
 |----------|----------|---------|
 | Requirements | 05-CLIENT-REQUIREMENTS/ | What to build |
 | Architecture | 01-DOCUMENTATION/ | How to build |
-| Coding Standards | 04-CODING-STANDARDS/.cursorrules | How to code |
+| Coding Standards | .cursorrules | How to code |
 | Project Status | 02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md | Progress tracking |
 
 ---

@@ -7,6 +7,7 @@ from enum import Enum
 
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy.orm import relationship
 
 from app.models.base import BaseModel
 
@@ -49,6 +50,9 @@ class Location(BaseModel):
     # Timestamps
     recorded_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     sequence_order = Column(Integer, nullable=False, default=0)  # Order in route
+
+    # Relationships
+    ride = relationship("Ride", back_populates="locations")
 
     def __repr__(self) -> str:
         return f"<Location {self.location_type} - ({self.latitude}, {self.longitude})>"
