@@ -8,7 +8,10 @@ import {
   Alert,
   ActivityIndicator,
   StatusBar,
+  Dimensions,
 } from 'react-native';
+
+const { height } = Dimensions.get('window');
 import MapView, { Marker, Polyline, PROVIDER_GOOGLE } from 'react-native-maps';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppDispatch, useAppSelector } from '@redux/store';
@@ -42,7 +45,6 @@ export const RideTrackingScreen = ({ route, navigation }: any) => {
 
   const handleCancelRide = async () => {
     try {
-      setLoading(true);
       await rideService.cancelRide(rideId, 'Passenger cancelled');
       dispatch(clearCurrentRide());
       Alert.alert('Inquiry Cancelled', 'Your journey request has been removed.');
@@ -51,14 +53,12 @@ export const RideTrackingScreen = ({ route, navigation }: any) => {
       console.error('Error cancelling ride:', error);
       Alert.alert('Error', 'Unable to cancel at this moment.');
     } finally {
-      setLoading(false);
       setShowCancelConfirm(false);
     }
   };
 
   const handleRideComplete = async () => {
     try {
-      setLoading(true);
       await rideService.completeRide(rideId, {
         actual_distance_km: ride?.actual_distance_km || 10,
         actual_duration_minutes: ride?.actual_duration_minutes || 20,
@@ -70,8 +70,6 @@ export const RideTrackingScreen = ({ route, navigation }: any) => {
     } catch (error) {
       console.error('Error completing ride:', error);
       Alert.alert('Error', 'Technical difficulty completing trip.');
-    } finally {
-      setLoading(false);
     }
   };
 

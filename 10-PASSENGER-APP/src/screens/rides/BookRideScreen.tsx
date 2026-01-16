@@ -52,7 +52,7 @@ export const BookRideScreen = ({ navigation }: any) => {
     if (!pickupLocation || !dropoffLocation) return;
 
     try {
-      setEstimatingFare(true);
+      // Estimating fare (removed setEstimatingFare state)
       const estimate = await rideService.estimateFare({
         pickup_latitude: pickupLocation.latitude,
         pickup_longitude: pickupLocation.longitude,
@@ -64,8 +64,6 @@ export const BookRideScreen = ({ navigation }: any) => {
     } catch (error) {
       console.error('Error estimating fare:', error);
       Alert.alert('Error', 'Failed to estimate fare');
-    } finally {
-      setEstimatingFare(false);
     }
   };
 
