@@ -1,0 +1,30 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium Black & Green Icon Design -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Deep black rounded square background -->
+  <rect width="1024" height="1024" rx="180" fill="#000000"/>
+  
+  <!-- Subtle emerald glow circle -->
+  <circle cx="512" cy="512" r="320" fill="#10b981" opacity="0.12"/>
+  
+  <!-- CC Monogram in emerald green with glow -->
+  <text 
+    x="512" 
+    y="620" 
+    font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" 
+    font-size="340" 
+    font-weight="900" 
+    text-anchor="middle" 
+    fill="#10b981" 
+    letter-spacing="-12"
+    filter="url(#glow)">CC</text>
+</svg>

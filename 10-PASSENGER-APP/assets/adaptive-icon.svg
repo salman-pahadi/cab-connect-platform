@@ -1,0 +1,27 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium Android Adaptive Icon - Foreground only -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Subtle emerald glow (safe zone compliant) -->
+  <circle cx="512" cy="512" r="280" fill="#10b981" opacity="0.15"/>
+  
+  <!-- CC Monogram in emerald green with glow -->
+  <text 
+    x="512" 
+    y="610" 
+    font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" 
+    font-size="320" 
+    font-weight="900" 
+    text-anchor="middle" 
+    fill="#10b981" 
+    letter-spacing="-12"
+    filter="url(#glow)">CC</text>
+</svg>

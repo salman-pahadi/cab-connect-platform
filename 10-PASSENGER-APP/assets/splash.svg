@@ -1,0 +1,45 @@
+<svg width="1284" height="2778" viewBox="0 0 1284 2778" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Option 4: Black background with emerald green accent (Premium) -->
+  
+  <!-- Deep black background (premium feel) -->
+  <rect width="1284" height="2778" fill="#000000"/>
+  
+  <!-- Centered logo with emerald accent -->
+  <g transform="translate(642, 1389)">
+    
+    <!-- Subtle emerald glow circle -->
+    <circle cy="0" r="180" fill="#10b981" opacity="0.15"/>
+    
+    <!-- Emerald green CC Monogram -->
+    <text 
+      y="65" 
+      font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" 
+      font-size="180" 
+      font-weight="900" 
+      text-anchor="middle" 
+      fill="#10b981" 
+      letter-spacing="-6">CC</text>
+    
+    <!-- White brand name -->
+    <text 
+      y="180" 
+      font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" 
+      font-size="42" 
+      font-weight="700" 
+      text-anchor="middle" 
+      fill="#ffffff" 
+      letter-spacing="-0.5" 
+      opacity="0.95">Cab Connect</text>
+  </g>
+  
+  <!-- White tagline with slight emerald tint -->
+  <text 
+    x="642" 
+    y="2600" 
+    font-family="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif" 
+    font-size="28" 
+    font-weight="500" 
+    text-anchor="middle" 
+    fill="#10b981" 
+    opacity="0.8">Ride Anywhere in Fiji</text>
+</svg>
