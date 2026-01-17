@@ -7,6 +7,7 @@ from enum import Enum
 
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy import Enum as SQLEnum
+from sqlalchemy.orm import relationship
 
 from app.models.base import BaseModel
 
@@ -78,6 +79,9 @@ class Payment(BaseModel):
     # Additional
     notes = Column(Text, nullable=True)
     receipt_url = Column(String(500), nullable=True)
+
+    # Relationships
+    ride = relationship("Ride", back_populates="payments")
 
     def __repr__(self) -> str:
         return f"<Payment {self.transaction_id} - {self.amount} {self.currency}>"

@@ -4,7 +4,7 @@ import random
 import secrets
 from datetime import datetime, timedelta
 
-from app.core.config import settings
+from app.config import settings
 
 
 def generate_otp(length: int = 6) -> str:

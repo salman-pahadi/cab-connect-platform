@@ -460,7 +460,7 @@ Before submitting code for review:
 
 | Resource | Location |
 |----------|----------|
-| Full .cursorrules | 04-CODING-STANDARDS/.cursorrules |
+| Full .cursorrules | .cursorrules |
 | Requirements | 05-CLIENT-REQUIREMENTS/ |
 | Architecture | 01-DOCUMENTATION/ |
 | Development Guide | 03-DEVELOPMENT-GUIDES/ |
@@ -470,7 +470,7 @@ Before submitting code for review:
 ## 📞 Getting Help
 
 Questions about coding standards?
-1. Check .cursorrules (this folder)
+1. Check .cursorrules (repo root)
 2. Check code examples in development guide
 3. Review existing code in the project
 4. Ask team lead or senior developer

@@ -5,6 +5,7 @@ Rating model for ride reviews and user ratings.
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer, String, Text
+from sqlalchemy.orm import relationship
 
 from app.models.base import Base
 
@@ -43,6 +44,9 @@ class Rating(Base):
     # Admin
     is_flagged = Column(Integer, default=0)  # 0=not flagged, 1=flagged for review
     admin_notes = Column(Text, nullable=True)
+
+    # Relationships
+    ride = relationship("Ride", back_populates="ratings")
 
     def __repr__(self) -> str:
         return f"<Rating {self.overall_rating} - Ride {self.ride_id}>"

@@ -1,5 +1,6 @@
 """Application configuration."""
 
+import os
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -27,6 +28,11 @@ class Settings(BaseSettings):
         "postgresql://cabconnect:cabconnect123@localhost:5432/cabconnect_test"
     )
 
+    @property
+    def database_url(self) -> str:
+        """Prefer Render-provided URL when present."""
+        return os.getenv("RENDER_DATABASE_URL", self.DATABASE_URL)
+
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
 
@@ -37,11 +43,13 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
     # CORS
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:19006"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:19006,http://10.160.8.247:19006"
 
     @property
     def cors_origins_list(self) -> list[str]:
-        """Parse CORS origins from string to list."""
+        """Parse CORS origins from string to list. In dev mode, allow all origins."""
+        if self.DEBUG:
+            return ["*"]  # Allow all origins in development
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
 
     # JWT

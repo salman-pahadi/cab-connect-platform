@@ -1,0 +1,36 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- App Icon - Just the Car + Palm Tree -->
+  <rect width="80" height="80" rx="16" fill="#ffffff"/>
+  
+  <!-- Geometric Car with Palm Tree - Scaled for App Icon -->
+  <g transform="translate(8, 15)">
+    <!-- Car Body -->
+    <polygon points="15,35 22,28 30,28 37,35" fill="#52a87a"/>
+    <polygon points="8,35 15,35 37,35 52,35 52,42 8,42" fill="#3d8b63"/>
+    <polygon points="22,28 26,20 42,20 46,28" fill="#2d6e4e"/>
+    <polygon points="37,35 46,28 52,28 52,35" fill="#3d8b63"/>
+    <polygon points="8,35 8,42 15,42 15,35" fill="#2d6e4e"/>
+    <polygon points="28,22 30,28 37,28 39,22" fill="#ffffff" opacity="0.3"/>
+    
+    <!-- Wheels -->
+    <circle cx="18" cy="42" r="6" fill="#2d6e4e"/>
+    <circle cx="18" cy="42" r="4.5" fill="#52a87a"/>
+    <circle cx="18" cy="42" r="3.5" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+    <circle cx="42" cy="42" r="6" fill="#2d6e4e"/>
+    <circle cx="42" cy="42" r="4.5" fill="#52a87a"/>
+    <circle cx="42" cy="42" r="3.5" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" fill="none"/>
+    
+    <!-- Palm Tree -->
+    <g transform="translate(10, 18)">
+      <polygon points="0,0 1.5,0 2.5,16 -1,16" fill="#2d6e4e"/>
+      <polygon points="1,-2 -12,-8 -10,-4 1,-2" fill="#52a87a"/>
+      <polygon points="1,-2 -10,-12 -6,-6 1,-2" fill="#3d8b63"/>
+      <polygon points="1,-2 14,-8 12,-4 1,-2" fill="#52a87a"/>
+      <polygon points="1,-2 12,-12 8,-6 1,-2" fill="#3d8b63"/>
+      <polygon points="1,-2 -2,-14 1,-8 1,-2" fill="#2d6e4e"/>
+      <polygon points="1,-2 4,-14 1,-8 1,-2" fill="#3d8b63"/>
+      <polygon points="1,-2 -14,-5 -8,-3 1,-2" fill="#52a87a"/>
+      <polygon points="1,-2 16,-5 10,-3 1,-2" fill="#52a87a"/>
+    </g>
+  </g>
+</svg>

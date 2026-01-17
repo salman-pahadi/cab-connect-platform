@@ -314,7 +314,7 @@ Current Phase: Phase 1 (Core Platform MVP - Android First)
 Repository Health: 93/100 (EXCELLENT)
 AI Development Readiness: VERY HIGH
 
-Current Milestone: Milestone 4 - Real-time Features & Payments (0% complete)
+Current Milestone: Milestone 5 - Admin Dashboard & Analytics (Phase 1: Polling + Cash)
 
 Applications (Production Stack):
   1. Marketing Website: Next.js 14 (Static Export) - ✅ DEPLOYED (fijicabconnect.com)
@@ -366,7 +366,7 @@ BACKEND & INFRASTRUCTURE:
   Cache: Redis (containerized dev, managed production)
   Background Jobs: Celery + Celery Beat (with Redis broker)
   API: REST API with OpenAPI/Swagger documentation
-  Real-time: FastAPI WebSockets (Milestone 4)
+  Real-time: REST polling (Phase 1; WebSockets deferred)
   Code Quality: Black, isort, Ruff, mypy
   Testing: pytest 7.4+
   Containerization: Docker + docker-compose (multi-stage builds)
@@ -671,8 +671,9 @@ cabconnect-platform/
 │   ├── GETTING-STARTED.md                 # Onboarding guide
 │   └── templates/                         # Reusable templates
 │
+├── .cursorrules                           # 🤖 Phase 1 AI coding rules (canonical)
+│
 ├── 04-CODING-STANDARDS/                   # 💎 CODE QUALITY
-│   ├── .cursorrules                       # Detailed Phase 1 rules (761 lines)
 │   └── templates/                         # Code templates
 │
 ├── 05-CLIENT-REQUIREMENTS/                # 📋 CLIENT SPECS
@@ -694,18 +695,25 @@ cabconnect-platform/
 │   ├── docker-compose.yml                 # Local development setup
 │   └── README.md                          # Backend documentation
 │
-├── 09-FRONTEND-MOBILE/                    # 📱 ACTIVE DEVELOPMENT
-│   ├── src/                               # React Native source
-│   ├── android/                           # Android project
-│   ├── ios/                               # iOS project
-│   ├── package.json                       # Dependencies
-│   └── README.md                          # Mobile app documentation
-│
-├── 10-ADMIN-DASHBOARD/                    # 💼 ACTIVE DEVELOPMENT
+├── 09-ADMIN-DASHBOARD/                    # 💼 ACTIVE DEVELOPMENT
 │   ├── src/                               # Next.js source
 │   ├── public/                            # Static assets
 │   ├── package.json                       # Dependencies
 │   └── README.md                          # Dashboard documentation
+│
+├── 10-PASSENGER-APP/                      # 📱 ACTIVE DEVELOPMENT
+│   ├── src/                               # React Native source
+│   ├── android/                           # Android project
+│   ├── ios/                               # iOS project
+│   ├── package.json                       # Dependencies
+│   └── README.md                          # Passenger app documentation
+│
+├── 11-DRIVER-APP/                         # 🚗 ACTIVE DEVELOPMENT
+│   ├── src/                               # React Native source
+│   ├── android/                           # Android project
+│   ├── ios/                               # iOS project
+│   ├── package.json                       # Dependencies
+│   └── README.md                          # Driver app documentation
 │
 └── fiji-cab-connect-marketing-website/    # 🌐 DEPLOYED APPLICATION
     ├── app/                               # Next.js App Router
@@ -793,15 +801,17 @@ Documentation:
   - Database: 01-DOCUMENTATION/REFERENCE/06_DATABASE_SCHEMA.md
 
 Development:
-  - Backend: cd 08-BACKEND && python manage.py runserver
-  - Mobile: cd 09-FRONTEND-MOBILE && npm start
-  - Admin: cd 10-ADMIN-DASHBOARD && npm run dev
+  - Backend: cd 08-BACKEND && uvicorn app.main:app --reload
+  - Passenger: cd 10-PASSENGER-APP && npm start
+  - Driver: cd 11-DRIVER-APP && npm start
+  - Admin: cd 09-ADMIN-DASHBOARD && npm run dev
   - Marketing: cd fiji-cab-connect-marketing-website && npm run dev
 
 Testing:
   - Backend: cd 08-BACKEND && pytest
-  - Mobile: cd 09-FRONTEND-MOBILE && npm test
-  - Admin: cd 10-ADMIN-DASHBOARD && npm test
+  - Passenger: cd 10-PASSENGER-APP && npm test
+  - Driver: cd 11-DRIVER-APP && npm test
+  - Admin: cd 09-ADMIN-DASHBOARD && npm test
   - Linting: npm run lint (in each project)
 
 Docker:
@@ -843,7 +853,7 @@ Before Every Commit:
 
 ### **Phase 1: Core Platform MVP** ⚙️ ACTIVE (5-6 weeks, Jan 11 - Feb 28, 2026)
 
-**Current Milestone: Milestone 4 - Real-time Features & Payments** (0% complete)
+**Current Milestone: Milestone 5 - Admin Dashboard & Analytics** (Phase 1: Polling + Cash)
 
 #### **Milestone 1: Foundation** ✅ COMPLETE
 - ✅ Backend (FastAPI) project setup
@@ -872,7 +882,9 @@ Before Every Commit:
 - ✅ Admin dashboard foundation
 - ✅ Database models implementation
 
-#### **Milestone 4: Real-time Features & Payments** ⚙️ IN PROGRESS (0%)
+#### **Milestone 4: Real-time & Payments** ⏸️ DEFERRED (Phase 1: polling + cash only)
+
+#### **Milestone 5: Admin Dashboard & Analytics** ⚙️ IN PROGRESS
 **Subtasks:**
 1. **4.1: WebSocket Infrastructure** - Next Priority
    - [ ] FastAPI WebSocket support
@@ -962,7 +974,7 @@ Before Every Commit:
    - Booking system (request, accept, complete, cancel)
    - Driver management (verification, online/offline, location)
    - Payment processing (Razorpay integration)
-   - Real-time tracking (WebSockets - Milestone 4)
+   - Real-time tracking (polling - Phase 1; WebSockets deferred)
    - Admin functions (driver approval, user management)
    - Notifications (FCM, Twilio SMS)
 
@@ -1306,14 +1318,14 @@ Support:
 
 ## 🎯 NEXT SESSION PRIORITIES
 
-**Current Phase:** Milestone 4 (Real-time Features & Payments)
+**Current Phase:** Milestone 5 (Admin Dashboard & Analytics - Phase 1)
 **Status:** 0% Complete
 **Next Priority:** Micro-Task 4.1 - WebSocket Infrastructure Setup
 
 **What to Read First:**
 1. @prefix.md (this file)
 2. @START-HERE.md
-3. @PROGRESS-TRACKER.md (check milestone 4 tasks)
+3. @PROGRESS-TRACKER.md (check milestone 5 tasks)
 4. @01-DOCUMENTATION/REFERENCE/03_PHASE1_DECISIONS.md (locked decisions)
 5. @01-DOCUMENTATION/REFERENCE/05_SYSTEM_ARCHITECTURE.md (system design)
 

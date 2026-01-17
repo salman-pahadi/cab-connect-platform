@@ -1,7 +1,8 @@
 # Cab Connect Platform - Project Folder Structure
 
-**Last Updated:** January 11, 2026  
-**Project:** Fiji Cab Connect Platform (Phase 1)
+**Last Updated:** January 15, 2026  
+**Project:** Fiji Cab Connect Platform (Phase 1)  
+**Status:** ✅ OPTIMIZED - Clean structure with minimal root files
 
 ---
 
@@ -9,32 +10,46 @@
 
 This document provides a comprehensive guide to the project folder structure for the Cab Connect Platform. Each section outlines the purpose, contents, and usage of each directory.
 
+**IMPORTANT:** This structure was optimized on Jan 15, 2026 to eliminate duplicates and reduce AI confusion.
+
 ---
 
-## 🗂️ Root Level Structure
+## 🗂️ Root Level Structure (OPTIMIZED)
 
 ```
 cab-connect-platform-main/
-├── README.md                              # Project overview & quick start
-├── START-HERE.md                          # Project entry point
-├── prefix.md                              # Development framework (16 experts)
-├── PROGRESS-TRACKER.md                    # Current phase tracking
-├── FOLDER-STRUCTURE.md                    # This file - structure guide
-├── FINAL-REPOSITORY-AUDIT-REPORT.md       # Latest governance audit
-├── .cursorrules                           # AI assistant configuration
+├── .cursorrules                           # AI assistant configuration (SINGLE SOURCE)
 ├── .gitignore                             # Git ignore file
 ├── .vscode/                               # VS Code workspace settings
-├── 01-DOCUMENTATION/                      # Phase 1 documentation
+│
+├── README.md                              # Project overview & quick start
+├── prefix.md                              # Development framework (16 experts)
+├── START-HERE.md                          # Project entry point & navigation
+├── PROGRESS-TRACKER.md                    # Current phase tracking
+├── FOLDER-STRUCTURE.md                    # This file - structure guide
+├── CHANGELOG.md                           # Version history
+├── TODO.md                                # Active tasks
+│
+├── docker-compose.local.yml               # Local PostgreSQL setup
+├── start-local-db.ps1                     # Start local DB script
+├── stop-local-db.ps1                      # Stop local DB script
+├── render.yaml                            # Production deployment config
+├── package.json                           # Root dependencies
+├── eas.json                               # Expo build config
+├── app.json                               # Expo app config
+│
+├── 01-DOCUMENTATION/                      # Canonical specs (READ-ONLY)
 ├── 02-PROJECT-PLANNING/                   # Project planning & status
 ├── 03-DEVELOPMENT-GUIDES/                 # Development guides & templates
 ├── 04-CODING-STANDARDS/                   # Code standards & conventions
 ├── 05-CLIENT-REQUIREMENTS/                # Client requirements & branding
-├── 06-AI-ASSISTANT-SETUP/                 # AI assistant configuration
-├── 07-ARCHIVED/                           # Archived documents
-├── 08-BACKEND/                            # Backend development folder
-├── 09-FRONTEND-MOBILE/                    # Frontend/Mobile development folder
-├── 10-ADMIN-DASHBOARD/                    # Admin dashboard development folder
-└── fiji-cab-connect-marketing-website/    # Next.js marketing website
+├── 06-AI-ASSISTANT-SETUP/                 # AI assistant prompts
+├── 07-ARCHIVED/                           # ALL archived/old documents
+├── 08-BACKEND/                            # FastAPI backend
+├── 09-ADMIN-DASHBOARD/                    # Admin dashboard (Next.js)
+├── 10-PASSENGER-APP/                      # Passenger mobile app
+├── 11-DRIVER-APP/                         # Driver mobile app
+└── fiji-cab-connect-marketing-website/    # Marketing website (Next.js)
 ```
 
 ---
@@ -166,10 +181,9 @@ cab-connect-platform-main/
 **Purpose:** Archive for older project documents and archives
 
 **Contents:**
-- `PROJECT-ANALYSIS.md` - Previous project analysis
-- `docs-full/` - Full documentation archives
-- `fiji-cab-connect-full/` - Complete project archive
-- `UNIVERSAL CONFIGURATION/` - Universal configuration files
+- `AUDITS/` - Historical audit reports
+- `SESSION-LOGS/` - Session summaries and one-off reports
+- `LEGACY/` - Legacy project structures and snapshots (including out-of-scope Phase 1 planning)
 
 **Usage:** Reference old documentation and configurations; not actively used in current phase.
 
@@ -179,7 +193,8 @@ cab-connect-platform-main/
 **Purpose:** Backend application development
 
 **Contents:**
-- `reference/` - Backend reference documentation and code examples
+- `app/` - FastAPI application code
+- `docs/` - Backend docs (deployment, SMS/OTP guides)
 
 **Status:** Folder structure ready for backend implementation
 
@@ -187,21 +202,30 @@ cab-connect-platform-main/
 
 ---
 
-### 09-FRONTEND-MOBILE/
-**Purpose:** Frontend and mobile application development
+### 09-ADMIN-DASHBOARD/
+**Purpose:** Admin dashboard application development
 
-**Status:** Folder structure ready for frontend/mobile implementation
+**Status:** Active development
 
-**Usage:** React Native, mobile UI, responsive design, and frontend logic development.
+**Usage:** Administrative interface, user management, and system monitoring.
 
 ---
 
-### 10-ADMIN-DASHBOARD/
-**Purpose:** Admin dashboard application development
+### 10-PASSENGER-APP/
+**Purpose:** Passenger mobile app development
 
-**Status:** Folder structure ready for admin dashboard implementation
+**Status:** Active development
 
-**Usage:** Administrative interface, user management, and system monitoring.
+**Usage:** React Native (Expo) passenger app.
+
+---
+
+### 11-DRIVER-APP/
+**Purpose:** Driver mobile app development
+
+**Status:** Active development
+
+**Usage:** React Native (Expo) driver app.
 
 ---
 
@@ -251,8 +275,9 @@ cab-connect-platform-main/
 | 06-AI-ASSISTANT-SETUP | AI tool configuration | ✅ Complete | Tech Lead |
 | 07-ARCHIVED | Archived documents | 📦 Archived | Archive Manager |
 | 08-BACKEND | Backend development | 🚀 Ready | Backend Lead |
-| 09-FRONTEND-MOBILE | Frontend/Mobile dev | 🚀 Ready | Frontend Lead |
-| 10-ADMIN-DASHBOARD | Admin dashboard dev | 🚀 Ready | Admin Dashboard Lead |
+| 09-ADMIN-DASHBOARD | Admin dashboard dev | 🚀 Ready | Admin Dashboard Lead |
+| 10-PASSENGER-APP | Passenger app dev | 🚀 Ready | Mobile Lead |
+| 11-DRIVER-APP | Driver app dev | 🚀 Ready | Mobile Lead |
 | fiji-cab-connect-marketing-website | Marketing website | 🚀 Active | Marketing Dev Lead |
 
 ---

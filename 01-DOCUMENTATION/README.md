@@ -63,30 +63,9 @@ This folder contains all essential documentation for understanding and building 
 
 ## 📋 Additional Reference Documents
 
-### From `/docs` folder
-- **00_README.md** - Original project README
-- **01_PHASE1_OVERVIEW.md** - Phase 1 overview
-- **02_BRAND_GUIDELINES.md** - Brand guidelines
-- **03_PHASE1_DECISIONS.md** - Architectural decisions made
-- **04_SCOPE_IN_OUT.md** - Project scope (what's in, what's out)
-- **05_SYSTEM_ARCHITECTURE.md** - System architecture diagrams
-- **06_DATABASE_SCHEMA.md** - Database schema specification
-- **07_API_CONTRACTS.md** - API contracts and specifications
-- **08_USER_FLOWS.md** - User flow diagrams
-- **09_ADMIN_FUNCTIONS.md** - Admin dashboard functions
-- **10_SECURITY_GUIDELINES.md** - Security guidelines
-- **11_AI_CODING_ASSISTANTS_RULES.md** - Rules for AI assistants
-- **12_DEPLOYMENT_PLAN.md** - Deployment strategy
-- **13_TESTING_CHECKLIST.md** - Testing checklist
-- **14_HANDOVER_PLAN.md** - Handover plan
-- **15_CHANGELOG.md** - Changelog
-
-### From `/FIJI-CAB-CONNECT` folder
-- **01-BRANDING/** - Brand kit and logo assets
-- **02-ARCHITECTURE/** - Architecture specifications
-- **03-PHASES/** - Phase breakdown
-- **09-PAYMENTS/** - Payment integration details
-- **10-API/** - API documentation
+### Canonical references (current)
+- All locked reference docs are in `01-DOCUMENTATION/REFERENCE/`
+- Start with: `01-DOCUMENTATION/REFERENCE/00_README.md`
 
 ---
 
@@ -98,14 +77,13 @@ This folder contains all essential documentation for understanding and building 
 |-------|------|
 | **Complete system** | PHASE-1-MASTER-DEVELOPMENT-PLAN.md |
 | **All features** | REQUIREMENTS-MATRIX.md |
-| **Architecture** | docs/05_SYSTEM_ARCHITECTURE.md |
-| **Database** | docs/06_DATABASE_SCHEMA.md |
-| **API endpoints** | docs/07_API_CONTRACTS.md |
-| **Security** | docs/10_SECURITY_GUIDELINES.md |
-| **Deployment** | docs/12_DEPLOYMENT_PLAN.md |
-| **Testing** | docs/13_TESTING_CHECKLIST.md |
-| **Brand** | FIJI-CAB-CONNECT/01-BRANDING/BRAND-KIT.md |
-| **Project decisions** | docs/03_PHASE1_DECISIONS.md |
+| **Architecture** | 01-DOCUMENTATION/REFERENCE/05_SYSTEM_ARCHITECTURE.md |
+| **Database** | 01-DOCUMENTATION/REFERENCE/06_DATABASE_SCHEMA.md |
+| **API endpoints** | 01-DOCUMENTATION/REFERENCE/07_API_CONTRACTS.md |
+| **Security** | 01-DOCUMENTATION/REFERENCE/10_SECURITY_GUIDELINES.md |
+| **Deployment** | 01-DOCUMENTATION/REFERENCE/12_DEPLOYMENT_PLAN.md |
+| **Testing** | 01-DOCUMENTATION/REFERENCE/13_TESTING_CHECKLIST.md |
+| **Project decisions** | 01-DOCUMENTATION/REFERENCE/03_PHASE1_DECISIONS.md |
 
 ---
 
@@ -131,19 +109,18 @@ This folder contains all essential documentation for understanding and building 
 3. REQUIREMENTS-MATRIX.md
 
 ### **Deep Dive (2-3 hours)**
-4. docs/05_SYSTEM_ARCHITECTURE.md
-5. docs/06_DATABASE_SCHEMA.md
-6. docs/07_API_CONTRACTS.md
+4. 01-DOCUMENTATION/REFERENCE/05_SYSTEM_ARCHITECTURE.md
+5. 01-DOCUMENTATION/REFERENCE/06_DATABASE_SCHEMA.md
+6. 01-DOCUMENTATION/REFERENCE/07_API_CONTRACTS.md
 
 ### **Implementation (1-2 hours)**
-7. FIJI-CAB-CONNECT/02-ARCHITECTURE/SYSTEM-ARCHITECTURE.md
-8. docs/10_SECURITY_GUIDELINES.md
+7. 01-DOCUMENTATION/REFERENCE/10_SECURITY_GUIDELINES.md
 9. WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md (in Development folder)
 
 ### **Reference (As needed)**
 10. REQUIREMENTS-MATRIX.md (for feature details)
-11. docs/13_TESTING_CHECKLIST.md (for testing)
-12. docs/12_DEPLOYMENT_PLAN.md (for deployment)
+11. 01-DOCUMENTATION/REFERENCE/13_TESTING_CHECKLIST.md (for testing)
+12. 01-DOCUMENTATION/REFERENCE/12_DEPLOYMENT_PLAN.md (for deployment)
 
 ---
 
@@ -151,22 +128,22 @@ This folder contains all essential documentation for understanding and building 
 
 ### **Week 1: Architecture & Setup**
 - Reference: PHASE-1-MASTER-DEVELOPMENT-PLAN.md
-- Reference: docs/05_SYSTEM_ARCHITECTURE.md
-- Reference: docs/06_DATABASE_SCHEMA.md
+- Reference: 01-DOCUMENTATION/REFERENCE/05_SYSTEM_ARCHITECTURE.md
+- Reference: 01-DOCUMENTATION/REFERENCE/06_DATABASE_SCHEMA.md
 
 ### **Week 2-3: Feature Implementation**
 - Reference: REQUIREMENTS-MATRIX.md
-- Reference: docs/07_API_CONTRACTS.md
+- Reference: 01-DOCUMENTATION/REFERENCE/07_API_CONTRACTS.md
 - Reference: 03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md
 
 ### **Week 4-5: Testing & Optimization**
-- Reference: docs/13_TESTING_CHECKLIST.md
-- Reference: docs/10_SECURITY_GUIDELINES.md
-- Reference: 04-CODING-STANDARDS/.cursorrules
+- Reference: 01-DOCUMENTATION/REFERENCE/13_TESTING_CHECKLIST.md
+- Reference: 01-DOCUMENTATION/REFERENCE/10_SECURITY_GUIDELINES.md
+- Reference: .cursorrules
 
 ### **Week 6: Deployment**
-- Reference: docs/12_DEPLOYMENT_PLAN.md
-- Reference: docs/14_HANDOVER_PLAN.md
+- Reference: 01-DOCUMENTATION/REFERENCE/12_DEPLOYMENT_PLAN.md
+- Reference: 01-DOCUMENTATION/REFERENCE/14_HANDOVER_PLAN.md
 
 ---
 

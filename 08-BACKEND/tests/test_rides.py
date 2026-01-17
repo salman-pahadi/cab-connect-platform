@@ -8,12 +8,11 @@ import pytest
 from fastapi import status
 from sqlalchemy.orm import Session
 
-from app.models.driver import Driver, DriverStatus, VehicleType
+from app.models.driver import Driver, DriverAvailability, DriverStatus, VehicleType
 from app.models.ride import PaymentMethod, RideStatus, RideType
 from app.models.user import User, UserRole, UserStatus
 from app.schemas.ride import RideCompleted, RideEstimate, RideRequest
 from app.services.ride_service import RideService
-from app.utils.password import hash_password
 
 
 @pytest.fixture
@@ -21,10 +20,10 @@ def passenger_user(db: Session):
     """Create a test passenger user."""
     user = User(
         phone_number="1234567890",
-        name="Test Passenger",
+        full_name="Test Passenger",
         role=UserRole.PASSENGER,
-        status=UserStatus.VERIFIED,
-        password_hash=hash_password("password123"),
+        status=UserStatus.ACTIVE,
+        # Passengers use OTP auth, no password needed
     )
     db.add(user)
     db.commit()
@@ -37,10 +36,10 @@ def driver_user(db: Session):
     """Create a test driver user."""
     user = User(
         phone_number="9876543210",
-        name="Test Driver",
+        full_name="Test Driver",
         role=UserRole.DRIVER,
-        status=UserStatus.VERIFIED,
-        password_hash=hash_password("password123"),
+        status=UserStatus.ACTIVE,
+        # Drivers use OTP auth, no password needed
     )
     db.add(user)
     db.commit()
@@ -52,15 +51,17 @@ def driver_user(db: Session):
 def driver_profile(db: Session, driver_user: User):
     """Create a driver profile."""
     driver = Driver(
-        user_id=driver_user.id,
+        phone_number=driver_user.phone_number,
+        full_name=driver_user.full_name,
         license_number="DL123456",
         license_expiry=datetime(2025, 12, 31),
         vehicle_type=VehicleType.SEDAN,
-        vehicle_number="KA-01-AB-1234",
+        vehicle_plate_number="KA-01-AB-1234",
         vehicle_make="Maruti",
         vehicle_model="Swift",
-        vehicle_year=2022,
-        status=DriverStatus.AVAILABLE,
+        vehicle_year="2022",
+        status=DriverStatus.ACTIVE,
+        availability=DriverAvailability.ONLINE,
     )
     db.add(driver)
     db.commit()
@@ -342,11 +343,11 @@ class TestRideService:
         service = RideService()
 
         # Test known distance
-        # Bangalore to Indiranagar ~8km
+        # Bangalore to Indiranagar ~5km
         distance = service._haversine_distance(12.9716, 77.5946, 12.9352, 77.6245)
 
-        # Should be approximately 8km with some tolerance
-        assert 6 < distance < 10
+        # Should be approximately 5km with some tolerance
+        assert 4 < distance < 7
 
     def test_generate_ride_number(self):
         """Test ride number generation."""

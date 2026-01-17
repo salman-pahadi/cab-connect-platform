@@ -1,0 +1,52 @@
+# Render Blueprint for Cab Connect Platform
+services:
+  # Backend API
+  - type: web
+    name: cab-connect-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r 08-BACKEND/requirements.txt
+    startCommand: cd 08-BACKEND && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.7
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cab-connect-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: cab-connect-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: false
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 1440
+    healthCheckPath: /health
+
+  # Redis Cache
+  - type: redis
+    name: cab-connect-redis
+    plan: free
+    region: oregon
+    ipAllowList:
+      - source: 0.0.0.0/0
+
+  # PostgreSQL Database
+databases:
+  - name: cab-connect-db
+    databaseName: cab_connect
+    plan: free
+    region: oregon

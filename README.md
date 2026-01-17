@@ -2,7 +2,7 @@
 
 **AI-First Ride-Hailing Platform for Fiji Islands**
 
-[![Repository Health](https://img.shields.io/badge/health-93%2F100-brightgreen)](FINAL-REPOSITORY-AUDIT-REPORT.md)
+[![Repository Health](https://img.shields.io/badge/health-93%2F100-brightgreen)](07-ARCHIVED/AUDITS/FINAL-REPOSITORY-AUDIT-REPORT.md)
 [![Phase](https://img.shields.io/badge/phase-1%20active-blue)](02-PROJECT-PLANNING/PROJECT-STATUS-DASHBOARD.md)
 [![Documentation](https://img.shields.io/badge/docs-28%20canonical-success)](01-DOCUMENTATION/REFERENCE/)
 
@@ -60,8 +60,9 @@ cabconnect-platform/
 ├── 07-ARCHIVED/                  # 📦 HISTORICAL REFERENCES
 │
 ├── 08-BACKEND/                   # ⚙️ FastAPI Backend (Active Development)
-├── 09-FRONTEND-MOBILE/           # 📱 React Native Mobile (Active Development)
-├── 10-ADMIN-DASHBOARD/           # 💼 Next.js Admin (Active Development)
+├── 09-ADMIN-DASHBOARD/           # 💼 Next.js Admin (Active Development)
+├── 10-PASSENGER-APP/             # 📱 React Native Passenger App (Active Development)
+├── 11-DRIVER-APP/                # 🚗 React Native Driver App (Active Development)
 └── fiji-cab-connect-marketing-website/   # 🌐 Marketing Site (Deployed)
 ```
 
@@ -72,7 +73,7 @@ cabconnect-platform/
 | Aspect | Status | Details |
 |--------|--------|---------|
 | **Phase** | Phase 1 - Core MVP | Active Development |
-| **Repository Health** | 93/100 - EXCELLENT | [Audit Report](FINAL-REPOSITORY-AUDIT-REPORT.md) |
+| **Repository Health** | 93/100 - EXCELLENT | [Audit Report](07-ARCHIVED/AUDITS/FINAL-REPOSITORY-AUDIT-REPORT.md) |
 | **Documentation** | 28 Canonical Docs | [Reference Index](01-DOCUMENTATION/REFERENCE/00_README.md) |
 | **Marketing Site** | ✅ Deployed | fijicabconnect.com |
 | **Backend API** | ⚙️ In Development | FastAPI + PostgreSQL + Redis |
@@ -118,11 +119,10 @@ You're working with **16 world-class experts** with **450+ combined years** of e
 - shadcn/ui components
 
 ### **Backend & Infrastructure:**
-- FastAPI (Python 3.14+)
+- FastAPI (Python)
 - PostgreSQL 17
 - Redis
-- Celery + Celery Beat
-- WebSockets (real-time tracking)
+- REST polling (Phase 1: no WebSockets)
 
 ### **DevOps & Deployment:**
 - Docker + docker-compose
@@ -134,7 +134,7 @@ You're working with **16 world-class experts** with **450+ combined years** of e
 - Brevo (Email)
 - Twilio (SMS)
 - Firebase (Push notifications)
-- Stripe & PayPal (Payments)
+- Cash payments (Phase 1)
 
 ---
 
@@ -155,7 +155,7 @@ You're working with **16 world-class experts** with **450+ combined years** of e
 
 ### **Development:**
 - [WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md](03-DEVELOPMENT-GUIDES/WEEK-BY-WEEK-DEVELOPMENT-GUIDE.md) - Development roadmap
-- [.cursorrules](04-CODING-STANDARDS/.cursorrules) - Coding standards (761 lines)
+- [.cursorrules](.cursorrules) - AI coding rules (canonical)
 - [IMPLEMENTATION-TASKS.md](02-PROJECT-PLANNING/IMPLEMENTATION-TASKS.md) - 21-day task plan
 
 ---
@@ -171,16 +171,23 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-### **Mobile App (09-FRONTEND-MOBILE/):**
+### **Passenger App (10-PASSENGER-APP/):**
 ```bash
-cd 09-FRONTEND-MOBILE
+cd 10-PASSENGER-APP
 npm install
 npm start
 ```
 
-### **Admin Dashboard (10-ADMIN-DASHBOARD/):**
+### **Driver App (11-DRIVER-APP/):**
 ```bash
-cd 10-ADMIN-DASHBOARD
+cd 11-DRIVER-APP
+npm install
+npm start
+```
+
+### **Admin Dashboard (09-ADMIN-DASHBOARD/):**
+```bash
+cd 09-ADMIN-DASHBOARD
 npm install
 npm run dev
 ```
