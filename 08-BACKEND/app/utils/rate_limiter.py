@@ -105,6 +105,10 @@ def rate_limit_by_ip(
     Raises:
         HTTPException: If rate limit exceeded
     """
+    # Skip rate limiting for OPTIONS requests (CORS preflight)
+    if request.method == "OPTIONS":
+        return
+    
     client_ip = get_client_ip(request)
     key = f"ip:{client_ip}"
     rate_limiter.check_rate_limit(key, max_requests, window_seconds)

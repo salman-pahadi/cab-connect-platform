@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 
 const ENV = {
   dev: {
-    apiUrl: 'http://localhost:8000/api/v1',
+    apiUrl: 'http://10.160.8.247:8000/api/v1',
   },
   prod: {
     apiUrl: 'https://cab-connect-api.onrender.com/api/v1',

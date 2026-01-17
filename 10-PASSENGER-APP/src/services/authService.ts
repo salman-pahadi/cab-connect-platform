@@ -104,15 +104,20 @@ export interface SignupResponse {
   success: boolean;
   message: string;
   access_token: string;
+  token_type: string;
   user: {
     id: string;
     email: string | null;
     phone_number: string | null;
     full_name: string;
-    user_type: 'passenger' | 'driver';
-    is_verified: boolean;
+    role: string;
+    is_email_verified: boolean;
+    is_phone_verified: boolean;
   };
-  requires_verification: 'email' | 'phone';
+  verification_required: {
+    email: boolean;
+    phone: boolean;
+  };
 }
 
 export interface VerifyEmailRequest {
@@ -281,12 +286,23 @@ class AuthService {
    * Calls POST /api/v1/auth/signup
    */
   async signup(data: SignupRequest): Promise<SignupResponse> {
-    const response = await apiClient.post<SignupResponse>('/auth/signup', {
-      identifier: data.identifier,
+    // Detect if identifier is email or phone
+    const isEmail = data.identifier.includes('@');
+    
+    const payload: any = {
       password: data.password,
       full_name: data.full_name,
       user_type: data.user_type,
-    });
+    };
+    
+    // Send either email or phone_number based on identifier type
+    if (isEmail) {
+      payload.email = data.identifier;
+    } else {
+      payload.phone_number = data.identifier;
+    }
+    
+    const response = await apiClient.post<SignupResponse>('/auth/signup', payload);
     
     // Set auth token for subsequent requests
     if (response.access_token) {
@@ -404,11 +420,7 @@ class AuthService {
    * Set auth token for API client
    */
   setAuthToken(token: string | null) {
-    if (token) {
-      (apiClient as any).defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-      delete (apiClient as any).defaults.headers.common['Authorization'];
-    }
+    apiClient.setAuthToken(token);
   }
 }
 

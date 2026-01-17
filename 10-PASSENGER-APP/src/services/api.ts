@@ -62,6 +62,14 @@ class ApiService {
     const response: AxiosResponse<T> = await this.client.delete(url, config);
     return response.data;
   }
+
+  setAuthToken(token: string | null) {
+    if (token) {
+      this.client.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      delete this.client.defaults.headers.common['Authorization'];
+    }
+  }
 }
 
 export const apiService = new ApiService();

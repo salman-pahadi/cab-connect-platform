@@ -43,11 +43,13 @@ class Settings(BaseSettings):
     REFRESH_TOKEN_EXPIRE_DAYS: int = 30
 
     # CORS
-    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:19006"
+    CORS_ORIGINS: str = "http://localhost:3000,http://localhost:19006,http://10.160.8.247:19006"
 
     @property
     def cors_origins_list(self) -> list[str]:
-        """Parse CORS origins from string to list."""
+        """Parse CORS origins from string to list. In dev mode, allow all origins."""
+        if self.DEBUG:
+            return ["*"]  # Allow all origins in development
         return [origin.strip() for origin in self.CORS_ORIGINS.split(",")]
 
     # JWT

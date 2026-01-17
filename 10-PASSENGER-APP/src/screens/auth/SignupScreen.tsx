@@ -27,7 +27,9 @@ const SignupScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<any>>();
   const dispatch = useAppDispatch();
 
-  const [identifier, setIdentifier] = useState('');
+  const [signupMethod, setSignupMethod] = useState<'email' | 'phone'>('email');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -35,16 +37,7 @@ const SignupScreen: React.FC = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const detectIdentifierType = (text: string): 'email' | 'phone' => {
-    return text.includes('@') ? 'email' : 'phone';
-  };
-
   const formatPhoneNumber = (text: string): string => {
-    // If it's an email, return as-is
-    if (text.includes('@')) {
-      return text;
-    }
-
     // Remove all non-digit characters
     const cleaned = text.replace(/\D/g, '');
 
@@ -74,7 +67,6 @@ const SignupScreen: React.FC = () => {
   };
 
   const validateInput = (): boolean => {
-    const trimmedIdentifier = identifier.trim();
     const trimmedFullName = fullName.trim();
     
     if (!trimmedFullName) {
@@ -82,23 +74,26 @@ const SignupScreen: React.FC = () => {
       return false;
     }
 
-    if (!trimmedIdentifier) {
-      Alert.alert('Required Field', 'Please enter your email or phone number');
-      return false;
-    }
-
-    const identifierType = detectIdentifierType(trimmedIdentifier);
-    
-    if (identifierType === 'phone') {
-      const formattedPhone = formatPhoneNumber(trimmedIdentifier);
-      if (formattedPhone.length !== 11) {
-        Alert.alert('Invalid Phone', 'Please enter a valid Fiji phone number (7 digits)');
+    if (signupMethod === 'email') {
+      const trimmedEmail = email.trim();
+      if (!trimmedEmail) {
+        Alert.alert('Required Field', 'Please enter your email address');
         return false;
       }
-    } else if (identifierType === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(trimmedIdentifier)) {
+      if (!emailRegex.test(trimmedEmail)) {
         Alert.alert('Invalid Email', 'Please enter a valid email address');
+        return false;
+      }
+    } else {
+      const trimmedPhone = phone.trim();
+      if (!trimmedPhone) {
+        Alert.alert('Required Field', 'Please enter your phone number');
+        return false;
+      }
+      const formattedPhone = formatPhoneNumber(trimmedPhone);
+      if (formattedPhone.length !== 12) { // +679 + 7 digits
+        Alert.alert('Invalid Phone', 'Please enter a valid Fiji phone number (7 digits)');
         return false;
       }
     }
@@ -124,13 +119,12 @@ const SignupScreen: React.FC = () => {
 
     try {
       setIsLoading(true);
-      dispatch(setLoading(true));
+      dispatch(setLoad = signupMethod === 'email' 
+        ? email.trim() 
+        : formatPhoneNumber(phone);
 
-      const identifierType = detectIdentifierType(identifier);
-      const formattedIdentifier = identifierType === 'phone' 
-        ? formatPhoneNumber(identifier) 
-        : identifier.trim();
-
+      const response = await authService.signup({
+        i
       const response = await authService.signup({
         identifier: formattedIdentifier,
         password,
@@ -139,24 +133,56 @@ const SignupScreen: React.FC = () => {
       });
 
       if (response.success) {
+        // Map backend response to Redux user format (snake_case to camelCase)
+        const userForRedux = {
+          id: response.user.id,
+          phoneNumber: response.user.phone_number || '',
+          email: response.user.email || '',
+          fullName: response.user.full_name,
+          role: response.user.role.toLowerCase() as 'passenger' | 'driver' | 'admin',
+          status: 'ACTIVE',
+          isPhoneVerified: response.user.is_phone_verified,
+          isEmailVerified: response.user.is_email_verified,
+        };
+
         // Store credentials in Redux
         dispatch(setCredentials({
           token: response.access_token,
-          user: response.user,
+          user: userForRedux,
         }));
 
-        // Navigate to verification screen
+        // Determine what needs verification
+        const needsEmailVerification = response.verification_required.email;
+        const needsPhoneVerification = response.verification_required.phone;
+        
+        // Determine which verification to navigate to first
+        let verificationType: 'email' | 'phone' | null = null;
+        let verificationMessage = 'Account created successfully!';
+        
+        if (needsEmailVerification) {
+          verificationType = 'email';
+          verificationMessage = 'Please verify your email address to continue. We sent a verification link to ' + response.user.email;
+        } else if (needsPhoneVerification) {
+          verificationType = 'phone';
+          verificationMessage = 'Please verify your phone number to continue. We sent a verification code to ' + response.user.phone_number;
+        }
+
+        // Navigate to verification screen or home
         Alert.alert(
           'Account Created',
-          `Please verify your ${response.requires_verification} to continue.`,
+          verificationMessage,
           [
             {
-              text: 'Verify Now',
+              text: 'Continue',
               onPress: () => {
-                navigation.navigate('Verification', {
-                  userId: response.user.id,
-                  verificationType: response.requires_verification,
-                });
+                if (verificationType) {
+                  navigation.navigate('Verification', {
+                    userId: response.user.id,
+                    verificationType: verificationType,
+                  });
+                } else {
+                  navigation.navigate('Home' as any);
+                }
               },
             },
           ]
@@ -225,6 +251,37 @@ const SignupScreen: React.FC = () => {
 
         {/* Signup Form */}
         <View style={styles.glassCard}>
+          {/* Method Selection Tabs */}
+          <View style={styles.tabContainer}>
+            <TouchableOpacity
+              style={[styles.tab, signupMethod === 'email' && styles.tabActive]}
+              onPress={() => setSignupMethod('email')}
+            >
+              <MaterialCommunityIcons 
+                name="email-outline" 
+                size={20} 
+                color={signupMethod === 'email' ? '#10b981' : 'rgba(255, 255, 255, 0.5)'}
+              />
+              <Text style={[styles.tabText, signupMethod === 'email' && styles.tabTextActive]}>
+                Email
+              </Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              style={[styles.tab, signupMethod === 'phone' && styles.tabActive]}
+              onPress={() => setSignupMethod('phone')}
+            >
+              <MaterialCommunityIcons 
+                name="phone-outline" 
+                size={20} 
+                color={signupMethod === 'phone' ? '#10b981' : 'rgba(255, 255, 255, 0.5)'}
+              />
+              <Text style={[styles.tabText, signupMethod === 'phone' && styles.tabTextActive]}>
+                Phone
+              </Text>
+            </TouchableOpacity>
+          </View>
+
           {/* Full Name Input */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>FULL NAME</Text>
@@ -249,38 +306,56 @@ const SignupScreen: React.FC = () => {
             </View>
           </View>
 
-          {/* Email/Phone Input */}
-          <View style={styles.inputContainer}>
-            <Text style={styles.label}>EMAIL OR PHONE NUMBER</Text>
-            <View style={styles.inputWrapper}>
-              <MaterialCommunityIcons 
-                name={identifier.includes('@') ? "email-outline" : "phone-outline"} 
-                size={20} 
-                color="rgba(16, 185, 129, 0.6)" 
-                style={styles.inputIcon}
-              />
-              <TextInput
-                style={styles.input}
-                placeholder="email@example.com or 7770000"
-                placeholderTextColor="rgba(255, 255, 255, 0.3)"
-                value={identifier}
-                onChangeText={setIdentifier}
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="email-address"
-                autoComplete="email"
-                textContentType="username"
-              />
+          {/* Email or Phone Input - Conditional */}
+          {signupMethod === 'email' ? (
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>EMAIL ADDRESS</Text>
+              <View style={styles.inputWrapper}>
+                <MaterialCommunityIcons 
+                  name="email-outline" 
+                  size={20} 
+                  color="rgba(16, 185, 129, 0.6)" 
+                  style={styles.inputIcon}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="your.email@example.com"
+                  placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                  value={email}
+                  onChangeText={setEmail}
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                  autoCorrect={false}
+                  autoComplete="email"
+                  textContentType="emailAddress"
+                />
+              </View>
             </View>
-            <View style={styles.hintContainer}>
-              <MaterialCommunityIcons name="information-outline" size={14} color="rgba(16, 185, 129, 0.6)" />
-              <Text style={styles.hintText}>
-                {identifier.includes('@') 
-                  ? 'We\'ll send a verification link to your email'
-                  : 'Enter Fiji number (e.g., 7770000). We\'ll send SMS code.'}
-              </Text>
+          ) : (
+            <View style={styles.inputContainer}>
+              <Text style={styles.label}>PHONE NUMBER</Text>
+              <View style={styles.inputWrapper}>
+                <MaterialCommunityIcons 
+                  name="phone-outline" 
+                  size={20} 
+                  color="rgba(16, 185, 129, 0.6)" 
+                  style={styles.inputIcon}
+                />
+                <Text style={styles.phonePrefix}>+679</Text>
+                <TextInput
+                  style={[styles.input, styles.phoneInput]}
+                  placeholder="1234567"
+                  placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                  value={phone}
+                  onChangeText={setPhone}
+                  keyboardType="phone-pad"
+                  maxLength={7}
+                  autoComplete="tel"
+                  textContentType="telephoneNumber"
+                />
+              </View>
             </View>
-          </View>
+          )}
 
           {/* Password Input */}
           <View style={styles.inputContainer}>
@@ -524,6 +599,46 @@ const styles = StyleSheet.create({
     minHeight: 44,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  tabContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    borderRadius: 16,
+    padding: 4,
+    marginBottom: 24,
+    gap: 8,
+  },
+  tab: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderRadius: 12,
+    gap: 8,
+  },
+  tabActive: {
+    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+    borderWidth: 1,
+    borderColor: 'rgba(16, 185, 129, 0.3)',
+  },
+  tabText: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: 'rgba(255, 255, 255, 0.5)',
+  },
+  tabTextActive: {
+    color: '#10b981',
+  },
+  phonePrefix: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#10b981',
+    marginRight: 8,
+  },
+  phoneInput: {
+    paddingLeft: 0,
   },
   hintContainer: {
     flexDirection: 'row',
